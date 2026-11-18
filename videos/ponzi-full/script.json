@@ -1,688 +1,716 @@
 {
- "title": "50% in 45 Days",
- "title_after": "n006",
- "lines": [
-  {
-   "id": "n001",
-   "beat": "HOOK",
-   "chapter": null,
-   "speaker": "NARRATOR",
-   "text": "Boston, July 1920. A line of people stretches down the block.",
-   "card": false,
-   "counter": null,
-   "dramatised": false,
-   "sources": [
-    "S1",
-    "S2"
-   ],
-   "shot_hint": "1920 street, medium shot travelling along the queue to SECURITIES EXCHANGE CO."
-  },
-  {
-   "id": "n002",
-   "beat": "HOOK",
-   "chapter": null,
-   "speaker": "NARRATOR",
-   "text": "Clerks. Factory workers. Housemaids. All holding cash.",
-   "card": false,
-   "counter": null,
-   "dramatised": false,
-   "sources": [
-    "S1"
-   ],
-   "shot_hint": "close shots of hands holding bills in the queue"
-  },
-  {
-   "id": "n003",
-   "beat": "HOOK",
-   "chapter": null,
-   "speaker": "NARRATOR",
-   "text": "They've been promised fifty percent profit in forty-five days.",
-   "card": true,
-   "counter": null,
-   "dramatised": false,
-   "sources": [
-    "S1",
-    "S2"
-   ],
-   "shot_hint": "text card + tear-off calendar 45 DAYS"
-  },
-  {
-   "id": "n004",
-   "beat": "HOOK",
-   "chapter": null,
-   "speaker": "NARRATOR",
-   "text": "The man taking their money has a prison record. Nobody in that line knows it.",
-   "card": false,
-   "counter": null,
-   "dramatised": false,
-   "sources": [
-    "S5"
-   ],
-   "shot_hint": "Ponzi at his office window smiling down at the line"
-  },
-  {
-   "id": "n005",
-   "beat": "HOOK",
-   "chapter": null,
-   "speaker": "NARRATOR",
-   "text": "Soon his name will become the word for this scam. And the same trick is still hunting your money today.",
-   "card": false,
-   "counter": null,
-   "dramatised": false,
-   "sources": [
-    "S4"
-   ],
-   "shot_hint": "push-in on Ponzi, then phone glow"
-  },
-  {
-   "id": "n006",
-   "beat": "HOOK",
-   "chapter": null,
-   "speaker": "NARRATOR",
-   "text": "So how did one small man in a straw hat fool an entire city?",
-   "card": false,
-   "counter": null,
-   "dramatised": false,
-   "sources": [],
-   "shot_hint": "Ponzi tips his boater"
-  },
-  {
-   "id": "n007",
-   "beat": "CH1",
-   "chapter": "Two Dollars and Fifty Cents",
-   "speaker": "NARRATOR",
-   "text": "Charles Ponzi stepped off a ship in Boston in 1903.",
-   "card": false,
-   "counter": null,
-   "dramatised": false,
-   "sources": [
-    "S7"
-   ],
-   "shot_hint": "night harbor/street, Ponzi with a suitcase"
-  },
-  {
-   "id": "n008",
-   "beat": "CH1",
-   "chapter": "Two Dollars and Fifty Cents",
-   "speaker": "NARRATOR",
-   "text": "By his own account, he had two dollars and fifty cents left.",
-   "card": false,
-   "counter": {
-    "from": 0,
-    "to": 2.5,
-    "unit": "$",
-    "colour": "gold",
-    "decimals": 2
-   },
-   "dramatised": false,
-   "sources": [
-    "S7"
-   ],
-   "shot_hint": "counter $2.50 over his open hand"
-  },
-  {
-   "id": "n009",
-   "beat": "CH1",
-   "chapter": "Two Dollars and Fifty Cents",
-   "speaker": "NARRATOR",
-   "text": "He drifted from job to job. Then north, to Canada. And into a prison cell, for forgery.",
-   "card": false,
-   "counter": null,
-   "dramatised": false,
-   "sources": [
-    "S5",
-    "S7"
-   ],
-   "shot_hint": "stamp FORGERY on a document, cell bars slide in"
-  },
-  {
-   "id": "n010",
-   "beat": "CH1",
-   "chapter": "Two Dollars and Fifty Cents",
-   "speaker": "GUARD",
-   "text": "Name?",
-   "card": false,
-   "counter": null,
-   "dramatised": true,
-   "sources": [],
-   "shot_hint": "close-up guard",
-   "voice": "agent"
-  },
-  {
-   "id": "n011",
-   "beat": "CH1",
-   "chapter": "Two Dollars and Fifty Cents",
-   "speaker": "PONZI",
-   "text": "Remember it. One day you'll read about me.",
-   "card": false,
-   "counter": null,
-   "dramatised": true,
-   "sources": [],
-   "shot_hint": "close-up Ponzi behind bars, grinning",
-   "voice": "scammer"
-  },
-  {
-   "id": "n012",
-   "beat": "CH1",
-   "chapter": "Two Dollars and Fifty Cents",
-   "speaker": "NARRATOR",
-   "text": "Remember that cell. Later, a newspaper will find it.",
-   "card": false,
-   "counter": null,
-   "dramatised": false,
-   "sources": [],
-   "shot_hint": "cell door closes"
-  },
-  {
-   "id": "n013",
-   "beat": "CH1",
-   "chapter": "Two Dollars and Fifty Cents",
-   "speaker": "NARRATOR",
-   "text": "By 1919, he was back in Boston. Charming. Broke. And about to open a very lucky letter.",
-   "card": false,
-   "counter": null,
-   "dramatised": false,
-   "sources": [],
-   "shot_hint": "office, envelope on the desk"
-  },
-  {
-   "id": "n014",
-   "beat": "CH2",
-   "chapter": "The Loophole",
-   "speaker": "NARRATOR",
-   "text": "Inside was a little slip of paper. An international reply coupon.",
-   "card": false,
-   "counter": null,
-   "dramatised": false,
-   "sources": [
-    "S8"
-   ],
-   "shot_hint": "hands open the envelope; coupon slides out (framed style)"
-  },
-  {
-   "id": "n015",
-   "beat": "CH2",
-   "chapter": "The Loophole",
-   "speaker": "NARRATOR",
-   "text": "Created in 1906, it let you prepay someone's reply postage, anywhere in the world.",
-   "card": false,
-   "counter": null,
-   "dramatised": false,
-   "sources": [
-    "S8"
-   ],
-   "shot_hint": "map: coupon travels with a dotted route"
-  },
-  {
-   "id": "n016",
-   "beat": "CH2",
-   "chapter": "The Loophole",
-   "speaker": "NARRATOR",
-   "text": "But after the war, money in Europe lost value. The coupon's price didn't change.",
-   "card": false,
-   "counter": null,
-   "dramatised": false,
-   "sources": [
-    "S8"
-   ],
-   "shot_hint": "line chart: lira falls (orange arrow)"
-  },
-  {
-   "id": "n017",
-   "beat": "CH2",
-   "chapter": "The Loophole",
-   "speaker": "NARRATOR",
-   "text": "So buy coupons cheap in Italy. Trade them in America for more stamps.",
-   "card": false,
-   "counter": null,
-   "dramatised": false,
-   "sources": [
-    "S8"
-   ],
-   "shot_hint": "framed: EUROPE -> UNITED STATES, big coupon card"
-  },
-  {
-   "id": "n018",
-   "beat": "CH2",
-   "chapter": "The Loophole",
-   "speaker": "NARRATOR",
-   "text": "On paper, it was legal. Here's the catch: you can't pay rent with stamps.",
-   "card": false,
-   "counter": null,
-   "dramatised": false,
-   "sources": [
-    "S3"
-   ],
-   "shot_hint": "pile of stamps vs a rent bill"
-  },
-  {
-   "id": "n019",
-   "beat": "CH2",
-   "chapter": "The Loophole",
-   "speaker": "INVESTOR",
-   "text": "So how do stamps turn into cash?",
-   "card": false,
-   "counter": null,
-   "dramatised": true,
-   "sources": [],
-   "shot_hint": "close-up investor",
-   "voice": "worker"
-  },
-  {
-   "id": "n020",
-   "beat": "CH2",
-   "chapter": "The Loophole",
-   "speaker": "PONZI",
-   "text": "That, my friend, is my secret.",
-   "card": false,
-   "counter": null,
-   "dramatised": true,
-   "sources": [],
-   "shot_hint": "close-up Ponzi, taps his nose",
-   "voice": "scammer"
-  },
-  {
-   "id": "n021",
-   "beat": "CH2",
-   "chapter": "The Loophole",
-   "speaker": "NARRATOR",
-   "text": "He never explained it. People invested anyway.",
-   "card": false,
-   "counter": null,
-   "dramatised": false,
-   "sources": [],
-   "shot_hint": "cash slammed onto his desk by a hand"
-  },
-  {
-   "id": "n022",
-   "beat": "CH3",
-   "chapter": "Forty-Five Days",
-   "speaker": "NARRATOR",
-   "text": "January 1920. The Securities Exchange Company opens its doors.",
-   "card": false,
-   "counter": null,
-   "dramatised": false,
-   "sources": [
-    "S1",
-    "S2"
-   ],
-   "shot_hint": "office sign, Ponzi behind desk"
-  },
-  {
-   "id": "n023",
-   "beat": "CH3",
-   "chapter": "Forty-Five Days",
-   "speaker": "NARRATOR",
-   "text": "The first investors really did get paid. With money from the next investors.",
-   "card": false,
-   "counter": null,
-   "dramatised": false,
-   "sources": [
-    "S4"
-   ],
-   "shot_hint": "pyramid diagram: new money at the bottom pays the top"
-  },
-  {
-   "id": "n024",
-   "beat": "CH3",
-   "chapter": "Forty-Five Days",
-   "speaker": "NARRATOR",
-   "text": "Then those, with the money from the next. It only works while the line keeps growing.",
-   "card": false,
-   "counter": null,
-   "dramatised": false,
-   "sources": [
-    "S4"
-   ],
-   "shot_hint": "pyramid grows, gets wobbly"
-  },
-  {
-   "id": "n025",
-   "beat": "CH3",
-   "chapter": "Forty-Five Days",
-   "speaker": "NARRATOR",
-   "text": "By the end of July, nearly ten million dollars had poured in.",
-   "card": false,
-   "counter": {
-    "from": 0,
-    "to": 10000000,
-    "unit": "$",
-    "colour": "gold"
-   },
-   "dramatised": false,
-   "sources": [
-    "S9"
-   ],
-   "shot_hint": "counter + falling money in the office"
-  },
-  {
-   "id": "n026",
-   "beat": "CH3",
-   "chapter": "Forty-Five Days",
-   "speaker": "NARRATOR",
-   "text": "He bought a mansion. And a big stake in a Boston bank.",
-   "card": false,
-   "counter": null,
-   "dramatised": false,
-   "sources": [
-    "S9"
-   ],
-   "shot_hint": "mansion + bank stamp OWNER"
-  },
-  {
-   "id": "n027",
-   "beat": "CH3",
-   "chapter": "Forty-Five Days",
-   "speaker": "NARRATOR",
-   "text": "Then the crowd got nervous. And came back for their money.",
-   "card": false,
-   "counter": null,
-   "dramatised": false,
-   "sources": [
-    "S9"
-   ],
-   "shot_hint": "queue turns into a crowd at his door"
-  },
-  {
-   "id": "n028",
-   "beat": "TWIST",
-   "chapter": null,
-   "speaker": "NARRATOR",
-   "text": "Ponzi paid them, smiling. But what nobody knew was who would sink him.",
-   "card": false,
-   "counter": null,
-   "dramatised": false,
-   "sources": [
-    "S9"
-   ],
-   "shot_hint": "Ponzi hands out cash at the door"
-  },
-  {
-   "id": "n029",
-   "beat": "TWIST",
-   "chapter": null,
-   "speaker": "NARRATOR",
-   "text": "Not the police. His own publicist.",
-   "card": true,
-   "counter": null,
-   "dramatised": false,
-   "sources": [
-    "S6"
-   ],
-   "shot_hint": "text card, music drops"
-  },
-  {
-   "id": "n029b",
-   "beat": "TWIST",
-   "chapter": null,
-   "speaker": "NARRATOR",
-   "text": "A man he had hired just ten days earlier.",
-   "card": false,
-   "counter": null,
-   "dramatised": false,
-   "sources": [
-    "S6"
-   ],
-   "shot_hint": "McMasters walks into Ponzi's office, Ponzi shakes his hand"
-  },
-  {
-   "id": "n030",
-   "beat": "CH4",
-   "chapter": "The Insider",
-   "speaker": "NARRATOR",
-   "text": "William McMasters was hired to make Ponzi look good. He looked at the books instead.",
-   "card": false,
-   "counter": null,
-   "dramatised": false,
-   "sources": [
-    "S6"
-   ],
-   "shot_hint": "McMasters flips ledger pages"
-  },
-  {
-   "id": "n031",
-   "beat": "CH4",
-   "chapter": "The Insider",
-   "speaker": "MCMASTERS",
-   "text": "He's not rich. He's two million dollars in the hole.",
-   "card": false,
-   "counter": null,
-   "dramatised": true,
-   "sources": [
-    "S6"
-   ],
-   "shot_hint": "newsroom, McMasters to the editor",
-   "voice": "banker"
-  },
-  {
-   "id": "n032",
-   "beat": "CH4",
-   "chapter": "The Insider",
-   "speaker": "EDITOR",
-   "text": "Then put it on the front page.",
-   "card": false,
-   "counter": null,
-   "dramatised": true,
-   "sources": [],
-   "shot_hint": "editor slams a fist on the desk",
-   "voice": "ceo"
-  },
-  {
-   "id": "n033",
-   "beat": "CH4",
-   "chapter": "The Insider",
-   "speaker": "NARRATOR",
-   "text": "On August 2nd, the Boston Post called Ponzi hopelessly insolvent.",
-   "card": false,
-   "counter": null,
-   "dramatised": false,
-   "sources": [
-    "S6"
-   ],
-   "shot_hint": "newspaper spins in: HOPELESSLY INSOLVENT"
-  },
-  {
-   "id": "n034",
-   "beat": "CH4",
-   "chapter": "The Insider",
-   "speaker": "NARRATOR",
-   "text": "The math was brutal. His plan needed 160 million coupons. About 27,000 existed.",
-   "card": true,
-   "counter": null,
-   "dramatised": false,
-   "sources": [
-    "S3"
-   ],
-   "shot_hint": "text card"
-  },
-  {
-   "id": "n035",
-   "beat": "CH4",
-   "chapter": "The Insider",
-   "speaker": "NARRATOR",
-   "text": "Then the paper found that old prison cell in Canada.",
-   "card": false,
-   "counter": null,
-   "dramatised": false,
-   "sources": [
-    "S5"
-   ],
-   "shot_hint": "newspaper photo of the cell, gold circle"
-  },
-  {
-   "id": "n036",
-   "beat": "CH4",
-   "chapter": "The Insider",
-   "speaker": "NARRATOR",
-   "text": "Within days, Ponzi was arrested. His bank failed. Other banks went down with it.",
-   "card": false,
-   "counter": null,
-   "dramatised": false,
-   "sources": [
-    "S9",
-    "S2"
-   ],
-   "shot_hint": "handcuffs close; bank sign stamp CLOSED"
-  },
-  {
-   "id": "n037",
-   "beat": "CH4",
-   "chapter": "The Insider",
-   "speaker": "NARRATOR",
-   "text": "Investors lost an estimated twenty million dollars. Many got back less than thirty cents on the dollar.",
-   "card": false,
-   "counter": {
-    "from": 0,
-    "to": 20000000,
-    "unit": "$",
-    "colour": "orange"
-   },
-   "dramatised": false,
-   "sources": [
-    "S9"
-   ],
-   "shot_hint": "orange counter, coins falling"
-  },
-  {
-   "id": "n038",
-   "beat": "CH4",
-   "chapter": "The Insider",
-   "speaker": "NARRATOR",
-   "text": "Ponzi pleaded guilty to mail fraud. The newspaper won a Pulitzer. He won five years.",
-   "card": false,
-   "counter": null,
-   "dramatised": false,
-   "sources": [
-    "S2",
-    "S10"
-   ],
-   "shot_hint": "stamp GUILTY, stamp PULITZER PRIZE"
-  },
-  {
-   "id": "n039",
-   "beat": "CH4",
-   "chapter": "The Insider",
-   "speaker": "NARRATOR",
-   "text": "He was deported to Italy, and died in 1949 in a charity ward in Rio. He left seventy-five dollars.",
-   "card": false,
-   "counter": null,
-   "dramatised": false,
-   "sources": [
-    "S7"
-   ],
-   "shot_hint": "polaroid of Ponzi, counter $75"
-  },
-  {
-   "id": "n040",
-   "beat": "CH5",
-   "chapter": "Your Wallet",
-   "speaker": "NARRATOR",
-   "text": "That was his ending. Here's where this reaches your money.",
-   "card": false,
-   "counter": null,
-   "dramatised": false,
-   "sources": [],
-   "shot_hint": "day living room, saver on her phone"
-  },
-  {
-   "id": "n041",
-   "beat": "CH5",
-   "chapter": "Your Wallet",
-   "speaker": "NARRATOR",
-   "text": "In 2009, Bernie Madoff pleaded guilty to the biggest Ponzi scheme in history. His statements showed investors about sixty-five billion dollars. Most of it never existed.",
-   "card": false,
-   "counter": null,
-   "dramatised": false,
-   "sources": [
-    "S11"
-   ],
-   "shot_hint": "statement paper, stamp FAKE"
-  },
-  {
-   "id": "n042",
-   "beat": "CH5",
-   "chapter": "Your Wallet",
-   "speaker": "NARRATOR",
-   "text": "And in 2024 alone, Americans told the FBI they lost over six and a half billion dollars to investment fraud.",
-   "card": false,
-   "counter": {
-    "from": 0,
-    "to": 6570000000,
-    "unit": "$",
-    "colour": "orange"
-   },
-   "dramatised": false,
-   "sources": [
-    "S12"
-   ],
-   "shot_hint": "orange counter over the day lesson set"
-  },
-  {
-   "id": "n043",
-   "beat": "CH5",
-   "chapter": "Your Wallet",
-   "speaker": "NARRATOR",
-   "text": "The costume changes. Crypto apps. Trading groups. A friend's can't-lose fund. The trick doesn't.",
-   "card": false,
-   "counter": null,
-   "dramatised": false,
-   "sources": [
-    "S13"
-   ],
-   "shot_hint": "phone screens pop in"
-  },
-  {
-   "id": "n044",
-   "beat": "CH5",
-   "chapter": "Your Wallet",
-   "speaker": "NARRATOR",
-   "text": "The SEC's red flags. Guaranteed high returns with little risk. Returns that never go down. A secret strategy nobody can explain. A seller who isn't registered. Trouble getting your money out.",
-   "card": false,
-   "counter": null,
-   "dramatised": false,
-   "sources": [
-    "S4",
-    "S13"
-   ],
-   "shot_hint": "RED FLAGS board: five flags pop in one by one"
-  },
-  {
-   "id": "n045",
-   "beat": "CH5",
-   "chapter": "Your Wallet",
-   "speaker": "NARRATOR",
-   "text": "Before you invest a dollar, look them up at investor dot gov.",
-   "card": false,
-   "counter": null,
-   "dramatised": false,
-   "sources": [
-    "S4"
-   ],
-   "shot_hint": "sticky note slammed on the board: CHECK INVESTOR.GOV"
-  },
-  {
-   "id": "n046",
-   "beat": "END",
-   "chapter": null,
-   "speaker": "NARRATOR",
-   "text": "A century later, the line is still there. It just moved onto your phone.",
-   "card": false,
-   "counter": null,
-   "dramatised": false,
-   "sources": [],
-   "shot_hint": "callback: the queue, now holding glowing phones"
-  },
-  {
-   "id": "n047",
-   "beat": "END",
-   "chapter": null,
-   "speaker": "NARRATOR",
-   "text": "Fifty percent in forty-five days. Would you have stood in that line?",
-   "card": true,
-   "counter": null,
-   "dramatised": false,
-   "sources": [],
-   "shot_hint": "final question card, music resolves, outro + end screen"
-  }
- ]
+  "title": "50% in 45 Days",
+  "title_after": "n006",
+  "lines": [
+    {
+      "id": "n001",
+      "beat": "HOOK",
+      "chapter": null,
+      "speaker": "NARRATOR",
+      "text": "Fifty percent profit in forty-five days. In Boston, a line is already forming.",
+      "card": false,
+      "counter": null,
+      "dramatised": false,
+      "sources": [
+        "S1",
+        "S3"
+      ],
+      "shot_hint": "medium track to the Securities Exchange Company"
+    },
+    {
+      "id": "n002",
+      "beat": "HOOK",
+      "chapter": null,
+      "speaker": "NARRATOR",
+      "text": "At the door, people are ready to hand over their savings.",
+      "card": false,
+      "counter": null,
+      "dramatised": false,
+      "sources": [
+        "S1",
+        "S3"
+      ],
+      "shot_hint": "cash in line, closer on waiting customers"
+    },
+    {
+      "id": "n003",
+      "beat": "HOOK",
+      "chapter": null,
+      "speaker": "NARRATOR",
+      "text": "Hand over a hundred dollars. Get a hundred and fifty back.",
+      "card": false,
+      "counter": null,
+      "dramatised": false,
+      "sources": [
+        "S1"
+      ],
+      "shot_hint": "promise card and gold number"
+    },
+    {
+      "id": "n004",
+      "beat": "HOOK",
+      "chapter": null,
+      "speaker": "NARRATOR",
+      "text": "The man taking their money has already served time for forgery.",
+      "card": false,
+      "counter": null,
+      "dramatised": false,
+      "sources": [
+        "S1",
+        "S2"
+      ],
+      "shot_hint": "reveal Ponzi with prison bars"
+    },
+    {
+      "id": "n005",
+      "beat": "HOOK",
+      "chapter": null,
+      "speaker": "NARRATOR",
+      "text": "His name will become a word for the same trap you can meet on your phone.",
+      "card": false,
+      "counter": null,
+      "dramatised": false,
+      "sources": [
+        "S4"
+      ],
+      "shot_hint": "Ponzi named beside a dark phone"
+    },
+    {
+      "id": "n006",
+      "beat": "HOOK",
+      "chapter": null,
+      "speaker": "NARRATOR",
+      "text": "It started with a scrap of paper.",
+      "card": false,
+      "counter": null,
+      "dramatised": false,
+      "sources": [
+        "S1",
+        "S3"
+      ],
+      "shot_hint": "sealed envelope macro"
+    },
+    {
+      "id": "n007",
+      "beat": "CH1",
+      "chapter": "Two Dollars and Fifty Cents",
+      "speaker": "NARRATOR",
+      "text": "Charles Ponzi came to America in 1903. He landed in Boston.",
+      "card": false,
+      "counter": null,
+      "dramatised": false,
+      "sources": [
+        "S2"
+      ],
+      "shot_hint": "framed arrival card and suitcase"
+    },
+    {
+      "id": "n008",
+      "beat": "CH1",
+      "chapter": "Two Dollars and Fifty Cents",
+      "speaker": "NARRATOR",
+      "text": "He said he had two dollars and fifty cents left.",
+      "card": false,
+      "counter": {
+        "from": 0,
+        "to": 2.5,
+        "unit": "$",
+        "colour": "gold"
+      },
+      "dramatised": false,
+      "sources": [
+        "S1",
+        "S2"
+      ],
+      "shot_hint": "show $2.50 on arrival"
+    },
+    {
+      "id": "n009",
+      "beat": "CH1",
+      "chapter": "Two Dollars and Fifty Cents",
+      "speaker": "NARRATOR",
+      "text": "Odd jobs took him to Montreal. A forged check put him behind bars.",
+      "card": false,
+      "counter": null,
+      "dramatised": false,
+      "sources": [
+        "S1",
+        "S2",
+        "S3"
+      ],
+      "shot_hint": "cell and forged cheque"
+    },
+    {
+      "id": "n010",
+      "beat": "CH1",
+      "chapter": "Two Dollars and Fifty Cents",
+      "speaker": "GUARD",
+      "text": "Name?",
+      "card": false,
+      "counter": null,
+      "dramatised": true,
+      "sources": [],
+      "shot_hint": "dramatised guard close-up",
+      "voice": "agent"
+    },
+    {
+      "id": "n011",
+      "beat": "CH1",
+      "chapter": "Two Dollars and Fifty Cents",
+      "speaker": "PONZI",
+      "text": "Charles Ponzi.",
+      "card": false,
+      "counter": null,
+      "dramatised": true,
+      "sources": [
+        "S1"
+      ],
+      "shot_hint": "dramatised Ponzi close-up behind bars",
+      "voice": "scammer"
+    },
+    {
+      "id": "n012",
+      "beat": "CH1",
+      "chapter": "Two Dollars and Fifty Cents",
+      "speaker": "NARRATOR",
+      "text": "Years later, that record would catch up with him.",
+      "card": false,
+      "counter": null,
+      "dramatised": false,
+      "sources": [
+        "S1",
+        "S3"
+      ],
+      "shot_hint": "prison bars close on file"
+    },
+    {
+      "id": "n013",
+      "beat": "CH1",
+      "chapter": "Two Dollars and Fifty Cents",
+      "speaker": "NARRATOR",
+      "text": "Back in Boston, Ponzi opened a letter from abroad.",
+      "card": false,
+      "counter": null,
+      "dramatised": false,
+      "sources": [
+        "S1"
+      ],
+      "shot_hint": "open letter"
+    },
+    {
+      "id": "n014",
+      "beat": "CH2",
+      "chapter": "The Loophole",
+      "speaker": "NARRATOR",
+      "text": "Inside was an international reply coupon.",
+      "card": false,
+      "counter": null,
+      "dramatised": false,
+      "sources": [
+        "S1",
+        "S3",
+        "S5"
+      ],
+      "shot_hint": "oversized framed coupon"
+    },
+    {
+      "id": "n015",
+      "beat": "CH2",
+      "chapter": "The Loophole",
+      "speaker": "NARRATOR",
+      "text": "It paid the postage for a reply from another country.",
+      "card": false,
+      "counter": null,
+      "dramatised": false,
+      "sources": [
+        "S3",
+        "S5"
+      ],
+      "shot_hint": "coupon converts into reply stamps"
+    },
+    {
+      "id": "n016",
+      "beat": "CH2",
+      "chapter": "The Loophole",
+      "speaker": "NARRATOR",
+      "text": "After the war, exchange rates made some foreign coupons cheap.",
+      "card": false,
+      "counter": null,
+      "dramatised": false,
+      "sources": [
+        "S1",
+        "S3"
+      ],
+      "shot_hint": "framed Europe-to-US diagram"
+    },
+    {
+      "id": "n017",
+      "beat": "CH2",
+      "chapter": "The Loophole",
+      "speaker": "NARRATOR",
+      "text": "In America, the same coupon bought more postage than it cost abroad.",
+      "card": false,
+      "counter": null,
+      "dramatised": false,
+      "sources": [
+        "S1",
+        "S3"
+      ],
+      "shot_hint": "moving coupon crosses to stamps"
+    },
+    {
+      "id": "n018",
+      "beat": "CH2",
+      "chapter": "The Loophole",
+      "speaker": "NARRATOR",
+      "text": "But postage doesn't pay the rent.",
+      "card": false,
+      "counter": null,
+      "dramatised": false,
+      "sources": [
+        "S1"
+      ],
+      "shot_hint": "paper rent notice slams beside stamps"
+    },
+    {
+      "id": "n019",
+      "beat": "CH2",
+      "chapter": "The Loophole",
+      "speaker": "INVESTOR",
+      "text": "How do you turn stamps into cash?",
+      "card": false,
+      "counter": null,
+      "dramatised": true,
+      "sources": [],
+      "shot_hint": "dramatised investor close-up",
+      "voice": "worker"
+    },
+    {
+      "id": "n020",
+      "beat": "CH2",
+      "chapter": "The Loophole",
+      "speaker": "PONZI",
+      "text": "That's the secret.",
+      "card": false,
+      "counter": null,
+      "dramatised": true,
+      "sources": [
+        "S1"
+      ],
+      "shot_hint": "dramatised Ponzi close-up",
+      "voice": "scammer"
+    },
+    {
+      "id": "n021",
+      "beat": "CH2",
+      "chapter": "The Loophole",
+      "speaker": "NARRATOR",
+      "text": "The cash investors saw came from somewhere else.",
+      "card": false,
+      "counter": null,
+      "dramatised": false,
+      "sources": [
+        "S1",
+        "S4"
+      ],
+      "shot_hint": "money enters ledger from offscreen"
+    },
+    {
+      "id": "n022",
+      "beat": "CH3",
+      "chapter": "Forty-Five Days",
+      "speaker": "NARRATOR",
+      "text": "In 1920, people lined up at his Securities Exchange Company.",
+      "card": false,
+      "counter": null,
+      "dramatised": false,
+      "sources": [
+        "S1",
+        "S3"
+      ],
+      "shot_hint": "office door and calendar"
+    },
+    {
+      "id": "n023",
+      "beat": "CH3",
+      "chapter": "Forty-Five Days",
+      "speaker": "NARRATOR",
+      "text": "Early investors did get paid. Later investors supplied the money.",
+      "card": false,
+      "counter": null,
+      "dramatised": false,
+      "sources": [
+        "S1",
+        "S4"
+      ],
+      "shot_hint": "two-layer payment pyramid"
+    },
+    {
+      "id": "n024",
+      "beat": "CH3",
+      "chapter": "Forty-Five Days",
+      "speaker": "NARRATOR",
+      "text": "Every payout made the danger look smaller. It also made the line longer.",
+      "card": false,
+      "counter": null,
+      "dramatised": false,
+      "sources": [
+        "S1",
+        "S4"
+      ],
+      "shot_hint": "pyramid grows and wobbles"
+    },
+    {
+      "id": "n025",
+      "beat": "CH3",
+      "chapter": "Forty-Five Days",
+      "speaker": "NARRATOR",
+      "text": "The Smithsonian puts the money he took in at about fifteen million dollars.",
+      "card": false,
+      "counter": {
+        "from": 0,
+        "to": 15000000,
+        "unit": "$",
+        "colour": "gold"
+      },
+      "dramatised": false,
+      "sources": [
+        "S1",
+        "S2"
+      ],
+      "shot_hint": "gold $15 million estimated intake"
+    },
+    {
+      "id": "n026",
+      "beat": "CH3",
+      "chapter": "Forty-Five Days",
+      "speaker": "NARRATOR",
+      "text": "He bought a mansion and a stake in a bank.",
+      "card": false,
+      "counter": null,
+      "dramatised": false,
+      "sources": [
+        "S1"
+      ],
+      "shot_hint": "mansion illustration and bank document"
+    },
+    {
+      "id": "n027",
+      "beat": "CH3",
+      "chapter": "Forty-Five Days",
+      "speaker": "NARRATOR",
+      "text": "Then people came back for their money.",
+      "card": false,
+      "counter": null,
+      "dramatised": false,
+      "sources": [
+        "S1",
+        "S3"
+      ],
+      "shot_hint": "queue doubles back at the door"
+    },
+    {
+      "id": "n028",
+      "beat": "TWIST",
+      "chapter": null,
+      "speaker": "NARRATOR",
+      "text": "Ponzi still paid some of them. But someone inside had seen the books.",
+      "card": false,
+      "counter": null,
+      "dramatised": false,
+      "sources": [
+        "S1",
+        "S3"
+      ],
+      "shot_hint": "cash hand-slam followed by ledger"
+    },
+    {
+      "id": "n029",
+      "beat": "TWIST",
+      "chapter": null,
+      "speaker": "NARRATOR",
+      "text": "It was his own publicist.",
+      "card": true,
+      "counter": null,
+      "dramatised": false,
+      "sources": [
+        "S1"
+      ],
+      "shot_hint": "midpoint text card"
+    },
+    {
+      "id": "n029b",
+      "beat": "TWIST",
+      "chapter": null,
+      "speaker": "NARRATOR",
+      "text": "The man hired to sell the story was about to break it.",
+      "card": false,
+      "counter": null,
+      "dramatised": false,
+      "sources": [
+        "S1"
+      ],
+      "shot_hint": "publicist picks up news copy"
+    },
+    {
+      "id": "n030",
+      "beat": "CH4",
+      "chapter": "The Insider",
+      "speaker": "NARRATOR",
+      "text": "William McMasters had been hired to promote Ponzi. He went to the Boston Post.",
+      "card": false,
+      "counter": null,
+      "dramatised": false,
+      "sources": [
+        "S1"
+      ],
+      "shot_hint": "publicist name tag, ledger"
+    },
+    {
+      "id": "n031",
+      "beat": "CH4",
+      "chapter": "The Insider",
+      "speaker": "MCMASTERS",
+      "text": "He's at least two million dollars in debt.",
+      "card": false,
+      "counter": null,
+      "dramatised": true,
+      "sources": [
+        "S1"
+      ],
+      "shot_hint": "dramatised McMasters and books",
+      "voice": "banker"
+    },
+    {
+      "id": "n032",
+      "beat": "CH4",
+      "chapter": "The Insider",
+      "speaker": "EDITOR",
+      "text": "Put it on the front page.",
+      "card": false,
+      "counter": null,
+      "dramatised": true,
+      "sources": [
+        "S1"
+      ],
+      "shot_hint": "dramatised editor close-up",
+      "voice": "ceo"
+    },
+    {
+      "id": "n033",
+      "beat": "CH4",
+      "chapter": "The Insider",
+      "speaker": "NARRATOR",
+      "text": "On August second, the Post printed his verdict. Hopelessly insolvent.",
+      "card": false,
+      "counter": null,
+      "dramatised": false,
+      "sources": [
+        "S1"
+      ],
+      "shot_hint": "dated newspaper spins in"
+    },
+    {
+      "id": "n034",
+      "beat": "CH4",
+      "chapter": "The Insider",
+      "speaker": "NARRATOR",
+      "text": "The coupons couldn't account for the money.",
+      "card": true,
+      "counter": null,
+      "dramatised": false,
+      "sources": [
+        "S1",
+        "S3"
+      ],
+      "shot_hint": "paper-vs-cash mismatch card"
+    },
+    {
+      "id": "n035",
+      "beat": "CH4",
+      "chapter": "The Insider",
+      "speaker": "NARRATOR",
+      "text": "The paper found his Canadian prison record, too.",
+      "card": false,
+      "counter": null,
+      "dramatised": false,
+      "sources": [
+        "S1",
+        "S3"
+      ],
+      "shot_hint": "prison-record callback"
+    },
+    {
+      "id": "n036",
+      "beat": "CH4",
+      "chapter": "The Insider",
+      "speaker": "NARRATOR",
+      "text": "Ponzi was arrested. The bank he had invested in failed.",
+      "card": false,
+      "counter": null,
+      "dramatised": false,
+      "sources": [
+        "S1"
+      ],
+      "shot_hint": "handcuffs and bank closure"
+    },
+    {
+      "id": "n037",
+      "beat": "CH4",
+      "chapter": "The Insider",
+      "speaker": "NARRATOR",
+      "text": "The payments stopped. The people in that line were left with the losses.",
+      "card": false,
+      "counter": null,
+      "dramatised": false,
+      "sources": [
+        "S1",
+        "S3"
+      ],
+      "shot_hint": "promissory notes and orange loss arrow"
+    },
+    {
+      "id": "n038",
+      "beat": "CH4",
+      "chapter": "The Insider",
+      "speaker": "NARRATOR",
+      "text": "He pleaded guilty to federal mail fraud. The Boston Post won a Pulitzer.",
+      "card": false,
+      "counter": null,
+      "dramatised": false,
+      "sources": [
+        "S2",
+        "S6"
+      ],
+      "shot_hint": "plea and Pulitzer on separate document seals"
+    },
+    {
+      "id": "n039",
+      "beat": "CH4",
+      "chapter": "The Insider",
+      "speaker": "NARRATOR",
+      "text": "The coupon was real. The profits people were promised were the trap.",
+      "card": false,
+      "counter": null,
+      "dramatised": false,
+      "sources": [
+        "S1",
+        "S4"
+      ],
+      "shot_hint": "coupon and separate promise label"
+    },
+    {
+      "id": "n040",
+      "beat": "CH5",
+      "chapter": "Your Wallet",
+      "speaker": "NARRATOR",
+      "text": "Here's what that trap looks like today.",
+      "card": false,
+      "counter": null,
+      "dramatised": false,
+      "sources": [
+        "S4"
+      ],
+      "shot_hint": "day print, investor encounters pitch on phone"
+    },
+    {
+      "id": "n041",
+      "beat": "CH5",
+      "chapter": "Your Wallet",
+      "speaker": "NARRATOR",
+      "text": "A trusted friend forwards a pitch. A slick app shows a balance climbing.",
+      "card": false,
+      "counter": null,
+      "dramatised": false,
+      "sources": [
+        "S4"
+      ],
+      "shot_hint": "illustrative phone and balance"
+    },
+    {
+      "id": "n042",
+      "beat": "CH5",
+      "chapter": "Your Wallet",
+      "speaker": "NARRATOR",
+      "text": "Say the pitch turns one hundred dollars into a hundred and fifty in forty-five days.",
+      "card": false,
+      "counter": null,
+      "dramatised": false,
+      "sources": [
+        "S1",
+        "S4"
+      ],
+      "shot_hint": "hypothetical comparison on day lesson board"
+    },
+    {
+      "id": "n043",
+      "beat": "CH5",
+      "chapter": "Your Wallet",
+      "speaker": "NARRATOR",
+      "text": "Ask what generated that gain, and whether you can actually withdraw it.",
+      "card": false,
+      "counter": null,
+      "dramatised": false,
+      "sources": [
+        "S4"
+      ],
+      "shot_hint": "withdraw button and incomplete status"
+    },
+    {
+      "id": "n044",
+      "beat": "CH5",
+      "chapter": "Your Wallet",
+      "speaker": "NARRATOR",
+      "text": "The SEC flags guaranteed returns, gains that never dip, secret strategies, unregistered sellers, and trouble withdrawing your money.",
+      "card": false,
+      "counter": null,
+      "dramatised": false,
+      "sources": [
+        "S4"
+      ],
+      "shot_hint": "five warning signs pop in with spoken phrases"
+    },
+    {
+      "id": "n045",
+      "beat": "CH5",
+      "chapter": "Your Wallet",
+      "speaker": "NARRATOR",
+      "text": "Before sending a dollar, check the person and the firm at investor dot gov.",
+      "card": false,
+      "counter": null,
+      "dramatised": false,
+      "sources": [
+        "S4"
+      ],
+      "shot_hint": "sticky note lands: Check Investor.gov"
+    },
+    {
+      "id": "n046",
+      "beat": "END",
+      "chapter": null,
+      "speaker": "NARRATOR",
+      "text": "A century later, the line is still there. It moved onto your phone.",
+      "card": false,
+      "counter": null,
+      "dramatised": false,
+      "sources": [
+        "S4"
+      ],
+      "shot_hint": "closing medium queue with phones and visible screens"
+    },
+    {
+      "id": "n047",
+      "beat": "END",
+      "chapter": null,
+      "speaker": "NARRATOR",
+      "text": "Fifty percent in forty-five days. Would you have stood in that line?",
+      "card": true,
+      "counter": null,
+      "dramatised": false,
+      "sources": [
+        "S1"
+      ],
+      "shot_hint": "final question, hold then outro and end screen"
+    }
+  ]
 }
