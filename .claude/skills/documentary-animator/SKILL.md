@@ -159,7 +159,7 @@ Work in `videos/<slug>/` (the video folder). The runner is `make_video.py` in th
 | `actor` | `Actor(who, x, y, s, face=, light=, rim=)` with `.pose(t, arms)`, `.expression(t, ...)`, `.walk_to(t0, t1, x1)`, `.say(tl, id, mouths)`; idle bob, blink, squash, overshoot built in |
 | `widgets` | `framed_bg` (owner's framed stage), `paper_card`, `big_label`, `arrow`, `text_card`, `chapter_card`, `title_card`, `counter`, `stamp` (returns shake), `pop_label`, `lower_third`, `place_tag`, `sticky`, `document`, `bar_chart`, `line_chart`, `bill`, `coin`, `cash_stack`, `gold_bar`, `falling_money`, `polaroid` |
 | `anim` | story animations: `hand_slam` (cash / paper / sticky, returns shake), `pyramid` (Ponzi diagram), `calendar` (tear-off countdown), `map_route`, `handcuffs`, `newspaper` (spin-in), `phone_ring`, `ledger`, `envelope`, `prison_bars`, `sleeve`, `police_car`, `phone_screen`, `coin_rain`, `queue` (line of people waiting at a door; `worried=`, `phones=`, `cast=`), `held` (cash / glowing phone in the queue's hands, as overlay), `stamp_shake(hit)` (camera shake for a stamp hit), `outro`, `end_screen` |
-| `explainers` | Timed evidence inset, border highlight, port pulses with grouped movement, goods-to-routes reveal, masked place label, and portrait reveal and callback |
+| `explainers` | Timed evidence inset, border highlight, port pulses with grouped movement, goods-to-routes reveal, masked place label, portrait reveal and callback, selective emphasis, and object-first process |
 | `shots` | `wide(set, back, front, overlay, t0)`, `closeup(set, actor, focus)` (actor s~2.15, feet y~1390), `card(kind, dur, ...)`, `desk(overlay)`, `plain(overlay)` (framed stage by default) |
 | `render` | `render_shot` (24 Mbps), `still`, `contact_sheet`, `join`, `mux`, `frame_sheet` |
 | `audio` | mood music (`suspense`, `twist`, `lesson`, `ending`), SFX set (`SFX`), `sound_logo`, `voice_chain`, `mix` (-14 LUFS). Real tracks can replace a mood: put `music_<mood>.wav` in the video folder |
@@ -169,7 +169,7 @@ Work in `videos/<slug>/` (the video folder). The runner is `make_video.py` in th
 Character scale guide: wide shot s 0.9-1.1 (feet y 950-1070), street s 0.5-0.6, close-up s 2.15 (feet y 1390).
 Use the set's `rim` and `light` for its actors (night: blue rim, key from the left; day: warm rim, key from the right).
 
-## Approved explainer overlays (styles 7–12)
+## Approved explainer overlays (styles 7–14)
 
 In a shot's `draw(canvas, time)` function, draw the story's background first and pass the shot-local time in
 seconds to the overlay. Use `widgets.framed_bg` for diagrams and the matching daytime or night-print set for
@@ -196,6 +196,19 @@ values for the page reveal and the field highlight. Use the person's verified na
 From the repo root in PowerShell, regenerate the Style 12 stills with
 `D:\pyenv\Scripts\python.exe -B graphics/style-review/render_portrait_preview.py "$env:TEMP\dirty-dollar-portrait"`.
 Add `--motion` for the silent preview with FFmpeg on `PATH`. [Portrait preview script](../../../graphics/style-review/render_portrait_preview.py)
+
+**13 · Selective emphasis.** Give `explainers.selective_emphasis` the full group and the index of the item to
+highlight. Its drawing callback receives separate emphasis and inactive values. Keep every label readable while
+the active subject gains the gold accent. For a portrait group, use `muted_portrait_paint` and `emphasis_portrait_card`
+with `EMPHASIS_PORTRAIT_SIZE` images. Use the optional note to explain why the selected item matters.
+
+**14 · Object-first process.** Give `explainers.object_first_process` the completed object, its opening and final
+poses `(x, y, scale)`, the ordered steps, and the arrow positions. Let the viewer see the completed object before
+it moves aside. Keep the same object visible at the end of the flow while its steps appear in order.
+
+From the repo root in PowerShell, regenerate the Style 13 and 14 stills with
+`D:\pyenv\Scripts\python.exe -B graphics/style-review/render_emphasis_and_process.py "$env:TEMP\dirty-dollar-styles-13-and-14"`.
+Add `--motion` for the silent preview with FFmpeg on `PATH`. [Styles 13–14 preview script](../../../graphics/style-review/render_emphasis_and_process.py)
 
 ## Speed
 

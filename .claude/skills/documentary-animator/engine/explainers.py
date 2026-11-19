@@ -8,12 +8,14 @@ import math
 
 import skia
 
-from engine.core import GOLD
+from engine.core import F_LABEL, GOLD, NAVY, PAPER
 from engine.kit import K, circ, ease, ease_out, ink, line, linear, poly, rect, sp
+from engine import kit, widgets
 
 
 _OUTLINE = '#0A142A'
 PORTRAIT_SIZE = (640, 615)
+EMPHASIS_PORTRAIT_SIZE = (420, 380)
 
 
 def _reveal(time, start, duration):
@@ -201,3 +203,83 @@ def portrait_callback(canvas, time, *, image, origin, draw_label, draw_document,
         circ(canvas, *connector[0], 7, GOLD, 3, _OUTLINE)
     if marker >= .99:
         circ(canvas, *connector[-1], 9, GOLD, 3, _OUTLINE)
+
+
+def muted_portrait_paint():
+    """Return the reusable navy treatment for portraits outside the focus."""
+    luma = (.2126, .7152, .0722)
+    matrix = []
+    for tint, lift in ((.53, .043), (.62, .068), (.79, .113)):
+        matrix.extend([component * tint for component in luma] + [0, lift])
+    paint = skia.Paint()
+    paint.setColorFilter(skia.ColorFilters.Matrix(matrix + [0, 0, 0, 1, 0]))
+    return paint
+
+
+def emphasis_portrait_card(canvas, image, name, center, *, emphasis, inactive, muted):
+    """Draw the approved card around an EMPHASIS_PORTRAIT_SIZE image."""
+    width, height = EMPHASIS_PORTRAIT_SIZE
+    canvas.save()
+    canvas.translate(*center)
+    canvas.scale(1 + .045 * emphasis, 1 + .045 * emphasis)
+    kit.rect(canvas, -235, -221, 246, 264, _OUTLINE, 0, r=16)
+    kit.rect(canvas, -242, -230, 242, 256, '#22375B', 5, r=15, v='#718BB5')
+    canvas.save()
+    canvas.translate(-210, -206)
+    canvas.clipRRect(skia.RRect.MakeRectXY(skia.Rect(0, 0, width, height), 7, 7),
+                     doAntiAlias=True)
+    canvas.drawImage(image, 0, 0, skia.SamplingOptions(), muted)
+    if emphasis:
+        canvas.drawImage(image, 0, 0, skia.SamplingOptions(),
+                         skia.Paint(Alphaf=emphasis))
+    if inactive:
+        canvas.drawRect(skia.Rect(0, 0, width, height), kit.fp(NAVY, round(78 * inactive)))
+    canvas.restore()
+
+    kit.rect(canvas, -210, 180, 210, 237, '#9FB3D4' if inactive > .5 else '#D6DEEC', 0, r=6)
+    widgets.text(canvas, name, 0, 220, 46, NAVY, F_LABEL, 'center')
+    if emphasis:
+        edge = skia.RRect.MakeRectXY(skia.Rect(-242, -230, 242, 256), 15, 15)
+        canvas.drawRRect(edge, kit.ink(6, GOLD, round(255 * emphasis)))
+        canvas.drawRoundRect(skia.Rect(-209, 180, 209, 237), 6, 6,
+                             kit.fp(PAPER, round(255 * emphasis)))
+        kit.line(canvas, -199, 188, -199, 229, 6, GOLD, round(255 * emphasis))
+        widgets.text(canvas, name, 0, 220, 46, NAVY, F_LABEL, 'center', alpha=round(255 * emphasis))
+    canvas.restore()
+
+
+def selective_emphasis(canvas, time, *, items, selected, draw_item, draw_note=None,
+                       focus_at=.78, focus_duration=1.15, note_at=2.26):
+    """Draw the full group as focus moves to one item, then reveal an optional note.
+
+    draw_item(canvas, index, item, emphasis, inactive) receives two progress values.
+    draw_note(canvas) appears after the focus shift.
+    """
+    focus = _reveal(time, focus_at, focus_duration)
+    for index, item in enumerate(items):
+        active = index == selected
+        draw_item(canvas, index, item, focus if active else 0, 0 if active else focus)
+
+    note = _reveal(time, note_at, .42)
+    if draw_note is not None and note > 0:
+        canvas.saveLayerAlpha(None, round(255 * note))
+        draw_note(canvas)
+        canvas.restore()
+
+
+def object_first_process(canvas, time, *, steps, links, first_pose, last_pose, draw_object,
+                         draw_step, move_at=.85, move_duration=.9, step_at=1.67, step_gap=.98,
+                         link_at=2.35, link_gap=.98, arrow_width=13):
+    """Show the outcome first, move it aside, and reveal the process in order.
+
+    Each pose is (x, y, scale). Each horizontal link is (start_x, end_x, y).
+    Callbacks are draw_object(canvas, x, y, scale) and draw_step(canvas, index, item, visibility).
+    """
+    shift = _reveal(time, move_at, move_duration)
+    for index, item in enumerate(steps):
+        visibility = _reveal(time, step_at + index * step_gap, .45)
+        draw_step(canvas, index, item, visibility)
+    for index, (start_x, end_x, y) in enumerate(links):
+        widgets.arrow(canvas, start_x, y, end_x, y, K(time, link_at + index * link_gap, .40), wdt=arrow_width)
+    position = tuple(kit.lerp(a, b, shift) for a, b in zip(first_pose, last_pose))
+    draw_object(canvas, *position)
