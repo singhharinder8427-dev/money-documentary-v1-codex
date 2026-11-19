@@ -9,10 +9,11 @@ import math
 import skia
 
 from engine.core import GOLD
-from engine.kit import K, ease, ease_out, ink, poly
+from engine.kit import K, circ, ease, ease_out, ink, line, linear, poly, rect, sp
 
 
 _OUTLINE = '#0A142A'
+PORTRAIT_SIZE = (640, 615)
 
 
 def _reveal(time, start, duration):
@@ -136,3 +137,67 @@ def masked_place_label(canvas, time, *, bounds, draw_label, enter_at=.68, hold_u
     canvas.clipRect(skia.Rect(left - 3, top - 4, left + (right - left + 8) * visible, bottom + 18))
     draw_label(canvas)
     canvas.restore()
+
+
+def _portrait_light(canvas, image, light):
+    width, height = PORTRAIT_SIZE
+    bounds = skia.Rect(0, 0, width, height)
+    dark = skia.Paint()
+    dark.setColorFilter(skia.ColorFilters.Matrix([
+        .25, 0, 0, 0, .023, 0, .26, 0, 0, .035, 0, 0, .38, 0, .062, 0, 0, 0, 1, 0,
+    ]))
+    canvas.drawImage(image, 0, 0, skia.SamplingOptions(), dark)
+    if light > 0:
+        edge = 667 - 790 * light
+        canvas.saveLayer(bounds)
+        canvas.drawImage(image, 0, 0)
+        mask = sp(linear(edge, 255, edge + 108, 246, [skia.ColorTRANSPARENT, skia.ColorWHITE]),
+                  blend=skia.BlendMode.kDstIn)
+        canvas.drawRect(bounds, mask)
+        canvas.restore()
+
+
+def _portrait_frame(canvas, image, origin, scale, light, label, draw_label):
+    canvas.save()
+    canvas.translate(*origin)
+    canvas.scale(scale, scale)
+    rect(canvas, 12, 16, 705, 794, _OUTLINE, 0, r=23)
+    rect(canvas, 0, 0, 690, 780, '#263D65', 6, r=20, v=_OUTLINE)
+    rect(canvas, 8, 8, 682, 772, None, 3, r=15, v='#9DB0DA')
+    rect(canvas, 20, 19, 670, 642, _OUTLINE, 0, r=8)
+    canvas.save()
+    canvas.translate(25, 24)
+    canvas.clipRRect(skia.RRect.MakeRectXY(skia.Rect(0, 0, *PORTRAIT_SIZE), 6, 6), doAntiAlias=True)
+    _portrait_light(canvas, image, light)
+    canvas.restore()
+    line(canvas, 678, 32, 678, 47 + 558 * light, 5, GOLD, round(65 + 190 * light))
+    if label > 0:
+        canvas.saveLayerAlpha(None, round(255 * label))
+        draw_label(canvas)
+        canvas.restore()
+    canvas.restore()
+
+
+def portrait_reveal(canvas, time, *, image, origin, draw_label, scale=1.0,
+                    light_at=.28, light_duration=1.38, label_at=1.64):
+    """Light a PORTRAIT_SIZE image, then draw its nameplate in frame-local coordinates."""
+    light = _reveal(time, light_at, light_duration)
+    label = _reveal(time, label_at, .36)
+    _portrait_frame(canvas, image, origin, scale, light, label, draw_label)
+
+
+def portrait_callback(canvas, time, *, image, origin, draw_label, draw_document, connector,
+                      scale=.855, document_at=.30, link_at=.97, highlight_at=1.30):
+    """Bring a portrait back beside evidence. Reuse the image and nameplate from its reveal.
+
+    draw_document(canvas, visibility, highlight) draws in shot coordinates.
+    The connector runs from the portrait frame to the relevant document field.
+    """
+    _portrait_frame(canvas, image, origin, scale, 1.0, 1.0, draw_label)
+    draw_document(canvas, _reveal(time, document_at, .43), _reveal(time, highlight_at, .43))
+    marker = _reveal(time, link_at, .51)
+    if marker > 0:
+        draw_route(canvas, connector, marker, width=5, arrow=False)
+        circ(canvas, *connector[0], 7, GOLD, 3, _OUTLINE)
+    if marker >= .99:
+        circ(canvas, *connector[-1], 9, GOLD, 3, _OUTLINE)
