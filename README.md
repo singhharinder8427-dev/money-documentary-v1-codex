@@ -10,6 +10,7 @@ Style toolkit for a US money documentary channel (long-form 16:9, max 10 min). *
 | `daytime/` | **Locked daytime look** (printed illustration): reference scenes (`day*.jpg`) and the [approved boardroom set](daytime/boardroom/README.md) |
 | `environments/` | **Locked night look** (night print): reference scenes (`night*.jpg`) and the [approved sales floor set](environments/sales-floor/README.md) |
 | [Approved sets and paper-trail props](graphics/approved-sets-and-props/README.md) | Suburban home, hotel seminar stage, investigation room, daytime courtroom and illustrated financial records |
+| [Story asset library](graphics/story-assets/README.md) | Finance, law, everyday life, wealth and media settings, plus props, screens and supporting cast |
 | `branding/` | **Dirty Dollar** profile photo + banner (`make_branding.py`) |
 | `type/` | Font system specimen (`type_system.jpg`, `specimen.py`) |
 | `palette/` | Locked colour palette |

@@ -161,6 +161,8 @@ See the [approved sales floor](../../../environments/sales-floor/README.md) for 
 
 The [approved sets and paper-trail props](../../../graphics/approved-sets-and-props/README.md) include full-size references, actor spots, and the Ponzi courtroom staging example.
 
+The [story asset library](../../../graphics/story-assets/README.md) lists 22 additional set keys, paper and screen props, furnishings, and seven supporting characters.
+
 See the [approved daytime boardroom](../../../daytime/boardroom/README.md) for the table layer and actor placement.
 | `actor` | `Actor(who, x, y, s, face=, light=, rim=)` with `.pose(t, arms)`, `.expression(t, ...)`, `.walk_to(t0, t1, x1)`, `.say(tl, id, mouths)`; idle bob, blink, squash, overshoot built in |
 | `widgets` | `framed_bg` (owner's framed stage), `paper_card`, `big_label`, `arrow`, `text_card`, `chapter_card`, `title_card`, `counter`, `stamp` (returns shake), `pop_label`, `lower_third`, `place_tag`, `sticky`, `document`, `bar_chart`, `line_chart`, `bill`, `coin`, `cash_stack`, `gold_bar`, `falling_money`, `polaroid` |

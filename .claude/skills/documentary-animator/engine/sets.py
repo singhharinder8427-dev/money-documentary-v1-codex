@@ -39,6 +39,7 @@ kit.night, kit.add_light = _night_w, _add_w
 from engine.sets_src import boardroom, day_scenes as DS, night_scenes as NS, sales_floor as SF
 from engine.sets_src import courtroom, documentary_locations as locations
 from engine.core import F_LABEL2, F_TITLE, F_TYPE
+from engine.story_assets.sets_catalogue import STORY_SETS
 NS.KAL, NS.MRK, NS.HAND = F_LABEL2, F_TITLE, F_TYPE
 NS.txt = lambda c, s, x, y, size, color, font=None, align='left', stroke=0, rot=0.0, skew=0, sc=kit.INK: kit.label(c, s, x, y, size, color, font=font or NS.KAL, align=align, stroke=stroke, stroke_col=sc, skew=0, rot=rot)
 NS.night, NS.add_light = _night_w, _add_w
@@ -93,6 +94,7 @@ SETS = {
  'day/street':     dict(fn=DS.street, spots={'left': (880, 905, .95), 'right': (1290, 905, .95)}),
  'day/lesson':     dict(fn=DS.lesson, spots={'board_left': (520, 990, 1.0), 'board_right': (860, 1000, 1.0)}),
 }
+SETS.update(STORY_SETS)
 CACHE = pathlib.Path(os.environ.get('DOCANIM_CACHE', str(REPO / '.cache' / 'sets')))
 
 class Set:
@@ -113,10 +115,13 @@ def _run(fn, mode, **kw):
     M.update(m=mode, k=0, glows=[], img=None, **kw); fn(); out = M['img']; M['m'] = 'off'; return out
 def _to_img(a): return skia.Image.fromarray(np.ascontiguousarray(a), colorType=skia.kRGBA_8888_ColorType)
 def _src_hash():
+    folder = pathlib.Path(__file__).parent
     h = hashlib.md5()
     for p in ('sets_src/night_scenes.py', 'sets_src/day_scenes.py', 'sets_src/sales_floor.py',
               'sets_src/boardroom.py', 'sets_src/courtroom.py', 'sets_src/documentary_locations.py', 'looks.py', 'kit.py', 'sets.py'):
-        h.update((pathlib.Path(__file__).parent / p).read_bytes())
+        h.update((folder / p).read_bytes())
+    for path in sorted((folder / 'story_assets').rglob('*.py')):
+        h.update(path.read_bytes())
     return h.hexdigest()[:10]
 
 def _build(name):
@@ -129,10 +134,11 @@ def _build(name):
         canvas.clear(kit.hx('#F6EFE2'))
         scale = cfg.get('scale', 1)
         canvas.scale(scale, scale)
-        cfg['draw'](canvas)
-        if 'lighting' in cfg:
+        pools = cfg['draw'](canvas)
+        if 'lighting' in cfg or 'light_map' in cfg:
+            lighting = cfg['light_map'](pools) if 'light_map' in cfg else cfg['lighting']()
             rgba = room.makeImageSnapshot().toarray(colorType=skia.kRGBA_8888_ColorType)
-            printed = looks.night_print(rgba[..., :3].astype(float), cfg['lighting']())
+            printed = looks.night_print(rgba[..., :3].astype(float), lighting)
             rgba[..., :3] = np.clip(looks.grain(printed), 0, 255).astype(np.uint8)
             base = rgba
         else:

@@ -8,3 +8,4 @@ videos/*/voices/
 !branding/*.png
 !videos/*/thumbnails/*.png
 !graphics/approved-sets-and-props/*.png
+!graphics/story-assets/**/*.png
