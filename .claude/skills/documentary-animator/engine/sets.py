@@ -1,4 +1,4 @@
-"""The 10 LOCKED sets as empty, reusable backgrounds.
+"""The locked sets as reusable backgrounds.
    get_set(name) -> Set(base, fg, spots, rim, light, kind)
      base  = skia.Image: the set in its locked look (+ any background extras such as the trading-floor crowd, crisp)
      fg    = skia.Image with alpha, or None: things that stand IN FRONT of actors (desk, table) - draw after actors
@@ -36,7 +36,7 @@ def _add_w(c, x, y, r, v, a):
     elif M['m'] in ('off', 'bg'): _add(c, x, y, r, v, a)
 kit.night, kit.add_light = _night_w, _add_w
 
-from engine.sets_src import night_scenes as NS, day_scenes as DS
+from engine.sets_src import night_scenes as NS, day_scenes as DS, sales_floor as SF
 from engine.core import F_LABEL2, F_TITLE, F_TYPE
 NS.KAL, NS.MRK, NS.HAND = F_LABEL2, F_TITLE, F_TYPE
 NS.txt = lambda c, s, x, y, size, color, font=None, align='left', stroke=0, rot=0.0, skew=0, sc=kit.INK: kit.label(c, s, x, y, size, color, font=font or NS.KAL, align=align, stroke=stroke, stroke_col=sc, skew=0, rot=rot)
@@ -65,6 +65,7 @@ NIGHT_RIM, DAY_RIM = '#9FB8F0', '#FFE3A6'
 SETS = {
  'night/office':   dict(fn=NS.office,  plane=0, extras='none', spots={'behind_desk': (930, 950, 1.08), 'front_left': (380, 1070, 1.05), 'front_right': (1500, 1070, 1.05)}),
  'night/trading':  dict(fn=NS.trading, plane=-2, extras='before', spots={'left': (760, 1180, 1.35), 'right': (1260, 1150, 1.25)}),
+ 'night/sales_floor': dict(spots={'front_aisle': SF.AISLE_SPOT}),
  'night/desk':     dict(fn=NS.desk,    plane=None, extras='all', spots={}),          # top-down desk: hands + documents, no standing actors
  'night/street':   dict(fn=NS.street,  plane=0, extras='none', spots={'walk': (900, 905, .6), 'bank_door': (220, 880, .52), 'pawn': (540, 880, .52), 'pawn2': (650, 880, .52)}),
  # street1920: people at s .36 so buildings read at the right scale; the line ends at the hero door (x 1020)
@@ -96,11 +97,14 @@ def _run(fn, mode, **kw):
 def _to_img(a): return skia.Image.fromarray(np.ascontiguousarray(a), colorType=skia.kRGBA_8888_ColorType)
 def _src_hash():
     h = hashlib.md5()
-    for p in ('sets_src/night_scenes.py', 'sets_src/day_scenes.py', 'looks.py', 'kit.py', 'sets.py'): h.update(open(pathlib.Path(__file__).parent / p, 'rb').read())
+    for p in ('sets_src/night_scenes.py', 'sets_src/day_scenes.py', 'sets_src/sales_floor.py', 'looks.py', 'kit.py', 'sets.py'):
+        h.update((pathlib.Path(__file__).parent / p).read_bytes())
     return h.hexdigest()[:10]
 
 def _build(name):
     cfg = SETS[name]; kind = name.split('/')[0]
+    if name == 'night/sales_floor':
+        return SF.build(), None
     if kind == 'day':
         return _run(cfg['fn'], 'bg'), None
     fn = cfg['fn']

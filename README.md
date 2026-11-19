@@ -8,7 +8,7 @@ Style toolkit for a US money documentary channel (long-form 16:9, max 10 min). *
 |---|---|
 | `characters/` | Final character style: `kit.py` (drawing kit), `draw_cast.py` (the 5-person cast), `cast_final.jpg` |
 | `daytime/` | **Locked daytime look** (printed illustration): 5 scenes (`day*.jpg`), `print_look.py` (run this) + `day_envs.py` + `kit.py` |
-| `environments/` | **Locked night look** (night print): 5 scenes (`night*.jpg`), `night_look.py` (run this) + `envs.py` + `kit.py` |
+| `environments/` | **Locked night look** (night print): reference scenes (`night*.jpg`) and the [approved sales floor set](environments/sales-floor/README.md) |
 | `branding/` | **Dirty Dollar** profile photo + banner (`make_branding.py`) |
 | `type/` | Font system specimen (`type_system.jpg`, `specimen.py`) |
 | `palette/` | Locked colour palette |
