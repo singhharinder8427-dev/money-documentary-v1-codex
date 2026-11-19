@@ -25,6 +25,8 @@ Read this first, then `BRAND.md`, then the skills in `.claude/skills/`. Everythi
    fix mistakes, repetition (new picture every 2-3 s), readability, and ask per shot "would adding something make it
    more interesting / immersive / eye-catching?" (`.claude/skills/documentary-animator/SKILL.md`, step 5).
 7. Keep usage low: one compact review sheet per round, re-check only changed shots.
+8. When the owner says **“lay down the assets,”** show only the category names. Wait for the owner to pick a
+   category before listing its assets or showing previews.
 
 ## Pipeline (skills)
 1. `documentary-script` - researched, sourced script (Template A), `script.json`, voice script, sources.
