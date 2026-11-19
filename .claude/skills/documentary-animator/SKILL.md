@@ -155,9 +155,11 @@ Work in `videos/<slug>/` (the video folder). The runner is `make_video.py` in th
 | `core` | `W, H, FPS`, palette constants, locked fonts (`F_COUNTER`, `F_TITLE`, `F_TYPE`, `F_LABEL`) |
 | `kit` | `draw_char` (locked character) + poses `down pocket hip present gesture chin hat hold push point phone facepalm cheer shrug cross wave count`, hair `bald slick silver bob curly buzz bun long`, outfits `suit open sweater hoodie`, eyes `dot half wide closed`, mouths `smile smirk flat o mid open grit`, `walk_legs`, `hand_pos` |
 | `cast` | `CAST` (locked: ceo, analyst, worker, banker, investor; archetypes: saver, grad, scammer, agent, reporter, retiree), `person(base, **changes)` for new people |
-| `sets` | `get_set(name)` -> `.draw(c, back=[...], front=[...])`, `.spots`, `.rim`, `.light`. Night: `night/office` `night/trading` `night/sales_floor` `night/desk` `night/street` `night/kitchen`. Day: `day/living` `day/kitchen` `day/bank` `day/boardroom` `day/street` `day/lesson`. Where a set has a furniture layer, actors in `back` stand behind it. Cached in `.cache/sets/` |
+| `sets` | `get_set(name)` -> `.draw(c, back=[...], front=[...])`, `.spots`, `.rim`, `.light`. Night: `night/office` `night/trading` `night/sales_floor` `night/investigation_room` `night/desk` `night/street` `night/kitchen`. Day: `day/living` `day/kitchen` `day/bank` `day/boardroom` `day/courtroom` `day/suburban_home` `day/hotel_ballroom` `day/street` `day/lesson`. Where a set has a furniture layer, actors in `back` stand behind it. Cached in `.cache/sets/` |
 
 See the [approved sales floor](../../../environments/sales-floor/README.md) for the staging example and reusable workstation props.
+
+The [approved sets and paper-trail props](../../../graphics/approved-sets-and-props/README.md) include full-size references, actor spots, and the Ponzi courtroom staging example.
 
 See the [approved daytime boardroom](../../../daytime/boardroom/README.md) for the table layer and actor placement.
 | `actor` | `Actor(who, x, y, s, face=, light=, rim=)` with `.pose(t, arms)`, `.expression(t, ...)`, `.walk_to(t0, t1, x1)`, `.say(tl, id, mouths)`; idle bob, blink, squash, overshoot built in |

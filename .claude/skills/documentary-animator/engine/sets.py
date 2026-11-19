@@ -37,6 +37,7 @@ def _add_w(c, x, y, r, v, a):
 kit.night, kit.add_light = _night_w, _add_w
 
 from engine.sets_src import boardroom, day_scenes as DS, night_scenes as NS, sales_floor as SF
+from engine.sets_src import courtroom, documentary_locations as locations
 from engine.core import F_LABEL2, F_TITLE, F_TYPE
 NS.KAL, NS.MRK, NS.HAND = F_LABEL2, F_TITLE, F_TYPE
 NS.txt = lambda c, s, x, y, size, color, font=None, align='left', stroke=0, rot=0.0, skew=0, sc=kit.INK: kit.label(c, s, x, y, size, color, font=font or NS.KAL, align=align, stroke=stroke, stroke_col=sc, skew=0, rot=rot)
@@ -78,7 +79,17 @@ SETS = {
  'day/living':     dict(fn=DS.living_room, spots={'left': (600, 975, .98), 'right': (860, 985, .98)}),
  'day/kitchen':    dict(fn=DS.kitchen, spots={'center': (600, 1000, 1.0)}),
  'day/bank':       dict(fn=DS.bank, spots={'left': (760, 1020, 1.0), 'right': (1120, 1025, 1.0)}),
- 'day/boardroom':  dict(spots=boardroom.SPOTS, vignette=(.28, .50)),
+ 'day/suburban_home': dict(draw=locations.home, scale=2, vignette=(.28, .50),
+                           spots={'walkway': (808, 860, .52)}),
+ 'day/hotel_ballroom': dict(draw=locations.ballroom, furniture=locations.lectern, scale=2,
+                            vignette=(.28, .50), spots={'speaker': (1255, 598, .35)}),
+ 'night/investigation_room': dict(draw=locations.investigation, furniture=locations.investigation_desk,
+                                  lighting=locations.investigation_lighting, scale=2, vignette=(.67, .42),
+                                  spots={'behind_desk': (1062, 864, .76)}),
+ 'day/courtroom': dict(draw=courtroom.draw, furniture=courtroom.draw_furniture, vignette=(.28, .50),
+                       spots={'judge': (*courtroom.court_bench_camera().point((0, .36, 11.76)),
+                                        courtroom.court_bench_camera().scale(11.76) * .00455)}),
+ 'day/boardroom':  dict(draw=boardroom.draw, furniture=boardroom.draw_table, spots=boardroom.SPOTS, vignette=(.28, .50)),
  'day/street':     dict(fn=DS.street, spots={'left': (880, 905, .95), 'right': (1290, 905, .95)}),
  'day/lesson':     dict(fn=DS.lesson, spots={'board_left': (520, 990, 1.0), 'board_right': (860, 1000, 1.0)}),
 }
@@ -104,7 +115,7 @@ def _to_img(a): return skia.Image.fromarray(np.ascontiguousarray(a), colorType=s
 def _src_hash():
     h = hashlib.md5()
     for p in ('sets_src/night_scenes.py', 'sets_src/day_scenes.py', 'sets_src/sales_floor.py',
-              'sets_src/boardroom.py', 'looks.py', 'kit.py', 'sets.py'):
+              'sets_src/boardroom.py', 'sets_src/courtroom.py', 'sets_src/documentary_locations.py', 'looks.py', 'kit.py', 'sets.py'):
         h.update((pathlib.Path(__file__).parent / p).read_bytes())
     return h.hexdigest()[:10]
 
@@ -112,16 +123,28 @@ def _build(name):
     cfg = SETS[name]; kind = name.split('/')[0]
     if name == 'night/sales_floor':
         return SF.build(), None
-    if name == 'day/boardroom':
+    if 'draw' in cfg:
         room = skia.Surface(W, H)
-        room.getCanvas().clear(kit.hx('#F6EFE2'))
-        boardroom.draw(room.getCanvas())
-        base = _day_pixels(room)
-
-        table = skia.Surface(W, H)
-        table.getCanvas().clear(skia.ColorTRANSPARENT)
-        boardroom.draw_table(table.getCanvas())
-        mask = table.makeImageSnapshot().toarray(colorType=skia.kRGBA_8888_ColorType)[..., 3]
+        canvas = room.getCanvas()
+        canvas.clear(kit.hx('#F6EFE2'))
+        scale = cfg.get('scale', 1)
+        canvas.scale(scale, scale)
+        cfg['draw'](canvas)
+        if 'lighting' in cfg:
+            rgba = room.makeImageSnapshot().toarray(colorType=skia.kRGBA_8888_ColorType)
+            printed = looks.night_print(rgba[..., :3].astype(float), cfg['lighting']())
+            rgba[..., :3] = np.clip(looks.grain(printed), 0, 255).astype(np.uint8)
+            base = rgba
+        else:
+            base = _day_pixels(room)
+        if 'furniture' not in cfg:
+            return base, None
+        furniture = skia.Surface(W, H)
+        canvas = furniture.getCanvas()
+        canvas.clear(skia.ColorTRANSPARENT)
+        canvas.scale(scale, scale)
+        cfg['furniture'](canvas)
+        mask = furniture.makeImageSnapshot().toarray(colorType=skia.kRGBA_8888_ColorType)[..., 3]
         return base, np.dstack((base[..., :3], mask))
     if kind == 'day':
         return _run(cfg['fn'], 'bg'), None

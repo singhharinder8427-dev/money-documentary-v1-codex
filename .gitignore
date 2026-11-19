@@ -7,3 +7,4 @@ videos/*/out/
 videos/*/voices/
 !branding/*.png
 !videos/*/thumbnails/*.png
+!graphics/approved-sets-and-props/*.png
