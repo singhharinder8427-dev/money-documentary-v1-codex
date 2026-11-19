@@ -1,4 +1,4 @@
-# START HERE - handover for a new Claude Code session (Dirty Dollar channel)
+# START HERE - Codex handover (Dirty Dollar channel)
 
 Read this first, then `BRAND.md`, then the skills in `.claude/skills/`. Everything below is the owner's decision.
 
@@ -6,12 +6,16 @@ Read this first, then `BRAND.md`, then the skills in `.claude/skills/`. Everythi
 - **Channel:** **Dirty Dollar** (@DirtyDollarFile) - long-form 16:9 animated money documentaries for a **US audience**:
   scams, fraud, corruption, con artists, business scandals + a money lesson ("your wallet"). Videos 4-10 min
   (aim 8-10 min from now on: mid-roll ads need 8+).
-- **Repo:** github.com/singhharinder8427-dev/money-documentary-v1 (branch `main`). The `-codex` repo is only a copy.
+- **Working repo:** github.com/singhharinder8427-dev/money-documentary-v1-codex. Claude’s `money-documentary-v1` is a read-only reference.
 - **Owner's PC:** Windows, PowerShell, **everything on D:** - project `D:\money-documentary-v1`, Python venv
   `D:\pyenv` (Python 3.12), voice models `D:\models` (`DOCANIM_MODELS`), ffmpeg `D:\ffmpeg`. The owner is in India (IST).
 
 ## Working rules (always)
-1. **Never save / commit / push without the owner's OK.** After every change ask: **"save now or later?"**
+1. **Save new, confirmed production instructions in the Codex repo.** The owner has authorized Codex to
+   update the relevant documentation and commit it when the owner teaches a new rule or confirms a process
+   change. Listen through the full feedback before saving it. Ask for approval to commit other changes.
+   A request to sync with Claude means read and apply the latest instructions. Copy per-video code or
+   assets only when the owner explicitly requests that for the specific update.
 2. **Never render or generate anything the owner didn't ask for.** Ask **PC or cloud** before every render.
 3. **Listen first** when the owner gives feedback: collect the full list, don't start changing things mid-list.
 4. Give PowerShell commands **one per code block**, step by step, short and clear (the owner is not a developer).
