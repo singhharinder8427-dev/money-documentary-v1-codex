@@ -134,5 +134,25 @@ or down arrow; gains in navy ink with an up arrow (no green); small handwriting 
   name + tagline all inside the phone-visible strip), made by `make_branding.py`.
 - "Paper Trillions" was only a working placeholder - never use it publicly.
 
+
+## YouTube channel profile (locked)
+- **Name:** Dirty Dollar · **Handle:** @DirtyDollarFile
+- **Description:**
+  > Dirty Dollar tells the true stories behind money — the scams, frauds, cons and corruption that took fortunes,
+  > and the lessons that protect yours.
+  >
+  > Every video is a fact-checked, animated documentary: real people, real numbers, real consequences. Then we show
+  > you how the same trick shows up in your wallet today — and how to spot it before it costs you.
+  >
+  > 🎬 Scams & con artists · Fraud & corruption · Business scandals · Money lessons
+  >
+  > Subscribe so you never fall for the next one.
+  >
+  > Educational content only — not financial advice. Sources are listed in every video description.
+- **Keywords** (Studio → Settings → Channel → Basic info):
+  `dirty dollar, money stories, scams explained, scam awareness, fraud documentary, financial fraud, true crime money,
+  ponzi scheme, con artists, white collar crime, corruption stories, investment scams, how scams work, money lessons,
+  personal finance, financial literacy, business scandals, money history, animated documentary, wall street scandals`
+
 ## Not decided yet
 - nothing - all brand decisions are locked.

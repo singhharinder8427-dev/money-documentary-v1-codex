@@ -88,6 +88,17 @@ Work in `videos/<slug>/` (the video folder). The runner is `make_video.py` in th
 12. **Deliver** - send the MP4 (or the PC commands), with: length, what is in it, facts not checked, dramatised
     lines, and anything to watch for.
 
+## Publishing checklist (every video)
+1. **Thumbnail** from the `thumbnail-prompt` skill (biggest factor for clicks).
+2. **`videos/<slug>/youtube.md`**: 3 title options, description with chapters (start at 0:00, at least 3), SEC/FBI
+   facts as relevant, sources, "Not financial advice", the typewriter credit line, 3 hashtags, 15-20 tags.
+3. Upload **`out/captions.srt`** under Subtitles; add the end screen (2 videos + subscribe) over the end-screen section.
+4. **Schedule** for the US audience: weekdays 12-4 pm Eastern (Thu/Fri/Sat strongest), weekends 9 am-12 pm Eastern;
+   keep the same day/time every week (owner is in India: 12-4 pm ET = about 10:30 pm-2:30 am IST - use Schedule).
+5. **Shorts as trailers:** cut 2-3 Shorts from the best moments and link the full video ("Related video").
+6. **Playlists** (e.g. "Famous Scams", "Money Lessons"); reply to comments in the first hours.
+7. **Length:** aim for 8-10 min on future videos (mid-roll ads need 8+ min once monetised).
+
 ## Shot rules (retention)
 
 - **One picture per sentence**; something new every 20-30 s (card, counter, stamp, chart, dialogue, place jump).
