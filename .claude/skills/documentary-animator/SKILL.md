@@ -1,6 +1,6 @@
 ---
 name: documentary-animator
-description: "Turns a finished documentary script (from the documentary-script skill) into the rendered long-form 16:9 animated video for the money documentary channel, in the LOCKED house style: rectangular-head glossy cast, night-print sets for story parts, day-print sets for the lesson part, locked fonts and navy/gold/orange palette, code-made music and SFX, ElevenLabs narrator + Kokoro character voices, 1920x1080 30 fps 24 Mbps. Use when the owner asks to animate / render / make the video for a script, make a test video, or names this skill. Always asks the owner whether to render on their PC or in the cloud before rendering."
+description: "Turns a finished documentary script (from the documentary-script skill) into the rendered long-form 16:9 animated video for the money documentary channel, in the LOCKED house style: rectangular-head glossy cast, night-print sets for story parts, day-print sets for lessons and courtroom scenes, locked fonts and navy/gold/orange palette, code-made music and SFX, ElevenLabs narrator + Kokoro character voices, 1920x1080 30 fps 24 Mbps. Use when the owner asks to animate / render / make the video for a script, make a test video, or names this skill. Always asks the owner whether to render on their PC or in the cloud before rendering."
 ---
 
 # Documentary animator (house style, locked)
@@ -25,8 +25,8 @@ and the owner has approved the result, apply those instructions on every video. 
 3. **Locked style only** (BRAND.md):
    - Cast: rectangular head with curved chin, neck, rectangle body, trouser legs + shoes, ball hands, pupil eyes,
      glossy, drawn crisp on top of the backgrounds (never through the print pass, never grained).
-   - Story parts (hook, Ch1-Ch4, twist, ending) use **night-print** sets; the lesson part (Ch5 "your wallet") uses
-     **day-print** sets.
+   - Story parts (hook, Ch1-Ch4, twist, ending) default to **night-print** sets. The lesson part (Ch5 "your wallet")
+     and all courtroom scenes use **day-print** sets.
    - Colours: gold `#FCA311` = money / brand; orange `#F35B04` = losses only, always with a minus sign or a down
      arrow; gains in navy/white with an up arrow; **no green anywhere** (only exception: real national flags,
      e.g. in `anim.map_route(flag_a=..., flag_b=...)`, keep their true colours); gold and orange never touch.

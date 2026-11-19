@@ -38,7 +38,7 @@ Read this first, then `BRAND.md`, then the skills in `.claude/skills/`. Everythi
 
 ## Locked look (details in BRAND.md)
 Navy #14213D + gold #FCA311 (money) + orange #F35B04 (losses only), **no green** (only exception: real flags).
-Night print (dark navy, dotted light falloff) for the story; day print for the lesson. Rectangular-head glossy
+Night print (dark navy, dotted light falloff) for story scenes. Use day print for lessons and all courtroom scenes. Rectangular-head glossy
 cast; fonts DSEG7 / Alfa Slab One / Special Elite / Barlow Condensed. Vignette, small burned-in captions (+ .srt),
 real typewriter keys (CC BY 4.0 - credit line in every description), code-made music + quiet SFX, outro "DIRTY
 DOLLAR" + end screen. Branding: `branding/profile_800.png` (CEO with dollar-sign eyes), `banner_mobile_2560x1440.png`.

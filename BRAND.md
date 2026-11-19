@@ -34,7 +34,7 @@ or down arrow; gains in navy ink with an up arrow (no green); small handwriting 
 - Built on the drawing kit of the "Claude 2D Animation Long Form" skill **made by aivxer** (keep this credit), modified.
 
 ## Night scenes (locked: "night print") - `environments/`
-- Used for the **story / drama parts**; the night twin of the daytime print look, so the whole channel shares one style.
+- The default for **story / drama parts**. Courtroom scenes use the daytime print look throughout.
 - **Dark areas:** navy paper in 4 shades by each object's brightness (`#0D1630` `#1B2A52` `#2B3F70` `#3E5689`),
   so floors, desks and walls stay separate, with light-navy ink outlines `#9FB3DE`.
 - **Lamp / window light:** reveals the day print (cream `#F8EDD3`, warm grey, small soft navy dots), with only outlines
@@ -45,7 +45,7 @@ or down arrow; gains in navy ink with an up arrow (no green); small handwriting 
 - Sample sets: CEO office, trading floor, desk top-down, street (bank / cash advance / pawn / mortgages), kitchen.
 
 ## Daytime scenes (locked: style A "printed illustration") - `daytime/`
-- Used for **lessons / "your money" parts**; night scenes stay for the story and drama parts.
+- Used for **lessons / "your money" parts** and **all courtroom scenes**, including trials and hearings in story chapters.
 - The world is a **2-colour print**: navy ink outlines on cream paper `#F6EFE2`, light navy tint `#D6DEEC` under
   shade, **small soft navy halftone dots** `#465C8C` for shading (lightened on the owner's request), solid mid-navy
   for navy objects, **gold `#FCA311` as the only spot colour**. No smooth gradients, no bloom, no green.
@@ -127,7 +127,7 @@ or down arrow; gains in navy ink with an up arrow (no green); small handwriting 
   videos up to 10 minutes.
 - **Steps:**
   1. Script (`documentary-script` skill, Template A) -> `script.json` with beats, speakers, cards, counters.
-  2. Shot list: one picture per sentence, using the locked night sets (story parts) and day sets (lesson parts).
+  2. Shot list: one picture per sentence, using locked night sets for story scenes and locked day sets for lessons and courtroom scenes.
   3. Voices: narrator = owner's ElevenLabs file; characters = Kokoro clips, one fixed voice per character.
   4. Timeline: every shot and line timed from the measured voice lengths.
   5. Test stills: 6-9 of the busiest frames on one contact sheet, fixed before the long render.
