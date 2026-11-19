@@ -7,7 +7,10 @@ from engine.sets import get_set
 from engine import widgets as Wd
 
 VIGNETTE = 0.78   # owner: cinematic vignette on every scene shot (framed stage + cards have their own look)
-def _v(f, k=VIGNETTE): f.vignette = k; return f
+def _v(f, k=VIGNETTE, inner=.42):
+    f.vignette = k
+    f.vignette_inner = inner
+    return f
 
 def wide(set_name, back_actors=(), front_actors=(), overlay=None, t0=0.0):
     """Set + actors (back = behind desks/tables, front = in front). overlay(c, t) draws graphics on top. t0 = shot start (absolute)."""
@@ -15,7 +18,7 @@ def wide(set_name, back_actors=(), front_actors=(), overlay=None, t0=0.0):
     def draw(c, t):
         st.draw(c, [lambda c, a=a: a.draw(c, t, t0 + t) for a in back_actors], [lambda c, a=a: a.draw(c, t, t0 + t) for a in front_actors])
         if overlay: overlay(c, t)
-    return _v(draw)
+    return _v(draw, *st.vignette) if st.vignette else _v(draw)
 
 _BLUR = {}
 def closeup(set_name, actor, focus=(960, 540), overlay=None, t0=0.0, blur=13, zoom=1.5):

@@ -40,7 +40,8 @@ def render_shot(out, dur, draw, zoom=(1.0, 1.07), focus=(960, 540), rot=(0.0, 0.
         dx, dy = shake(t) if shake else (0, 0)
         c.clear(C((0, 0, 0))); c.save(); c.translate(W / 2 + wx + dx, H / 2 + dy); z = lerp(zoom[0], zoom[1], e); c.scale(z, z)
         fx, fy = _clamp(_focus(focus, e), z); c.rotate(lerp(rot[0], rot[1], e)); c.translate(-fx, -fy); draw(c, t); c.restore()
-        if getattr(draw, 'vignette', 0): _vignette(c, draw.vignette, .42)   # owner: cinematic vignette on scene shots
+        if getattr(draw, 'vignette', 0):
+            _vignette(c, draw.vignette, getattr(draw, 'vignette_inner', .42))
         if hud: hud(c, t)
         if sig:
             img = surf.makeImageSnapshot(); c.clear(C((0, 0, 0))); bp = skia.Paint(); bp.setImageFilter(skia.ImageFilters.Blur(sig, 0.01, skia.TileMode.kClamp))
@@ -54,7 +55,8 @@ def still(draw, t, path, zoom=1.0, focus=(960, 540), hud=None):
     """One test frame (for contact sheets before the long render)."""
     surf = skia.Surface(W, H); c = surf.getCanvas(); c.clear(C((0, 0, 0))); c.save(); c.translate(W / 2, H / 2); c.scale(zoom, zoom); fx, fy = _clamp(_focus(focus, .6), zoom); c.translate(-fx, -fy)
     draw(c, t); c.restore()
-    if getattr(draw, 'vignette', 0): _vignette(c, draw.vignette, .42)
+    if getattr(draw, 'vignette', 0):
+        _vignette(c, draw.vignette, getattr(draw, 'vignette_inner', .42))
     if hud: hud(c, t)
     surf.makeImageSnapshot().save(path, skia.kPNG); return path
 
