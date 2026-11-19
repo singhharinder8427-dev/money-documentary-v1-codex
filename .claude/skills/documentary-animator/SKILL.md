@@ -159,6 +159,7 @@ Work in `videos/<slug>/` (the video folder). The runner is `make_video.py` in th
 | `actor` | `Actor(who, x, y, s, face=, light=, rim=)` with `.pose(t, arms)`, `.expression(t, ...)`, `.walk_to(t0, t1, x1)`, `.say(tl, id, mouths)`; idle bob, blink, squash, overshoot built in |
 | `widgets` | `framed_bg` (owner's framed stage), `paper_card`, `big_label`, `arrow`, `text_card`, `chapter_card`, `title_card`, `counter`, `stamp` (returns shake), `pop_label`, `lower_third`, `place_tag`, `sticky`, `document`, `bar_chart`, `line_chart`, `bill`, `coin`, `cash_stack`, `gold_bar`, `falling_money`, `polaroid` |
 | `anim` | story animations: `hand_slam` (cash / paper / sticky, returns shake), `pyramid` (Ponzi diagram), `calendar` (tear-off countdown), `map_route`, `handcuffs`, `newspaper` (spin-in), `phone_ring`, `ledger`, `envelope`, `prison_bars`, `sleeve`, `police_car`, `phone_screen`, `coin_rain`, `queue` (line of people waiting at a door; `worried=`, `phones=`, `cast=`), `held` (cash / glowing phone in the queue's hands, as overlay), `stamp_shake(hit)` (camera shake for a stamp hit), `outro`, `end_screen` |
+| `explainers` | Timed evidence inset, border highlight, port pulses with grouped movement, goods-to-routes reveal, and masked place label |
 | `shots` | `wide(set, back, front, overlay, t0)`, `closeup(set, actor, focus)` (actor s~2.15, feet y~1390), `card(kind, dur, ...)`, `desk(overlay)`, `plain(overlay)` (framed stage by default) |
 | `render` | `render_shot` (24 Mbps), `still`, `contact_sheet`, `join`, `mux`, `frame_sheet` |
 | `audio` | mood music (`suspense`, `twist`, `lesson`, `ending`), SFX set (`SFX`), `sound_logo`, `voice_chain`, `mix` (-14 LUFS). Real tracks can replace a mood: put `music_<mood>.wav` in the video folder |
@@ -167,6 +168,24 @@ Work in `videos/<slug>/` (the video folder). The runner is `make_video.py` in th
 
 Character scale guide: wide shot s 0.9-1.1 (feet y 950-1070), street s 0.5-0.6, close-up s 2.15 (feet y 1390).
 Use the set's `rim` and `light` for its actors (night: blue rim, key from the left; day: warm rim, key from the right).
+
+## Approved explainer overlays (styles 7–11)
+
+In a shot's `draw(canvas, time)` function, draw the story's background first and pass the shot-local time in
+seconds to the overlay. Use `widgets.framed_bg` for diagrams and the matching daytime or night-print set for
+place labels. The drawing callbacks supply story-specific labels, locations, icons, and evidence.
+
+| Style | Engine call | Use |
+|---|---|---|
+| 7 · Evidence inset | `explainers.evidence_inset` | Pass the connector points, the inset's pivot, and a document callback. Use its `highlight` progress to emphasize the relevant line. Keep the parent graphic readable while the inset opens. |
+| 8 · Animated border highlight | `explainers.border_highlight` | Pass a projected outline and a label callback. Repeat the first point at the end when the outline is closed. |
+| 9 · Port pulses and grouped movement | `explainers.port_pulses` | Pass a route, timed port markers, and drawing callbacks for ports and vessels. Adjust `group_size` and `spacing` for the shot. |
+| 10 · Goods-to-routes reveal | `explainers.goods_to_routes` | Pass the opening goods, route paths, and callbacks for goods and destinations. Draw the common hub at the same position through the transition. |
+| 11 · Masked place label | `explainers.masked_place_label` | Draw the complete place label in a callback. Supply its bounds and set when it opens, holds, and retracts. |
+
+The approved examples and four review frames per style can be regenerated with the installed Skia kit and fonts.
+From the repo root in PowerShell, use `D:\pyenv\Scripts\python.exe -B graphics/style-review/render_additional_previews.py "$env:TEMP\dirty-dollar-styles-07-to-11"`.
+See the example functions for complete map, inset, and label layouts. [Preview script](../../../graphics/style-review/render_additional_previews.py)
 
 ## Speed
 
