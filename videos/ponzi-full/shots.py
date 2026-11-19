@@ -10,27 +10,11 @@ from engine.sets import get_set
 
 SHOT_BREAKS = tuple(f'n{i:03d}' for i in range(1, 48)) + ('n029b',)
 NR, DR = '#9FB8F0', '#FFE3A6'                                   # night rim, day rim
-QUEUE = ['worker', 'saver', 'retiree', 'grad', 'reporter', 'agent', 'banker', 'analyst', 'saver', 'worker', 'retiree', 'grad', 'agent', 'reporter']
 MCMASTERS = person('analyst', suit='#2E2E38', suit_d='#1E1E26', tie='#14213D', hair='slick', hair_col='#3A2A20', glasses=False, skin='#F0CDA4', skin_d='#D2AC80')
 EDITOR = person('banker', bowtie=False, tie='#14213D', suit='#3A3F4A', suit_d='#2A2E36', hanky=None, glasses=True)
 GUARD = person('agent', suit='#2B3A55', suit_d='#1E2A40', hat_col='#1E2A40', hat_band='#0E1424')
 
-def queue(phones=False, worried=False, n=14, x0=930, step=62, s=.36, y=864):
-    acts = []
-    for i in range(n):
-        k = QUEUE[i % len(QUEUE)]; a = Actor(k, x0 - i * step, y + (i % 2) * 4, s, face=.7, light=-1, rim=NR, hat=(k == 'worker'))
-        a.pose(0, ('down', 'hold') if (phones or i % 3 == 0) else ('pocket', 'down'))
-        if worried: a.expression(0, eyes='wide', mouth='o', brow=.7, sweat=0 if i % 2 else -1)
-        acts.append(a)
-    return acts
-def held(c, acts, what='cash', t=0):
-    for a in acts:
-        if a._arms(t)[1] != 'hold': continue
-        hx, hy = kit.hand_pos(a.x, a.y, a.s, ('down', 'hold'), 1)
-        if what == 'cash': Wd.bill(c, hx + 4, hy - 4, -10, .32)
-        else:
-            c.drawCircle(hx, hy - 10, 30, kit.fp(GOLD, 70, blur=12)); kit.rect(c, hx - 11, hy - 30, hx + 11, hy + 6, '#1B2A52', 3, r=4); c.drawRect(skia.Rect(hx - 8, hy - 27, hx + 8, hy + 2), kit.fp('#FFE2A0'))
-def stamp_shake(hit): return lambda t: Wd.stamp(skia.Surface(4, 4).getCanvas(), 'x', 0, 0, t - hit)
+queue, held, stamp_shake = A.queue, A.held, A.stamp_shake        # now in the shared library (engine/anim.py)
 
 def build(tl):
     S = []; at = tl.at; mouths = tl.mouths()

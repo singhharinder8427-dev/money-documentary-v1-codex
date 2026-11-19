@@ -254,3 +254,37 @@ def coin_rain(c, t, n=26, area=(300, -100, 1620, 1100), seed=5):
         x0, sp, ph = r.uniform(area[0], area[2]), r.uniform(300, 600), r.uniform(0, 3)
         y = area[1] + ((t + ph) * sp) % (area[3] - area[1]); x = x0 + math.sin((t + ph) * 3) * 30
         c.save(); c.translate(x, y); c.scale(abs(math.cos((t + ph) * 4)) * .8 + .2, 1); Wd.coin(c, 0, 0, 34); c.restore()
+
+# ---------------- crowd queue + held props (from the Ponzi video, now in the library)
+QUEUE_CAST = ['worker', 'saver', 'retiree', 'grad', 'reporter', 'agent', 'banker', 'analyst', 'saver', 'worker', 'retiree', 'grad', 'agent', 'reporter']
+def queue(phones=False, worried=False, n=14, x0=930, step=62, s=.36, y=864, cast=None, rim='#9FB8F0', hats=('worker',)):
+    """A line of people waiting at a door (e.g. Ponzi's office on night/street1920: door x 1020, so x0=930).
+    The front person stands at x0, the rest step back to the left by `step`. phones/every 3rd person hold something
+    (draw it with held()); worried=True gives wide eyes, open mouths and sweat drops. Returns the actors for wide(back=...)."""
+    from engine.actor import Actor
+    cast = cast or QUEUE_CAST; acts = []
+    for i in range(n):
+        k = cast[i % len(cast)]; a = Actor(k, x0 - i * step, y + (i % 2) * 4, s, face=.7, light=-1, rim=rim, hat=(k in hats))
+        a.pose(0, ('down', 'hold') if (phones or i % 3 == 0) else ('pocket', 'down'))
+        if worried: a.expression(0, eyes='wide', mouth='o', brow=.7, sweat=0 if i % 2 else -1)
+        acts.append(a)
+    return acts
+
+def held(c, acts, what='cash', t=0):
+    """Draw the prop in every 'hold' hand of these actors: what='cash' (a bill) or 'phone' (a glowing phone).
+    Use as the shot overlay: overlay=lambda c, t: held(c, q, 'cash', t)."""
+    from engine import kit
+    for a in acts:
+        if a._arms(t)[1] != 'hold': continue
+        hx, hy = kit.hand_pos(a.x, a.y, a.s, ('down', 'hold'), 1)
+        if what == 'cash': Wd.bill(c, hx + 4, hy - 4, -10, .32)
+        else:
+            c.drawCircle(hx, hy - 10, 30, fp(GOLD, 70, blur=12)); rect(c, hx - 11, hy - 30, hx + 11, hy + 6, '#1B2A52', 3, r=4); c.drawRect(skia.Rect(hx - 8, hy - 27, hx + 8, hy + 2), fp('#FFE2A0'))
+
+_SHAKE_CANVAS = None
+def stamp_shake(hit):
+    """Camera shake for a stamp hit at `hit` seconds into the shot (same shake as widgets.stamp).
+    Use: render_shot(..., shake=stamp_shake(1.0), sfx=[(1.0, 'stamp')])."""
+    global _SHAKE_CANVAS
+    if _SHAKE_CANVAS is None: _SHAKE_CANVAS = skia.Surface(4, 4)
+    return lambda t: Wd.stamp(_SHAKE_CANVAS.getCanvas(), 'x', 0, 0, t - hit)

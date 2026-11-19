@@ -24,8 +24,11 @@ ARCHETYPES = {
 CAST = {**LOCKED, **ARCHETYPES}
 # Real people (our style, signature traits only - always shown with a name tag)
 REAL = {
- 'ponzi': dict(skin='#E9C09A', skin_d='#CDA27C', suit='#D9CFB8', suit_d='#BFB397', shirt='#FFFFFF', tie='#14213D', hair='slick', hair_col='#1A1414',
-               moustache=True, moustache_col='#1A1414', hat_style='boater', hat_col='#E8C77A', hat_band='#14213D', hanky='#FFFFFF'),   # wear with hat=True
+ # Charles Ponzi (1882-1949), from period photos: short + dapper, slicked-back side-parted dark hair, thin trimmed
+ # moustache, straw boater, light suit, pocket square, high starched collar, gold-handled cane (kit.cane), easy smile.
+ 'ponzi': dict(skin='#E6BC93', skin_d='#C99E76', suit='#E3DAC6', suit_d='#C7BCA3', shirt='#FFFFFF', tie='#2B2B36', hair='slick', hair_col='#15110F',
+               hair_part=True, moustache=True, moustache_style='pencil', moustache_col='#15110F', wing_collar=True,
+               hat_style='boater', hat_col='#E8C77A', hat_band='#14213D', hanky='#FFFFFF'),   # wear with hat=True; he was short: use ~0.9x scale
 }
 CAST.update(REAL)
 NAMES = {'ceo': 'THE CEO', 'analyst': 'THE ANALYST', 'worker': 'THE WORKER', 'banker': 'THE BANKER', 'investor': 'THE INVESTOR',

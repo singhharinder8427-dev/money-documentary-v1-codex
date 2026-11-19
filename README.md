@@ -1,3 +1,5 @@
+**New session? Read `START_HERE.md` first.**
+
 # money-documentary-v1
 
 Style toolkit for a US money documentary channel (long-form 16:9, max 10 min). **Start with [BRAND.md](BRAND.md)**: the locked decisions.

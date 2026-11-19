@@ -183,6 +183,8 @@ def draw_char(c, x, y, s, spec, face=0.0, eyes='dot', mouth='smile', brow=0.0, b
             for yy in (BODY_BOT - 22,): c.drawLine(-80, yy, 80, yy, ink(lw * .5))
         c.restore(); c.drawPath(body, ink(lw))
     else:
+     if spec.get('wing_collar'):
+        for sx in (-1, 1): poly(c, [(sx * 4, BODY_TOP - 10), (sx * 30, BODY_TOP - 14), (sx * 22, BODY_TOP + 10)], '#FFFFFF', lw * .55)
      v = skia.Path(); v.moveTo(-34, BODY_TOP - 4); v.lineTo(0, BODY_TOP + 96 if outfit == 'suit' else BODY_TOP + 64); v.lineTo(34, BODY_TOP - 4); v.close(); c.drawPath(v, fp(spec['shirt']))
      if outfit == 'open' or spec.get('tie') is None:
         for sx in (-1, 1): poly(c, [(sx * 4, BODY_TOP + 2), (sx * 34, BODY_TOP - 4), (sx * 26, BODY_TOP + 22)], spec['shirt'], lw * .6)
@@ -205,6 +207,7 @@ def draw_char(c, x, y, s, spec, face=0.0, eyes='dot', mouth='smile', brow=0.0, b
     for side, a in ((-1, arms[0]), (1, arms[1])):
         if (side, a) not in front: _draw_arm(side, a)
     c.save(); c.translate(0, HEAD_CY); c.rotate(tilt)
+    fw, fh = spec.get('face_shape', (1.0, 1.0)); c.scale(fw, fh)   # real people: face cut (wide / long / narrow), e.g. (1.08, .94)
     head = skia.Path(); head.addRRect(head_rrect(0, 0, R)); hair = spec.get('hair')
     if hair == 'bald':
         for sx in (-1, 1):
@@ -241,7 +244,11 @@ def draw_char(c, x, y, s, spec, face=0.0, eyes='dot', mouth='smile', brow=0.0, b
         fs = face * 14; c.save(); c.clipPath(head, doAntiAlias=True)
         hp = skia.Path(); hp.moveTo(-R - 10, -R - 10); hp.lineTo(R + 10, -R - 10); hp.lineTo(R + 10, -6)
         hp.cubicTo(R - 20, -46, 56 + fs, -64, 6 + fs, -54); hp.cubicTo(-34 + fs, -50, -72, -40, -R - 10, -2); hp.close()
-        c.drawPath(hp, fp(spec.get('hair_col', '#1C1B22'))); c.drawPath(hp, ink(lw)); c.restore()
+        c.drawPath(hp, fp(spec.get('hair_col', '#1C1B22'))); c.drawPath(hp, ink(lw))
+        if spec.get('hair_part'):   # crisp side parting + comb lines (slicked-back 1920s look)
+            for k_ in (0, 1, 2):   # glossy comb lines sweeping back from a left parting
+                cl = skia.Path(); cl.moveTo(-40 + fs + k_ * 26, -62 + k_ * 2); cl.quadTo(-10 + fs + k_ * 26, -92, 30 + k_ * 24, -96); c.drawPath(cl, ink(lw * .45, (110, 110, 130)))
+        c.restore()
         shn = skia.Path(); shn.moveTo(-50 if light < 0 else 20, -82); shn.lineTo(-14 if light < 0 else 56, -88); c.drawPath(shn, ink(lw * 1.3, (92, 96, 122)))
     if hair in ('bob', 'long'):   # bangs / side-swept fringe
         c.save(); c.clipPath(head, doAntiAlias=True); b = skia.Path()
@@ -299,9 +306,14 @@ def draw_char(c, x, y, s, spec, face=0.0, eyes='dot', mouth='smile', brow=0.0, b
     mx, my = face * 34, 42
     if spec.get('moustache'):
         my = my + spec.get('moustache_dy', 0)
-        mu = skia.Path(); mu.moveTo(mx, my - 20)
-        mu.cubicTo(mx-12, my-28, mx-30, my-22, mx-40, my-30); mu.cubicTo(mx-30, my-10, mx-12, my-12, mx, my-15)
-        mu.cubicTo(mx+12, my-12, mx+30, my-10, mx+40, my-30); mu.cubicTo(mx+30, my-22, mx+12, my-28, mx, my-20); mu.close()
+        mu = skia.Path()
+        if spec.get('moustache_style') == 'pencil':   # thin trimmed 1920s moustache (Ponzi)
+            mu.moveTo(mx - 26, my - 14); mu.quadTo(mx - 12, my - 22, mx - 2, my - 18); mu.lineTo(mx + 2, my - 18)
+            mu.quadTo(mx + 12, my - 22, mx + 26, my - 14); mu.quadTo(mx + 12, my - 13, mx, my - 13); mu.quadTo(mx - 12, my - 13, mx - 26, my - 14); mu.close()
+        else:
+            mu.moveTo(mx, my - 20)
+            mu.cubicTo(mx-12, my-28, mx-30, my-22, mx-40, my-30); mu.cubicTo(mx-30, my-10, mx-12, my-12, mx, my-15)
+            mu.cubicTo(mx+12, my-12, mx+30, my-10, mx+40, my-30); mu.cubicTo(mx+30, my-22, mx+12, my-28, mx, my-20); mu.close()
         c.drawPath(mu, fp(spec.get('moustache_col', spec.get('hair_col', '#1C1B22'))))
         if spec.get('moustache_outline'): c.drawPath(mu, ink(lw * .55))
     if mouth == 'grit':
@@ -334,6 +346,14 @@ def draw_char(c, x, y, s, spec, face=0.0, eyes='dot', mouth='smile', brow=0.0, b
         d = skia.Path(); d.moveTo(sx0, sy0 - 19); d.cubicTo(sx0 + 12, sy0 - 3, sx0 + 11, sy0 + 10, sx0, sy0 + 10); d.cubicTo(sx0 - 11, sy0 + 10, sx0 - 12, sy0 - 3, sx0, sy0 - 19); d.close()
         shape(c, d, '#8FC8EE', lw * .7)
     c.restore(); c.restore()
+
+def cane(c, x, y, s, arms, side=1, bob=0.0):
+    """Walking cane with a gold handle held in one hand (Ponzi's signature prop). Draw after the character."""
+    hx, hy = hand_pos(x, y, s, arms, side, bob)
+    c.drawLine(hx, hy + 6 * s, hx + side * 6 * s, y, ink(13 * s, INK)); c.drawLine(hx, hy + 6 * s, hx + side * 6 * s, y, ink(7 * s, (40, 26, 18)))
+    p = skia.Path(); p.addArc(skia.Rect(hx - 4 * s, hy - 16 * s, hx + 26 * s * side if side > 0 else hx + 4 * s, hy + 14 * s), 180, 180)
+    hd = skia.Path(); hd.moveTo(hx, hy + 8 * s); hd.quadTo(hx, hy - 16 * s, hx + side * 18 * s, hy - 14 * s); hd.quadTo(hx + side * 32 * s, hy - 12 * s, hx + side * 30 * s, hy + 2 * s)
+    c.drawPath(hd, ink(15 * s, INK)); c.drawPath(hd, ink(9 * s, '#FCA311'))
 
 def hand_pos(x, y, s, arms, side, bob=0.0):
     """World position of a character's hand (side -1 = screen-left hand, 1 = screen-right) for props held in hand."""
