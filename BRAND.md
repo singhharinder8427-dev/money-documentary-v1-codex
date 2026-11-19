@@ -18,6 +18,8 @@ Owner-approved, 18 Nov 2026. Change only with the owner's say-so.
 | **Gold** | `#FCA311` | **Brand**: key words, chapter stamps, dollar amounts, highlights |
 | **Orange** | `#F35B04` | **Losses and alerts only** |
 
+Exception (owner-approved): **real national flags keep their true colours** (e.g. Italy's green) - flags only, nothing else.
+
 Rules: gold = money / brand, orange = danger / loss, never swapped; they never touch; orange always with a minus sign
 or down arrow; gains in navy ink with an up arrow (no green); small handwriting on white paper is navy, not gold.
 
@@ -67,7 +69,23 @@ or down arrow; gains in navy ink with an up arrow (no green); small handwriting 
   ~0:45) -> Ch 1 origin -> Ch 2 the opening -> Ch 3 the plan -> midpoint twist -> Ch 4 the fallout -> Ch 5 your
   wallet -> callback ending. 10 min default, ~1,500 words at 155 wpm.
 
+## Real people + thumbnails (owner's rule)
+- **Characters come first:** before each video Claude asks "new character or existing one?". For a new one the owner
+  researches and sends reference images; Claude designs it in our style; we iterate until the owner is satisfied; then
+  it is locked and reused every time.
+- **Places + props per story:** before each video Claude also asks "new places and props, or reuse existing ones?".
+  Each story gets its own story-specific sets and props in our style (approved first), added to a growing library.
+  **Signature parts never change:** looks, palette, fonts, vignette, captions, character style, title/chapter/text
+  cards + typewriter, counters, stamps, red-flags board, outro + end screen.
+- Every real person a video is about gets a character built from their **real traits** (face cut, hair, facial hair,
+  glasses, build, signature outfit and props) in our 2D style, and **the same character appears in the video and on
+  the thumbnail**. Claude draws the thumbnail in code with the channel engine.
+
 ## Thumbnails (locked) - `.claude/skills/thumbnail-prompt/`
+- **Locked style (owner-approved "$20 MILLION GONE" v3):** the channel's own night-print set as a sharp background, a
+  huge emotional main character with shock lines and a glow, the whole story packed around him (crowd, police car +
+  spotlight, newspaper headline, key prop, flying cash, coins, crash arrow), a big Alfa Slab headline (white + one
+  orange/gold accent). Drawn by Claude in code with the engine.
 - Made by the owner in an AI image tool from **detailed prompts written at the end of every video** (after render),
   2-3 options per video.
 - Every prompt names the locked palette (hex + jobs, no green) and describes **our character style**; real people
@@ -124,9 +142,33 @@ or down arrow; gains in navy ink with an up arrow (no green); small handwriting 
   heads, handwritten fonts, glow and white handwriting cards; 24 Mbps instead of its quality setting; our mood map
   instead of its single jazzy track; ElevenLabs narration + Kokoro characters handled as separate files.
 
-## Channel name
-- **Working name: "Paper Trillions"** - an **internal placeholder only**, used in our files while we build and test.
-- Too close to the reference channel's name to publish: **choose the real name before the first video goes public.**
+## Channel name (locked)
+- **DIRTY DOLLAR** (owner's final choice). Written "DIRTY" in white + "DOLLAR" in gold, Alfa Slab One.
+- Branding in `branding/`: `profile_800.png` (**official profile photo**: the CEO close-up with gold dollar-sign eyes
+  and a greedy grin, gold rays, no text; `profile_coin_800.png` = spare coin version), `banner_2560x1440.png`
+  (text inside YouTube's safe area; cast on the sides - desktop/TV), `banner_mobile_2560x1440.png` (**the official banner** - owner's choice: cast +
+  name + tagline all inside the phone-visible strip), made by `make_branding.py`.
+- "Paper Trillions" was only a working placeholder - never use it publicly.
+
+
+## YouTube channel profile (locked)
+- **Name:** Dirty Dollar · **Handle:** @DirtyDollarFile
+- **Description:**
+  > Dirty Dollar tells the true stories behind money — the scams, frauds, cons and corruption that took fortunes,
+  > and the lessons that protect yours.
+  >
+  > Every video is a fact-checked, animated documentary: real people, real numbers, real consequences. Then we show
+  > you how the same trick shows up in your wallet today — and how to spot it before it costs you.
+  >
+  > 🎬 Scams & con artists · Fraud & corruption · Business scandals · Money lessons
+  >
+  > Subscribe so you never fall for the next one.
+  >
+  > Educational content only — not financial advice. Sources are listed in every video description.
+- **Keywords** (Studio → Settings → Channel → Basic info):
+  `dirty dollar, money stories, scams explained, scam awareness, fraud documentary, financial fraud, true crime money,
+  ponzi scheme, con artists, white collar crime, corruption stories, investment scams, how scams work, money lessons,
+  personal finance, financial literacy, business scandals, money history, animated documentary, wall street scandals`
 
 ## Not decided yet
-- final public channel name (before the first video goes public).
+- nothing - all brand decisions are locked.

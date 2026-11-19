@@ -28,14 +28,33 @@ and the owner has approved the result, apply those instructions on every video. 
    - Story parts (hook, Ch1-Ch4, twist, ending) use **night-print** sets; the lesson part (Ch5 "your wallet") uses
      **day-print** sets.
    - Colours: gold `#FCA311` = money / brand; orange `#F35B04` = losses only, always with a minus sign or a down
-     arrow; gains in navy/white with an up arrow; **no green anywhere**; gold and orange never touch.
+     arrow; gains in navy/white with an up arrow; **no green anywhere** (only exception: real national flags,
+     e.g. in `anim.map_route(flag_a=..., flag_b=...)`, keep their true colours); gold and orange never touch.
    - Fonts: DSEG7 counters, Alfa Slab titles / chapter names / stamps, Special Elite text cards + documents (typed
      word by word, gold cursor), Barlow Condensed labels / name tags / sticky notes / place tags.
-4. **Truth:** the picture must not show anything the script doesn't support. Real people are drawn in our style with
+4. **Characters come first (owner's rule):** at the start of EVERY new video, ask the owner: *"Do we need a new
+   character, or use an existing one?"* A new character is made BEFORE the video work starts: the owner researches
+   the person and sends reference images -> Claude designs the character in our 2D style from them -> show it ->
+   adjust until the owner is satisfied -> only then lock it into `REAL` (or the cast) in `engine/cast.py`. Locked
+   characters are reused every time (video + thumbnail + later videos); never redesign one without asking.
+   **Places + props come first too (owner's rule):** also ask *"New places and props for this story, or reuse existing
+   ones?"* Each new story gets its OWN story-specific sets (e.g. Madoff's 17th-floor Manhattan office) and props
+   (e.g. fake statements), built in our style in `engine/sets_src/` + `engine/sets.py` / `engine/anim.py`, shown to the
+   owner, adjusted until approved, then locked and ADDED to the library (the library keeps growing; never let every
+   story reuse the same office/street).
+   **Signature parts always stay the same:** the night/day print looks, palette, fonts, vignette, captions, character
+   drawing style, title/chapter/text cards + typewriter, counters, stamps, the red-flags board, outro + end screen,
+   and the animation tools (filled with each story's own content).
+   **Real people:** design each real person's character from their real traits - face cut
+   (`face_shape=(width, height)`), hair style + colour (`hair`, `hair_part`), facial hair (`moustache_style`), glasses,
+   build/height (scale), signature outfit and props (e.g. Ponzi's boater + gold cane via `kit.cane`) - add it to
+   `REAL` in `engine/cast.py`, and use the SAME character in the video and on the thumbnail. Always our 2D style,
+   never photo-real.
+5. **Truth:** the picture must not show anything the script doesn't support. Real people are drawn in our style with
    only their signature traits (hair, glasses, outfit) and identified with a name tag - never a likeness of a photo.
    Private people are not named.
-5. Never copy another channel's characters, frames, titles or thumbnails.
-6. Output is always **1920x1080, 30 fps, H.264 24 Mbps, AAC 256 kbps**, max 10 minutes.
+6. Never copy another channel's characters, frames, titles or thumbnails.
+7. Output is always **1920x1080, 30 fps, H.264 24 Mbps, AAC 256 kbps**, max 10 minutes.
 
 ## Setup (once per machine)
 
@@ -55,6 +74,10 @@ curl -L -O $R/asr-models/sherpa-onnx-nemo-parakeet-tdt-0.6b-v2-int8.tar.bz2 && t
 
 Work in `videos/<slug>/` (the video folder). The runner is `make_video.py` in this skill folder.
 
+0. **Characters, places + props** - ask the owner: (a) new character(s) or existing ones? (b) new places and props
+   for this story, or reuse existing ones? For new ones: references from the owner -> design -> iterate until approved
+   -> lock (cast in `engine/cast.py`, sets in `engine/sets_src/` + `engine/sets.py`, props in `engine/anim.py`).
+   Show the current library of sets so the owner can choose what to reuse.
 1. **Script** - from the `documentary-script` skill: `script.json` (beats, speakers, `card`, `counter`,
    `dramatised`, `sources`, `shot_hint`) + `voice_script.md`. Add `"title_after": "<last hook line id>"`.
 2. **Narration** - the owner records the narrator lines with ElevenLabs (one file, narrator lines only, in script
@@ -64,8 +87,16 @@ Work in `videos/<slug>/` (the video folder). The runner is `make_video.py` in th
    `CHARACTER_VOICES`). Without a narration file, narrator lines get a temporary Kokoro voice so work can start.
    Watch the log for `NOT MATCHED` lines and Kokoro OOV warnings (add the word to `lex_extra.txt`).
 4. **Shot list** - copy `template/shots.py` to the video folder and write **one picture per sentence** (rules below).
-5. **Stills** - `make_video.py stills`: contact sheet of the busiest frames. Look at it; fix cut-off labels,
-   overlaps, characters too low or behind things, before the long render.
+5. **Creative quality check (mandatory, by Claude)** - render 3 frames per shot (start / middle / end) into ONE
+   compact sheet and review every shot against this checklist; fix everything before the owner renders:
+   - **Mistakes:** cut-off text or props, overlaps, empty first frames, characters hidden or too small, tables/props
+     not readable, wrong colours (orange only for losses, no green), facts on screen that the script doesn't support.
+   - **Repetition:** no two shots in a row with the same composition; a new picture every 2-3 s (hook especially).
+   - **Look:** dots subtle (not dominant), vignette on scene shots, framed stage for diagrams/documents.
+   - **Creativity:** for every shot ask "would adding something make this more interesting, immersive or
+     eye-catching?" (a story-specific prop, a light sweep, a hand action, a detail close-up, a camera move) - add it.
+   - Keep usage low: one compact sheet per round; after fixes re-check only the changed shots.
+   Then tell the owner what was found and changed.
 6. **Ask PC or cloud**, then **render** - `make_video.py render` (one MP4 per shot, all CPU cores).
    On the PC the owner runs the same commands; give them the exact commands in separate `bash` blocks.
 7. **Audio** - `make_video.py audio`: cleaned voices (narrator vs character chain, character level-matched to the
@@ -73,9 +104,23 @@ Work in `videos/<slug>/` (the video folder). The runner is `make_video.py` in th
 8. **Final** - `make_video.py final` -> `out/final.mp4` + `out/frames.jpg` (one frame every 7 s). Check the sheet.
 9. **Check** - `make_video.py check`: transcript of the mix vs the script (aim > 0.9). Claude cannot hear or watch:
    tell the owner to watch once for timing.
-10. **Thumbnails** - write 2-3 prompts with the `thumbnail-prompt` skill.
-11. **Deliver** - send the MP4 (or the PC commands), with: length, what is in it, facts not checked, dramatised
+10. **Thumbnail** - Claude draws it with the engine and the video's own character (`thumbnail-prompt` skill).
+11. **Credits** - the typewriter key sounds are a real recording (CC BY 4.0): put the line from
+   `assets/typewriter/ATTRIBUTION.md` in every video's description.
+12. **Thumbnail prompts (optional backup)** - write 2-3 prompts with the `thumbnail-prompt` skill.
+13. **Deliver** - send the MP4 (or the PC commands), with: length, what is in it, facts not checked, dramatised
     lines, and anything to watch for.
+
+## Publishing checklist (every video)
+1. **Thumbnail** from the `thumbnail-prompt` skill (biggest factor for clicks).
+2. **`videos/<slug>/youtube.md`**: 3 title options, description with chapters (start at 0:00, at least 3), SEC/FBI
+   facts as relevant, sources, "Not financial advice", the typewriter credit line, 3 hashtags, 15-20 tags.
+3. Upload **`out/captions.srt`** under Subtitles; add the end screen (2 videos + subscribe) over the end-screen section.
+4. **Schedule** for the US audience: weekdays 12-4 pm Eastern (Thu/Fri/Sat strongest), weekends 9 am-12 pm Eastern;
+   keep the same day/time every week (owner is in India: 12-4 pm ET = about 10:30 pm-2:30 am IST - use Schedule).
+5. **Shorts as trailers:** cut 2-3 Shorts from the best moments and link the full video ("Related video").
+6. **Playlists** (e.g. "Famous Scams", "Money Lessons"); reply to comments in the first hours.
+7. **Length:** aim for 8-10 min on future videos (mid-roll ads need 8+ min once monetised).
 
 ## Shot rules (retention)
 
@@ -97,6 +142,10 @@ Work in `videos/<slug>/` (the video folder). The runner is `make_video.py` in th
   resolves on a final chord and a soft bed plays under the end screen.
 - **Lesson part:** always a red-flags / how-to-spot-it board where the points pop in one by one with the narrator.
 - **Use the story animations** (`anim`) often: a hand slam, a stamp, a chart or a prop every 20-30 s.
+- **Captions:** small burned-in captions are added to every shot automatically (`engine/captions.py`; bottom centre,
+  current word in gold; skipped on typed text cards). `final` also writes `out/captions.srt` for YouTube CC.
+  `CAPTIONS=0` turns them off.
+- Name tags, place tags and labels go in the shot's `hud` (screen space) so camera moves never crop them.
 - Real people: `widgets.lower_third(name, role)` the first time they appear. Places / dates: `widgets.place_tag`.
 
 ## Engine reference (`engine/`)
@@ -109,7 +158,7 @@ Work in `videos/<slug>/` (the video folder). The runner is `make_video.py` in th
 | `sets` | `get_set(name)` -> `.draw(c, back=[...], front=[...])`, `.spots`, `.rim`, `.light`. Night: `night/office` `night/trading` `night/desk` `night/street` `night/kitchen`. Day: `day/living` `day/kitchen` `day/bank` `day/street` `day/lesson`. Desks/tables are a front layer: actors in `back` stand behind them. Cached in `.cache/sets/` |
 | `actor` | `Actor(who, x, y, s, face=, light=, rim=)` with `.pose(t, arms)`, `.expression(t, ...)`, `.walk_to(t0, t1, x1)`, `.say(tl, id, mouths)`; idle bob, blink, squash, overshoot built in |
 | `widgets` | `framed_bg` (owner's framed stage), `paper_card`, `big_label`, `arrow`, `text_card`, `chapter_card`, `title_card`, `counter`, `stamp` (returns shake), `pop_label`, `lower_third`, `place_tag`, `sticky`, `document`, `bar_chart`, `line_chart`, `bill`, `coin`, `cash_stack`, `gold_bar`, `falling_money`, `polaroid` |
-| `anim` | story animations: `hand_slam` (cash / paper / sticky, returns shake), `pyramid` (Ponzi diagram), `calendar` (tear-off countdown), `map_route`, `handcuffs`, `newspaper` (spin-in), `phone_ring`, `ledger`, `envelope`, `prison_bars`, `sleeve`, `outro`, `end_screen` |
+| `anim` | story animations: `hand_slam` (cash / paper / sticky, returns shake), `pyramid` (Ponzi diagram), `calendar` (tear-off countdown), `map_route`, `handcuffs`, `newspaper` (spin-in), `phone_ring`, `ledger`, `envelope`, `prison_bars`, `sleeve`, `police_car`, `phone_screen`, `coin_rain`, `queue` (line of people waiting at a door; `worried=`, `phones=`, `cast=`), `held` (cash / glowing phone in the queue's hands, as overlay), `stamp_shake(hit)` (camera shake for a stamp hit), `outro`, `end_screen` |
 | `shots` | `wide(set, back, front, overlay, t0)`, `closeup(set, actor, focus)` (actor s~2.15, feet y~1390), `card(kind, dur, ...)`, `desk(overlay)`, `plain(overlay)` (framed stage by default) |
 | `render` | `render_shot` (24 Mbps), `still`, `contact_sheet`, `join`, `mux`, `frame_sheet` |
 | `audio` | mood music (`suspense`, `twist`, `lesson`, `ending`), SFX set (`SFX`), `sound_logo`, `voice_chain`, `mix` (-14 LUFS). Real tracks can replace a mood: put `music_<mood>.wav` in the video folder |

@@ -5,7 +5,7 @@ Functions that hit something return a camera shake (dx, dy) to pass to render_sh
 import math, random
 import skia
 from engine.core import W, H, NAVY, NAVY2, NAVY3, GOLD, GOLD_D, ORANGE, WHITE, GREY, PAPER, F_TITLE, F_TYPE, F_LABEL, F_LABEL2, F_COUNTER
-from engine.kit import fp, ink, rect, circ, oval, poly, shape, ease, ease_out, back, pop, lerp, K, INK
+from engine.kit import fp, sp, ink, rect, circ, oval, poly, shape, ease, ease_out, back, pop, lerp, K, INK
 from engine import widgets as Wd
 
 def _shake(t, hit, amp=16, dur=.3):
@@ -83,18 +83,53 @@ def calendar(c, x, y, t, days_from=45, days_to=0, dur=2.0, label='DAYS LEFT', s=
         c.save(); c.translate(ph * 520, -60 - ph * 380); c.rotate(ph * 60); rect(c, -150, -120, 150, 150, PAPER, 4); c.restore()
     c.restore()
 
-def map_route(c, t, dur=2.2, a=(470, 470), b=(1450, 520), label_a='EUROPE', label_b='UNITED STATES', icon='coupon'):
-    """Stylized map: two land masses, a dotted route that draws itself, an icon travelling along it."""
+FLAG_STYLE = 'true'   # 'true' = real flag colours (Italy has green: owner-approved exception) | 'brand' = navy/gold/white tint
+def _flag_cols(style):
+    if style == 'brand': return {'green': '#2B4A7A', 'red': GOLD, 'white': '#F6EFE2', 'blue': NAVY}
+    return {'green': '#2E8B57', 'red': '#C8242C', 'white': '#F6EFE2', 'blue': '#1E3A78'}
+def flag(c, kind, cx, cy, w, h, t=0.0, style=None):
+    """Waving flag (Italy / USA) drawn as vertical strips with a sine wave."""
+    col = _flag_cols(style or FLAG_STYLE); n = 36; sw = w / n
+    for i in range(n):
+        x0 = cx - w / 2 + i * sw; u = i / n; dy = math.sin(u * 6 + t * 4) * h * .04 * u; shade = 1 - .12 * (math.sin(u * 6 + t * 4) * .5 + .5) * u
+        def P(hexc):
+            r_, g_, b_ = (int(hexc[k:k + 2], 16) for k in (1, 3, 5)); return (r_ * shade, g_ * shade, b_ * shade)
+        if kind == 'italy':
+            cc = col['green'] if u < 1 / 3 else col['white'] if u < 2 / 3 else col['red']
+            c.drawRect(skia.Rect(x0, cy - h / 2 + dy, x0 + sw + .8, cy + h / 2 + dy), fp(P(cc)))
+        else:
+            for k in range(13):
+                y0 = cy - h / 2 + k * h / 13 + dy; cc = col['red'] if k % 2 == 0 else col['white']
+                c.drawRect(skia.Rect(x0, y0, x0 + sw + .8, y0 + h / 13 + .8), fp(P(cc)))
+            if u < .42:
+                c.drawRect(skia.Rect(x0, cy - h / 2 + dy, x0 + sw + .8, cy - h / 2 + dy + h * 7 / 13), fp(P(col['blue'])))
+    if kind == 'usa':
+        for r_ in range(4):
+            for k in range(5): c.drawCircle(cx - w / 2 + w * .05 + k * w * .075 + (r_ % 2) * w * .035, cy - h / 2 + h * .07 + r_ * h * .12, w * .012, fp(col['white']))
+
+def map_route(c, t, dur=2.2, a=(470, 470), b=(1450, 520), label_a='EUROPE', label_b='UNITED STATES', icon='coupon', flag_a=None, flag_b=None):
+    """Stylized map: two land circles (optionally showing a waving flag inside), a dotted route that draws itself,
+    an icon travelling along it. flag_a / flag_b: 'italy' | 'usa' | None."""
     Wd.framed_bg(c)
-    for (mx, my), w_, h_ in ((a, 420, 300), (b, 520, 330)):
-        p = skia.Path(); p.addOval(skia.Rect(mx - w_ / 2, my - h_ / 2, mx + w_ / 2, my + h_ / 2)); shape(c, p, '#2B3F70', 6)
+    for (mx, my), w_, h_, fl in ((a, 420, 300, flag_a), (b, 520, 330, flag_b)):
+        p = skia.Path(); p.addOval(skia.Rect(mx - w_ / 2, my - h_ / 2, mx + w_ / 2, my + h_ / 2))
+        c.drawPath(p, fp('#2B3F70'))
+        if fl:
+            c.save(); c.clipPath(p, doAntiAlias=True); flag(c, fl, mx, my, w_ * 1.05, h_ * 1.05, t)
+            c.drawPath(p, sp(Wd_radial(mx, my, max(w_, h_) * .6))); c.restore()
+        c.drawPath(p, ink(8)); c.drawPath(p, ink(3, '#9DB0DA'))
     Wd.big_label(c, label_a, a[0], a[1] + 250, 1, WHITE, 80); Wd.big_label(c, label_b, b[0], b[1] + 270, 1, GOLD, 80)
     k = ease(min(max(t / dur, 0), 1)); n = 40
     pts = [(lerp(a[0], b[0], i / n), lerp(a[1], b[1], i / n) - math.sin(math.pi * i / n) * 260) for i in range(n + 1)]
     for i in range(int(n * k)):
         if i % 2 == 0: c.drawLine(*pts[i], *pts[i + 1], ink(10, GOLD))
     ix, iy = pts[int(n * k)]
-    c.save(); c.translate(ix, iy); rect(c, -60, -40, 60, 40, PAPER, 4); Wd.text(c, 'IRC', 0, 14, 36, NAVY, F_LABEL, 'center'); c.restore()
+    c.save(); c.translate(ix, iy); rect(c, -60, -40, 60, 40, PAPER, 4); Wd.text(c, 'IRC' if icon == 'coupon' else icon, 0, 14, 36, NAVY, F_LABEL, 'center'); c.restore()
+
+def Wd_radial(x, y, r):
+    """Soft inner shadow for the land circles (flags read as a round badge)."""
+    from engine.kit import radial
+    return radial(x, y, r, [skia.Color(0, 0, 0, 0), skia.Color(0, 0, 0, 0), skia.Color(8, 14, 34, 150)], [0, .7, 1])
 
 def handcuffs(c, x, y, t, close_at=.3):
     """Handcuffs swing in and snap shut at t = close_at. Returns shake."""
@@ -150,10 +185,14 @@ def prison_bars(c, t, drop=.35):
     for i in range(9): x = 120 + i * 210; rect(c, x - 18, off - 20, x + 18, off + H + 20, '#3A3F4A', 6, r=10)
     rect(c, -10, off + 140, W + 10, off + 180, '#3A3F4A', 6); return _shake(t, drop, 14, .25)
 
-def outro(c, t, channel='PAPER TRILLIONS'):
-    """Outro card after the final question: channel name in the locked style (working name until the owner picks one)."""
+def outro(c, t, channel='DIRTY DOLLAR'):
+    """Outro card after the final question: the channel name in the locked style (white + gold)."""
     Wd.framed_bg(c); k = .85 + .15 * pop(K(t, 0, .4))
-    c.save(); c.translate(W / 2, H / 2); c.scale(k, k); Wd.text(c, channel, 0, 20, 130, WHITE, F_TITLE, 'center', stroke=14); c.restore()
+    f = Wd._font(F_TITLE, 130); words = channel.split(' ', 1); w0 = f.measureText(words[0] + ' '); tw = f.measureText(channel)
+    c.save(); c.translate(W / 2, H / 2); c.scale(k, k)
+    Wd.text(c, words[0] + ' ', -tw / 2, 20, 130, WHITE, F_TITLE, stroke=14)
+    if len(words) > 1: Wd.text(c, words[1], -tw / 2 + w0, 20, 130, GOLD, F_TITLE, stroke=14)
+    c.restore()
     wl = 420 * ease_out(K(t, .2, .5)); c.drawRect(skia.Rect(W / 2 - wl, H / 2 + 70, W / 2 + wl, H / 2 + 80), fp(GOLD))
 
 def end_screen(c, t):
@@ -166,3 +205,86 @@ def end_screen(c, t):
         c.drawRRect(skia.RRect.MakeRectXY(skia.Rect(x0, y0, x0 + 740, y0 + 416), 22, 22), ink(10, '#9DB0DA', int(255 * k)))
     k = pop(K(t, .6, .4))
     if k > 0: c.save(); c.translate(W / 2, 880); c.scale(k, k); circ(c, 0, 0, 90, None, 10, v='#9DB0DA'); c.restore()
+
+def police_car(c, x, y, t, s=1.0, spot_target=None, siren=True):
+    """1920s police car (boxy, running boards, roof spotlight). spot_target=(x, y): the roof spotlight sweeps onto
+    that point (e.g. Ponzi at the arrest). Siren lamp blinks navy-blue / orange (no green)."""
+    c.save(); c.translate(x, y); c.scale(s, s)
+    for wx in (-200, 190): circ(c, wx, 0, 62, '#1E1F2A', 7); circ(c, wx, 0, 26, '#9AA3B5', 5)
+    rect(c, -300, -120, 300, -10, '#1B1D26', 7, r=18); rect(c, -330, -30, 330, -6, '#2E2E38', 5, r=6)          # body + running board
+    rect(c, -190, -270, 170, -118, '#1B1D26', 7, r=14); rect(c, -160, -245, -20, -140, '#9FB8F0', 5, r=6); rect(c, 10, -245, 140, -140, '#9FB8F0', 5, r=6)
+    rect(c, 190, -100, 300, -40, '#1B1D26', 6, r=10); circ(c, 300, -70, 22, '#FFF6DC', 4)                     # bonnet + headlamp
+    rect(c, -120, -110, 80, -60, '#E5E5E5', 4, r=6); Wd.text(c, 'POLICE', -20, -72, 38, NAVY, F_LABEL, 'center')
+    rect(c, -40, -300, 20, -270, '#2E2E38', 5, r=6)                                                              # spotlight on the roof
+    if siren:
+        on = int(t * 4) % 2 == 0; col = '#6F8FE0' if on else ORANGE
+        circ(c, 120, -282, 18, col, 4); c.drawCircle(120, -282, 70, fp(col, 90, blur=26))
+    c.restore()
+    if spot_target is not None:                                                                                 # sweeping beam
+        sx, sy = x - 10 * s, y - 290 * s; k = ease(min(max(t / 1.2, 0), 1))
+        tx = lerp(spot_target[0] + 600, spot_target[0], k); ty = spot_target[1]
+        p = skia.Path(); ang = math.atan2(ty - sy, tx - sx); L = math.hypot(tx - sx, ty - sy); wid = 150
+        p.moveTo(sx, sy); p.lineTo(tx + math.cos(ang + math.pi / 2) * wid, ty + math.sin(ang + math.pi / 2) * wid)
+        p.lineTo(tx - math.cos(ang + math.pi / 2) * wid, ty - math.sin(ang + math.pi / 2) * wid); p.close()
+        c.drawPath(p, fp('#FFF2C8', 70, blur=18, blend=skia.BlendMode.kPlus)); c.drawCircle(tx, ty, wid * 1.1, fp('#FFF2C8', 80, blur=30, blend=skia.BlendMode.kPlus))
+
+def phone_screen(c, x, y, t, messages, s=1.0, every=.7, title='Investments'):
+    """Big modern phone with chat bubbles popping in one by one (navy / gold bubbles - never green).
+    messages: list of (text, side) with side 'in' (left, navy) or 'out' (right, gold)."""
+    c.save(); c.translate(x, y); c.scale(s, s)
+    c.drawRRect(skia.RRect.MakeRectXY(skia.Rect(-250, -470, 270, 490), 60, 60), fp((0, 0, 0), 90, blur=20))
+    rect(c, -260, -480, 260, 480, '#1B1D26', 8, r=56); rect(c, -232, -420, 232, 420, '#EEF1F7', 4, r=20)
+    rect(c, -232, -420, 232, -330, NAVY, 0, r=20); Wd.text(c, title.upper(), 0, -362, 40, WHITE, F_LABEL, 'center'); rect(c, -60, -455, 60, -440, '#2E2E38', 0, r=6)
+    y0 = -290
+    for i, (msg, side) in enumerate(messages):
+        k = pop(K(t, .2 + i * every, .3))
+        if k <= 0: break
+        lines = Wd.wrap(msg.split(), F_LABEL2, 40, 300); hgt = 30 + 46 * len(lines); wdt = max(Wd._font(F_LABEL2, 40).measureText(' '.join(l)) for l in lines) + 44
+        bx = -210 if side == 'in' else 210 - wdt; col = NAVY3 if side == 'in' else GOLD; tc = WHITE if side == 'in' else NAVY
+        c.save(); c.translate(bx + (0 if side == 'in' else wdt), y0); c.scale(k, k); c.translate(-(0 if side == 'in' else wdt), 0)
+        rect(c, 0, 0, wdt, hgt, col, 4, r=22)
+        for j, l in enumerate(lines): Wd.text(c, ' '.join(l), 22, 50 + j * 46, 40, tc, F_LABEL2)
+        c.restore(); y0 += hgt + 26
+    c.restore()
+
+def coin_rain(c, t, n=26, area=(300, -100, 1620, 1100), seed=5):
+    """Gold coins tumbling down (money disappearing)."""
+    r = random.Random(seed)
+    for _ in range(n):
+        x0, sp, ph = r.uniform(area[0], area[2]), r.uniform(300, 600), r.uniform(0, 3)
+        y = area[1] + ((t + ph) * sp) % (area[3] - area[1]); x = x0 + math.sin((t + ph) * 3) * 30
+        c.save(); c.translate(x, y); c.scale(abs(math.cos((t + ph) * 4)) * .8 + .2, 1); Wd.coin(c, 0, 0, 34); c.restore()
+
+# ---------------- crowd queue + held props (from the Ponzi video, now in the library)
+QUEUE_CAST = ['worker', 'saver', 'retiree', 'grad', 'reporter', 'agent', 'banker', 'analyst', 'saver', 'worker', 'retiree', 'grad', 'agent', 'reporter']
+def queue(phones=False, worried=False, n=14, x0=930, step=62, s=.36, y=864, cast=None, rim='#9FB8F0', hats=('worker',)):
+    """A line of people waiting at a door (e.g. Ponzi's office on night/street1920: door x 1020, so x0=930).
+    The front person stands at x0, the rest step back to the left by `step`. phones/every 3rd person hold something
+    (draw it with held()); worried=True gives wide eyes, open mouths and sweat drops. Returns the actors for wide(back=...)."""
+    from engine.actor import Actor
+    cast = cast or QUEUE_CAST; acts = []
+    for i in range(n):
+        k = cast[i % len(cast)]; a = Actor(k, x0 - i * step, y + (i % 2) * 4, s, face=.7, light=-1, rim=rim, hat=(k in hats))
+        a.pose(0, ('down', 'hold') if (phones or i % 3 == 0) else ('pocket', 'down'))
+        if worried: a.expression(0, eyes='wide', mouth='o', brow=.7, sweat=0 if i % 2 else -1)
+        acts.append(a)
+    return acts
+
+def held(c, acts, what='cash', t=0):
+    """Draw the prop in every 'hold' hand of these actors: what='cash' (a bill) or 'phone' (a glowing phone).
+    Use as the shot overlay: overlay=lambda c, t: held(c, q, 'cash', t)."""
+    from engine import kit
+    for a in acts:
+        if a._arms(t)[1] != 'hold': continue
+        hx, hy = kit.hand_pos(a.x, a.y, a.s, ('down', 'hold'), 1)
+        if what == 'cash': Wd.bill(c, hx + 4, hy - 4, -10, .32)
+        else:
+            c.drawCircle(hx, hy - 10, 30, fp(GOLD, 70, blur=12)); rect(c, hx - 11, hy - 30, hx + 11, hy + 6, '#1B2A52', 3, r=4); c.drawRect(skia.Rect(hx - 8, hy - 27, hx + 8, hy + 2), fp('#FFE2A0'))
+
+_SHAKE_CANVAS = None
+def stamp_shake(hit):
+    """Camera shake for a stamp hit at `hit` seconds into the shot (same shake as widgets.stamp).
+    Use: render_shot(..., shake=stamp_shake(1.0), sfx=[(1.0, 'stamp')])."""
+    global _SHAKE_CANVAS
+    if _SHAKE_CANVAS is None: _SHAKE_CANVAS = skia.Surface(4, 4)
+    return lambda t: Wd.stamp(_SHAKE_CANVAS.getCanvas(), 'x', 0, 0, t - hit)

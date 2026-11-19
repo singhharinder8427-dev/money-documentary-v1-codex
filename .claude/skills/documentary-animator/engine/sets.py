@@ -113,7 +113,7 @@ def _build(name):
     m = s.makeImageSnapshot().toarray(colorType=skia.kRGBA_8888_ColorType)[..., :3].astype(float).mean(-1) / 255
     # The approved night look was made with this value at 0 (skia's Color4f(int) returned ~0 on Linux but a real
     # value on Windows, so PC renders came out darker and full of dots). Fixed at 0 so every machine matches.
-    ambv = 0.0; m = np.clip((m - ambv) / (1 - ambv), 0, 1)
+    ambv = np.mean([int(amb[k:k + 2], 16) for k in (1, 3, 5)]) / 255; m = np.clip((m - ambv) / (1 - ambv), 0, 1)   # real ambient: rooms dark navy, lamp pools lit (owner's night look)
     s2 = skia.Surface(W, H); c2 = s2.getCanvas(); c2.clear(skia.ColorBLACK)
     for g_ in glows: _add(c2, *g_)
     gm = s2.makeImageSnapshot().toarray(colorType=skia.kRGBA_8888_ColorType)[..., :3].astype(float).mean(-1) / 255

@@ -1,3 +1,5 @@
+**New session? Read `START_HERE.md` first.**
+
 # money-documentary-v1
 
 Style toolkit for a US money documentary channel (long-form 16:9, max 10 min). **Start with [BRAND.md](BRAND.md)**: the locked decisions.
@@ -7,6 +9,7 @@ Style toolkit for a US money documentary channel (long-form 16:9, max 10 min). *
 | `characters/` | Final character style: `kit.py` (drawing kit), `draw_cast.py` (the 5-person cast), `cast_final.jpg` |
 | `daytime/` | **Locked daytime look** (printed illustration): 5 scenes (`day*.jpg`), `print_look.py` (run this) + `day_envs.py` + `kit.py` |
 | `environments/` | **Locked night look** (night print): 5 scenes (`night*.jpg`), `night_look.py` (run this) + `envs.py` + `kit.py` |
+| `branding/` | **Dirty Dollar** profile photo + banner (`make_branding.py`) |
 | `type/` | Font system specimen (`type_system.jpg`, `specimen.py`) |
 | `palette/` | Locked colour palette |
 | `.claude/skills/documentary-animator/` | **Animation skill**: turns a script into the rendered video in the locked style (engine, sets, cast, graphics, music/SFX, voices, render runner) |

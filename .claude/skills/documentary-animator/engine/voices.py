@@ -42,6 +42,14 @@ def speakable(text):
             if not dollar and ',' not in r and (1100 <= n <= 1999 or 2010 <= n <= 2099) and len(r) == 4: w = _words(n // 100) + ' ' + (_words(n % 100) if n % 100 >= 10 else ('hundred' if n % 100 == 0 else 'oh ' + _words(n % 100)))
             else: w = _words(n)
         return w + (' percent' if pct else '') + (' dollars' if dollar else '')
+    ORD = {1: 'first', 2: 'second', 3: 'third', 4: 'fourth', 5: 'fifth', 6: 'sixth', 7: 'seventh', 8: 'eighth', 9: 'ninth', 10: 'tenth', 11: 'eleventh',
+           12: 'twelfth', 13: 'thirteenth', 20: 'twentieth', 30: 'thirtieth'}
+    def ordinal(m):
+        n = int(m.group(1))
+        if n in ORD: return ORD[n]
+        if n < 100 and n % 10 in ORD: return _TENS[n // 10] + '-' + ORD[n % 10]
+        return _words(n) + 'th'
+    text = re.sub(r'\b(\d+)(?:st|nd|rd|th)\b', ordinal, text)                      # 2nd -> second
     t = re.sub(r'\$?\d+(?:,\d{3})*(?:\.\d+)?%?', num, text)
     t = re.sub(r'(\w)\s*dollars\s+(million|billion|trillion|thousand)', r'\1 \2 dollars', t)
     return t

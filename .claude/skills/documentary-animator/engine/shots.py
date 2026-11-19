@@ -6,13 +6,16 @@ from engine.core import W, H
 from engine.sets import get_set
 from engine import widgets as Wd
 
+VIGNETTE = 0.78   # owner: cinematic vignette on every scene shot (framed stage + cards have their own look)
+def _v(f, k=VIGNETTE): f.vignette = k; return f
+
 def wide(set_name, back_actors=(), front_actors=(), overlay=None, t0=0.0):
     """Set + actors (back = behind desks/tables, front = in front). overlay(c, t) draws graphics on top. t0 = shot start (absolute)."""
     st = get_set(set_name)
     def draw(c, t):
         st.draw(c, [lambda c, a=a: a.draw(c, t, t0 + t) for a in back_actors], [lambda c, a=a: a.draw(c, t, t0 + t) for a in front_actors])
         if overlay: overlay(c, t)
-    return draw
+    return _v(draw)
 
 _BLUR = {}
 def closeup(set_name, actor, focus=(960, 540), overlay=None, t0=0.0, blur=13, zoom=1.5):
@@ -26,13 +29,13 @@ def closeup(set_name, actor, focus=(960, 540), overlay=None, t0=0.0, blur=13, zo
     def draw(c, t):
         c.drawImage(img, 0, 0); actor.draw(c, t, t0 + t)
         if overlay: overlay(c, t)
-    return draw
+    return _v(draw, .85)
 
 def card(kind, dur, **kw):
     """kind: 'text' (text=, gold_words=), 'chapter' (n=, title=), 'title' (title=, gold_word=, sub=)."""
     def draw(c, t):
-        u = t / max(dur * (0.85 if kind == 'text' else 1.0), 1e-3)
-        if kind == 'text': Wd.text_card(c, kw['text'], u, kw.get('gold_words', ()))
+        u = t / max(dur, 1e-3)
+        if kind == 'text': Wd.text_card(c, kw['text'], max(t - kw.get('lead', 0.3), 0), kw.get('gold_words', ()), dur=dur)   # typing starts with the voice (0.3 s lead)
         elif kind == 'chapter': Wd.chapter_card(c, kw.get('n'), kw['title'], u)
         else: Wd.title_card(c, kw['title'], u, kw.get('gold_word'), kw.get('sub'))
     return draw
@@ -41,7 +44,7 @@ def desk(overlay, set_name='night/desk'):
     """Top-down desk (documents, cash, hands). overlay(c, t) slides documents / stamps in."""
     st = get_set(set_name)
     def draw(c, t): c.drawImage(st.base, 0, 0); overlay(c, t)
-    return draw
+    return _v(draw)
 
 def plain(overlay, bg='#14213D', framed=True):
     """Stage for diagrams, documents, newspapers, charts, counters. framed=True (default, owner's reference):
@@ -50,4 +53,4 @@ def plain(overlay, bg='#14213D', framed=True):
         if framed: Wd.framed_bg(c)
         else: c.drawRect(skia.Rect(0, 0, W, H), skia.Paint(Color=skia.Color4f.FromColor(int('FF' + bg.lstrip('#'), 16))))
         overlay(c, t)
-    return draw
+    return _v(draw, .5)

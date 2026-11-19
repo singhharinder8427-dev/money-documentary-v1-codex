@@ -114,16 +114,35 @@ def carriage_ding():
     add(out, bell, 0)
     for k in range(7): add(out, type_key(.35), .12 + k * .028)
     return out
-def typing(words_times, words=None):
-    """Typewriter for a text card: one keystroke per letter, spread over the word's reveal time, and a carriage
-    ding at the end. words_times = reveal time of each word (s, relative); words = the words (for letter counts)."""
-    if not words_times: return np.zeros(1)
-    end = max(words_times) + 1.2; out = np.zeros(int(end * SR) + 1)
-    for i, t in enumerate(words_times):
-        nxt = words_times[i + 1] if i + 1 < len(words_times) else t + .35
-        k = len(words[i]) if words else 4; gap = max(min((nxt - t) / max(k, 1), .09), .045)
-        for j in range(k): add(out, type_key(1.0 if j == 0 else .8), t + j * gap + rng.uniform(-.006, .006))
-    add(out, carriage_ding(), max(words_times) + .35)
+import os as _os, glob as _glob
+TYPEWRITER_DIR = _os.path.join(_os.path.dirname(_os.path.abspath(__file__)), '..', 'assets', 'typewriter')
+_BANK = None
+def _bank():
+    """Real typewriter recording (CC0) cut into single key hits: assets/typewriter/keys_*.wav, space.wav, ding.wav.
+    Falls back to the code-made keystroke if the folder is empty."""
+    global _BANK
+    if _BANK is None:
+        _BANK = {'keys': [load(p) for p in sorted(_glob.glob(_os.path.join(TYPEWRITER_DIR, 'key_*.wav')))]}
+        for n in ('space', 'ding', 'return'):
+            p = _os.path.join(TYPEWRITER_DIR, n + '.wav'); _BANK[n] = load(p) if _os.path.exists(p) else None
+    return _BANK
+def typing(char_times, text=None):
+    """Typewriter for a typed card: ONE key hit per character at the exact times the letters appear
+    (widgets.type_times), a softer thunk for spaces, and a carriage ding + return at the end."""
+    if not char_times: return np.zeros(1)
+    b = _bank(); end = max(char_times) + 1.6; out = np.zeros(int(end * SR) + 1)
+    for i, t in enumerate(char_times):
+        ch = text[i] if text and i < len(text) else 'a'
+        if ch == ' ':
+            add(out, b['space'] if b['space'] is not None else type_key(.5), t, .6)
+        elif b['keys']:
+            add(out, b['keys'][int(rng.integers(len(b['keys'])))], t + rng.uniform(-.004, .004), rng.uniform(.8, 1.0))
+        else:
+            add(out, type_key(rng.uniform(.8, 1.0)), t + rng.uniform(-.004, .004))
+    tail = max(char_times) + .3
+    if b['ding'] is not None: add(out, b['ding'], tail, .7)
+    else: add(out, carriage_ding(), tail)
+    if b['return'] is not None: add(out, b['return'], tail + .25, .6)
     return out
 def stamp_thud():
     n = int(.4 * SR); t = np.arange(n) / SR; f = 50 + 70 * np.exp(-t * 20)

@@ -70,6 +70,26 @@ next render** (the full-length Ponzi video). Do not re-render the test video.
 - APPLY IN EACH SHOT LIST: 4 (start closer), 9 (vary angles), 11 (documents fill the frame), 12 (ending phones big),
   14 (presenter close to the board), 15 (red-flags board in every lesson part).
 
+## Round 2 - owner feedback on the full Ponzi video ("just loved it, insane animation" - with fixes)
+18. **Claude creative quality check is mandatory** (most important). At the stills stage Claude reviews 3 frames per
+    shot (start / middle / end) on one compact sheet, fixes every problem AND asks for each shot: "would adding
+    something make this more interesting, immersive or eye-catching?" - then adds it. Only after this pass does the
+    owner render. See SKILL.md "Creative quality check". Keep usage low: one compact sheet per round; re-check only
+    the shots that changed.
+19. **Typewriter sound too fast and not like a typewriter.** Type at a believable speed (~6-8 keys per second) and
+    sync the sound to the letters actually appearing (the card text must type at that speed too). Make it sound like
+    a real manual typewriter; if code-made sound can't get there, use a free CC0 typewriter recording (owner to approve
+    this exception to "all sound in code").
+20. **Blue dots too dominant** - make the halftone dots lighter / subtler in both looks.
+21. **No vignette** - add a cinematic vignette (darker edges) to every scene shot.
+22. **Table parts still dark blue / not visible in some places** - tables, desks, props must always read clearly.
+23. **Paper animations can be better** - paper slides with a shadow, flutters, flips, lands with a small bounce.
+24. **0-8 s looked like the same frame repeated** - never repeat the same composition; a NEW picture every 2-3 s,
+    especially in the hook (cut to close-ups, details, different angles, moving elements).
+25. **Arrest scene: a 1920s police car with a sweeping spotlight** onto Ponzi when he is captured (siren lights in
+    navy/orange, no green). Small touches like this make the video more engaging.
+26. **Be more creative everywhere** - every shot should have something alive and story-specific happening.
+
 ## Next
 - Make the **full-length Ponzi video** (full Template A script, ~10 min) with the `documentary-script` skill, then
   animate it with all fixes above applied. Ask the owner PC or cloud before rendering.

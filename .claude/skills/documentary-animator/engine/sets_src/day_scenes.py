@@ -338,7 +338,9 @@ def lesson():
     # bookshelf right, desk with globe + lamp
     rect(c, 1600, 160, 1860, 720, '#8A6A44', 6)
     for sh in range(4): y = 280 + sh * 120; line(c, 1600, y, 1860, y, 6); books(c, 1614, y - 4, 1846, sh + 2)
-    rect(c, 1080, 800, 1600, 830, '#6B4A33', 6, r=6); rect(c, 1100, 830, 1300, 1000, '#5A3E2A', 6); rect(c, 1480, 830, 1580, 1000, '#5A3E2A', 6)
+    # desk in light wood so the print look keeps the drawers readable (owner QC)
+    rect(c, 1080, 800, 1600, 830, '#C99A66', 6, r=6); rect(c, 1100, 830, 1300, 1000, '#B9895A', 6); rect(c, 1480, 830, 1580, 1000, '#B9895A', 6)
+    for yy in (845, 897, 949): rect(c, 1116, yy, 1284, yy + 40, '#D6AE7E', 4, r=4); circ(c, 1200, yy + 20, 7, GOLD_, 3)
     circ(c, 1200, 730, 50, NAVY3, 5); c.drawArc(skia.Rect(1150, 680, 1250, 780), 200, 140, False, ink(4, GOLD_)); line(c, 1200, 780, 1200, 800, 6); rect(c, 1170, 790, 1230, 802, '#3A3328', 4)
     books(c, 1290, 800, 1400, 9); mug(c, 1470, 800, GOLD_)
     line(c, 1540, 800, 1520, 690, 6); poly(c, [(1490, 690), (1560, 690), (1580, 640), (1500, 640)], NAVY, 4)

@@ -42,15 +42,23 @@ def framed_bg(c):
     c.drawImage(_FRAME, 0, 0)
 
 def paper_card(c, x, y, title, lines, u, w=760, h=560, rot=3, slam=False):
-    """Big paper card (owner's coupon reference): Barlow heading + rule, Special Elite lines. slam=True drops it in
-    with a bounce (pair with a 'stamp' / thud SFX)."""
-    k = min(max(u / .35, 0), 1)
-    if slam: sc = lerp(1.35, 1.0, ease_out(k)) * (1 + .04 * math.sin(k * math.pi * 2) * (1 - k)); dy = 0
-    else: sc = 1.0; dy = (1 - back(k)) * 600
-    c.save(); c.translate(x, y + dy); c.rotate(rot); c.scale(sc, sc)
-    c.drawRect(skia.Rect(-w / 2 + 18, -h / 2 + 22, w / 2 + 18, h / 2 + 22), fp((0, 0, 0), 90, blur=14)); rect(c, -w / 2, -h / 2, w / 2, h / 2, PAPER, 6)
-    text(c, title.upper(), -w / 2 + 50, -h / 2 + 100, 76, NAVY, F_LABEL); c.drawRect(skia.Rect(-w / 2 + 50, -h / 2 + 128, w / 2 - 50, -h / 2 + 136), fp(NAVY))
-    for i, ln in enumerate(lines): text(c, ln, -w / 2 + 50, -h / 2 + 220 + i * 72, 52, NAVY, F_TYPE)
+    """Big paper card (owner's coupon reference): Barlow heading + rule, Special Elite lines.
+    Default: flutters in from below (swaying, shadow lifting off the table) and settles with a small bounce.
+    slam=True: drops from above, shadow shrinks to contact, lands with a bounce (pair with a 'stamp' SFX)."""
+    k = min(max(u / .45, 0), 1)
+    if slam:
+        kk = k ** 2.2; sc = lerp(1.4, 1.0, kk); dy = 0; sway = 0
+        land = max(0, u - .45); bump = math.exp(-land * 10) * math.sin(land * 34) * .025 if land > 0 else 0; sc += bump
+        lift = (1 - kk) * 60
+    else:
+        e = back(k, 1.3); dy = (1 - e) * 640; sway = math.sin(k * math.pi * 3) * (1 - k) * 9; sc = 1.0; lift = (1 - k) * 50
+    c.save(); c.translate(x, y + dy); c.rotate(rot + sway); c.scale(sc, sc)
+    c.drawRect(skia.Rect(-w / 2 + 14 + lift, -h / 2 + 18 + lift, w / 2 + 14 + lift, h / 2 + 18 + lift), fp((0, 0, 0), int(90 - lift * .6), blur=14 + lift * .3))
+    rect(c, -w / 2, -h / 2, w / 2, h / 2, PAPER, 6)
+    c.drawRect(skia.Rect(w / 2 - 70, -h / 2, w / 2, -h / 2 + 70), fp('#E9DFC8'))                  # folded corner
+    poly(c, [(w / 2 - 70, -h / 2), (w / 2, -h / 2 + 70), (w / 2 - 70, -h / 2 + 70)], '#D9CDB2', 4)
+    text(c, title.upper(), -w / 2 + 50, -h / 2 + 100, 76, NAVY, F_LABEL); c.drawRect(skia.Rect(-w / 2 + 50, -h / 2 + 128, w / 2 - 90, -h / 2 + 136), fp(NAVY))
+    for i_, ln in enumerate(lines): text(c, ln, -w / 2 + 50, -h / 2 + 220 + i_ * 72, 52, NAVY, F_TYPE)
     c.restore()
 
 def big_label(c, s, x, y, u, color=WHITE, size=110, maxw=760):
@@ -65,21 +73,27 @@ def arrow(c, x0, y0, x1, y1, u, color=GOLD, wdt=60):
     poly(c, [(x0, y0 - wdt / 2), (xe - hd, y0 - wdt / 2), (xe - hd, y0 - wdt), (xe, y0), (xe - hd, y0 + wdt), (xe - hd, y0 + wdt / 2), (x0, y0 + wdt / 2)], color, 7)
 
 # ---------------- cards (full screen)
-def text_card(c, s, u, gold_words=(), bg=BLACK, size=78, color=WHITE):
-    """Typed text card: Special Elite, revealed word by word over u 0..1, gold block cursor. Max ~12 words."""
+TYPE_CPS = (9.0, 16.0)   # typing speed range (characters per second): believable, but finishes inside the voice line
+def type_times(s, dur):
+    """Reveal time of every character of a typed card (same times drive the typewriter sound)."""
+    n = max(len(s), 1); cps = min(max(n / max(dur * .85, .1), TYPE_CPS[0]), TYPE_CPS[1])
+    return [i / cps for i in range(len(s))]
+def text_card(c, s, t, gold_words=(), bg=BLACK, size=78, color=WHITE, dur=3.0):
+    """Typed text card: Special Elite, revealed LETTER BY LETTER at a typewriter pace (type_times), gold block cursor.
+    t = seconds into the card, dur = the voice line length. First letter visible on frame 1. Max ~12 words."""
     c.drawRect(skia.Rect(0, 0, W, H), fp(bg)); words = s.split(); lines = wrap(words, F_TYPE, size, 1500)
-    n = len(words); shown = max(1, int(round(min(max(u, 0), 1) * n))); f = _font(F_TYPE, size); lh = size * 1.35
+    times = type_times(s, dur); shown = max(1, sum(1 for x in times if x <= t)); f = _font(F_TYPE, size); lh = size * 1.35
     y0 = H / 2 - (len(lines) - 1) * lh / 2 + size * .3; k = 0; cx = cy = None
     gw = {g.lower().strip('.,!?') for g in gold_words}
     for i, ln in enumerate(lines):
         x = W / 2 - f.measureText(' '.join(ln)) / 2; y = y0 + i * lh
-        for w in ln:
-            if k < shown:
-                col = GOLD if w.lower().strip('.,!?') in gw else color
-                c.drawString(w, x, y, f, fp(col)); cx, cy = x + f.measureText(w) + 10, y
-            x += f.measureText(w + ' '); k += 1
+        for wd in ln:
+            col_ = GOLD if wd.lower().strip('.,!?') in gw else color
+            vis = wd[:max(0, min(len(wd), shown - k))]
+            if vis: c.drawString(vis, x, y, f, fp(col_)); cx, cy = x + f.measureText(vis) + 8, y
+            x += f.measureText(wd + ' '); k += len(wd) + 1
     if cx is None: cx, cy = W / 2 - f.measureText(' '.join(lines[0])) / 2, y0
-    if (u < 1) or (int(u * 8) % 2 == 0): c.drawRect(skia.Rect(cx, cy - size * .78, cx + size * .45, cy + size * .08), fp(GOLD))
+    if shown < len(s) or int(t * 2.5) % 2 == 0: c.drawRect(skia.Rect(cx, cy - size * .78, cx + size * .45, cy + size * .08), fp(GOLD))
 
 def chapter_card(c, n, title, u):
     """Navy chapter card: 'CHAPTER n' in gold Barlow, title in Alfa Slab popping in, gold rule growing."""
@@ -137,7 +151,7 @@ def pop_label(c, s, x, y, u, color=WHITE, size=84, rot=-4, stroke=16):
     if k <= 0: return
     c.save(); c.translate(x, y); c.rotate(rot); c.scale(k, k); text(c, s.upper(), 0, 0, size, color, F_LABEL, 'center', stroke=stroke); c.restore()
 
-def lower_third(c, name, role, u, x=80, y=880):
+def lower_third(c, name, role, u, x=80, y=830):   # clear of the captions
     """Name tag: navy box, gold bar, Barlow name + gold role. Scales in with back()."""
     k = back(min(max(u / .4, 0), 1)); fn, fr = _font(F_LABEL, 84), _font(F_LABEL2, 48)
     w = max(fn.measureText(name.upper()), fr.measureText(role.upper())) + 90
