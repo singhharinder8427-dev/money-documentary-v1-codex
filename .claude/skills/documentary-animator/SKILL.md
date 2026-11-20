@@ -45,6 +45,7 @@ and the owner has approved the result, apply those instructions on every video. 
    **Signature parts always stay the same:** the night/day print looks, palette, fonts, vignette, captions, character
    drawing style, title/chapter/text cards + typewriter, counters, stamps, the red-flags board, outro + end screen,
    and the animation tools (filled with each story's own content).
+   **Company marks:** add the house version where a logo helps identify a real company in the shot. Draw an original, simplified 2D mark with roughly 60% resemblance in the Dirty Dollar palette. Use natural placements such as relevant hardware, signage, packaging, and screens. See `BRAND.md`.
    **Real people:** design each real person's character from their real traits - face cut
    (`face_shape=(width, height)`), hair style + colour (`hair`, `hair_part`), facial hair (`moustache_style`), glasses,
    build/height (scale), signature outfit and props (e.g. Ponzi's boater + gold cane via `kit.cane`) - add it to
@@ -105,11 +106,10 @@ Work in `videos/<slug>/` (the video folder). The runner is `make_video.py` in th
 8. **Final** - `make_video.py final` -> `out/final.mp4` + `out/frames.jpg` (one frame every 7 s). Check the sheet.
 9. **Check** - `make_video.py check`: transcript of the mix vs the script (aim > 0.9). Claude cannot hear or watch:
    tell the owner to watch once for timing.
-10. **Thumbnail** - Claude draws it with the engine and the video's own character (`thumbnail-prompt` skill).
+10. **Thumbnail prompt** - after the final render, use the `thumbnail-prompt` skill to give the owner one detailed, copy-ready prompt with the approved character and Dirty Dollar branding. The owner returns the prompt to the assistant for image generation.
 11. **Credits** - the typewriter key sounds are a real recording (CC BY 4.0): put the line from
    `assets/typewriter/ATTRIBUTION.md` in every video's description.
-12. **Thumbnail prompts (optional backup)** - write 2-3 prompts with the `thumbnail-prompt` skill.
-13. **Deliver** - send the MP4 (or the PC commands), with: length, what is in it, facts not checked, dramatised
+12. **Deliver** - send the MP4 (or the PC commands), with: length, what is in it, facts not checked, dramatised
     lines, and anything to watch for.
 
 ## Publishing checklist (every video)
