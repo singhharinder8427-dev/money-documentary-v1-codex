@@ -21,12 +21,15 @@ Read this first, then `BRAND.md`, then the skills in `.claude/skills/`. Everythi
 4. Give PowerShell commands **one per code block**, step by step, short and clear (the owner is not a developer).
 5. **Before every new video ask:** (a) new character(s) or existing? (b) new places + props or reuse existing?
    New ones: owner sends references -> design in our style -> iterate until approved -> lock -> add to the library.
-6. **Mandatory Claude creative quality check** before the owner renders: 3 frames per shot on one compact sheet;
-   fix mistakes, repetition (new picture every 2-3 s), readability, and ask per shot "would adding something make it
-   more interesting / immersive / eye-catching?" (`.claude/skills/documentary-animator/SKILL.md`, step 5).
+6. **Mandatory creative quality check** before the owner renders. Review 3 frames per shot on one compact sheet.
+   Check readability and framing. Review neighboring shots for repeated action, staging, or graphic layouts
+   and simplify crowded frames (`.claude/skills/documentary-animator/SKILL.md`, step 5).
 7. Keep usage low: one compact review sheet per round, re-check only changed shots.
 8. When the owner says **“lay down the assets,”** show only the category names. Wait for the owner to pick a
    category before listing its assets or showing previews.
+9. **Vary the visuals around the story.** Keep the cast focused, use cards and graphics when they add clarity,
+   and let scenes carry the narration where they can. Vary the action, framing, and composition according to
+   the beat. Check that consecutive shots feel different even when they share a cast or location.
 
 ## Pipeline (skills)
 1. `documentary-script` - researched, sourced script (Template A), `script.json`, voice script, sources.
