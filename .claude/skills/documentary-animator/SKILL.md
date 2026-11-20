@@ -19,8 +19,9 @@ and the owner has approved the result, apply those instructions on every video. 
 
 ## Hard rules
 
-1. **Ask before every render:** for each new video ask the owner: *render on your Windows PC or in the cloud?*
-   Never assume, never reuse the last answer.
+1. **Wait for explicit approval before the full render.** Open the reviewed stills on the owner's Windows PC,
+   share their full local paths and opening cut timings, and wait for the owner to see and approve them.
+   Confirm Windows PC or cloud for each full render.
 2. **Never save, commit or push** anything without the owner's explicit permission. After every change, **ask the owner: "save now or later?"**
 3. **Locked style only** (BRAND.md):
    - Cast: rectangular head with curved chin, neck, rectangle body, trouser legs + shoes, ball hands, pupil eyes,
@@ -87,20 +88,30 @@ Work in `videos/<slug>/` (the video folder). The runner is `make_video.py` in th
    word timings) and makes every character line with that character's fixed Kokoro voice (`engine/voices.py`
    `CHARACTER_VOICES`). Without a narration file, narrator lines get a temporary Kokoro voice so work can start.
    Watch the log for `NOT MATCHED` lines and Kokoro OOV warnings (add the word to `lex_extra.txt`).
-4. **Shot list** - copy `template/shots.py` to the video folder. Give each story beat a clear visual and let one scene carry several lines when the action develops naturally (rules below).
+4. **Shot list** - follow the original V1 [full Ponzi shot plan](../../../videos/ponzi-full/shots.py) and `FIXES.md`.
+   Plan the first 10 seconds cut by cut with start/end times, framing, character or prop, and the action in each
+   image. Start in the middle of story action. Give each sentence a visual and split a voice cue into multiple
+   pictures when needed. Cut to a genuinely new picture every 2-3 seconds in the hook. Across the episode, use
+   character action and reactions, story-specific props, and changes of angle and scale to carry the narration.
 5. **Creative quality check (mandatory, by Claude)** - render 3 frames per shot (start / middle / end) into ONE
    compact sheet and review every shot against this checklist; fix everything before the owner renders:
    - **Mistakes:** cut-off text or props, overlaps, empty first frames, characters hidden or too small, tables/props
      not readable, wrong colours (orange only for losses, no green), facts on screen that the script doesn't support.
-   - **Variation:** review neighboring shots as a sequence. Look for repeated actions, staging, and runs of
-     similar cards or graphics, including repeats disguised by a new character, prop, or location.
+   - **Pacing and variation:** review neighboring shots in order with the measured cut timings. Check the first
+     10 seconds cut by cut. Zooms, lighting changes, and changing captions on the same composition do not count
+     as new pictures. Look for repeated action, framing, staging, and runs of similar cards or graphics.
    - **Look:** dots subtle (not dominant), vignette on scene shots, framed stage for diagrams/documents.
    - **Clarity:** check what each character, prop, and graphic contributes. Keep the cast focused and simplify
      any crowded shot. Let an effective scene hold while the action develops.
+   - **Creativity:** for each shot, ask what would make the moment more engaging or clearer. Add a relevant
+     character action, prop interaction, reaction, or detail shot where it strengthens the story.
    - Keep usage low: one compact sheet per round; after fixes re-check only the changed shots.
-   Then tell the owner what was found and changed.
-6. **Ask PC or cloud**, then **render** - `make_video.py render` (one MP4 per shot, all CPU cores).
-   On the PC the owner runs the same commands; give them the exact commands in separate `bash` blocks.
+   Tell the owner what was found and changed. Open the final review sheets on their Windows PC and share the full
+   paths, the first 10 seconds of cut timings, and the timing of any longer holds. Wait for explicit approval of
+   the episode stills after the owner has viewed them. Approval of a script, character, or prop covers that item.
+6. **Full render** - after the owner approves the stills and confirms PC or cloud, use `make_video.py render`
+   for the approved version (one MP4 per shot). If picture changes after approval, show the updated stills and
+   get approval again before rendering the changed shots.
 7. **Audio** - `make_video.py audio`: cleaned voices (narrator vs character chain, character level-matched to the
    narrator), code music from the mood map, SFX, ducking, two-pass loudnorm to -14 LUFS.
 8. **Final** - `make_video.py final` -> `out/final.mp4` + `out/frames.jpg` (one frame every 7 s). Check the sheet.

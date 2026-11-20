@@ -130,7 +130,7 @@ or down arrow; gains in navy ink with an up arrow (no green); small handwriting 
   2. Shot list: one picture per sentence, using locked night sets for story scenes and locked day sets for lessons and courtroom scenes.
   3. Voices: narrator = owner's ElevenLabs file; characters = Kokoro clips, one fixed voice per character.
   4. Timeline: every shot and line timed from the measured voice lengths.
-  5. Test stills: 6-9 of the busiest frames on one contact sheet, fixed before the long render.
+  5. Review stills: check start, middle, and end of every shot and verify opening cut timings. Open the images on the owner's Windows PC, share the full paths, and wait for explicit approval before the full render.
   6. Render: every frame drawn in Python (skia) with the locked kit, piped into ffmpeg, one MP4 per shot, joined
      without re-encoding. Static backgrounds are drawn once (night/day print pass) and reused; characters and
      props animate on top.

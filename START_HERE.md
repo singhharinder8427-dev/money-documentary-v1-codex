@@ -16,14 +16,16 @@ Read this first, then `BRAND.md`, then the skills in `.claude/skills/`. Everythi
    change. Listen through the full feedback before saving it. Ask for approval to commit other changes.
    A request to sync with Claude means read and apply the latest instructions. Copy per-video code or
    assets only when the owner explicitly requests that for the specific update.
-2. **Never render or generate anything the owner didn't ask for.** Ask **PC or cloud** before every render.
+2. **Wait for explicit render approval.** Create the review images first, open them on the owner's Windows PC,
+   and give the owner their full paths. Wait for the owner to see and approve the stills and cut timings.
+   Confirm PC or cloud for each full render.
 3. **Listen first** when the owner gives feedback: collect the full list, don't start changing things mid-list.
 4. Give PowerShell commands **one per code block**, step by step, short and clear (the owner is not a developer).
 5. **Before every new video ask:** (a) new character(s) or existing? (b) new places + props or reuse existing?
    New ones: owner sends references -> design in our style -> iterate until approved -> lock -> add to the library.
-6. **Mandatory creative quality check** before the owner renders. Review 3 frames per shot on one compact sheet.
-   Check readability and framing. Review neighboring shots for repeated action, staging, or graphic layouts
-   and simplify crowded frames (`.claude/skills/documentary-animator/SKILL.md`, step 5).
+6. **Follow the original V1 Ponzi shot workflow.** Plan the first 10 seconds cut by cut, with a genuinely new
+   picture every 2-3 seconds in the hook. Review the start, middle, and end of every shot and check the sequence
+   against its timings. Follow the animator skill and `FIXES.md` for the full procedure.
 7. Keep usage low: one compact review sheet per round, re-check only changed shots.
 8. When the owner says **“lay down the assets,”** show only the category names. Wait for the owner to pick a
    category before listing its assets or showing previews.
