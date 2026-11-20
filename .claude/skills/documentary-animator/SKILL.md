@@ -86,15 +86,16 @@ Work in `videos/<slug>/` (the video folder). The runner is `make_video.py` in th
    word timings) and makes every character line with that character's fixed Kokoro voice (`engine/voices.py`
    `CHARACTER_VOICES`). Without a narration file, narrator lines get a temporary Kokoro voice so work can start.
    Watch the log for `NOT MATCHED` lines and Kokoro OOV warnings (add the word to `lex_extra.txt`).
-4. **Shot list** - copy `template/shots.py` to the video folder and write **one picture per sentence** (rules below).
+4. **Shot list** - copy `template/shots.py` to the video folder. Give each story beat a clear visual and let one scene carry several lines when the action develops naturally (rules below).
 5. **Creative quality check (mandatory, by Claude)** - render 3 frames per shot (start / middle / end) into ONE
    compact sheet and review every shot against this checklist; fix everything before the owner renders:
    - **Mistakes:** cut-off text or props, overlaps, empty first frames, characters hidden or too small, tables/props
      not readable, wrong colours (orange only for losses, no green), facts on screen that the script doesn't support.
-   - **Repetition:** no two shots in a row with the same composition; a new picture every 2-3 s (hook especially).
+   - **Variation:** review neighboring shots as a sequence. Look for repeated actions, staging, and runs of
+     similar cards or graphics, including repeats disguised by a new character, prop, or location.
    - **Look:** dots subtle (not dominant), vignette on scene shots, framed stage for diagrams/documents.
-   - **Creativity:** for every shot ask "would adding something make this more interesting, immersive or
-     eye-catching?" (a story-specific prop, a light sweep, a hand action, a detail close-up, a camera move) - add it.
+   - **Clarity:** check what each character, prop, and graphic contributes. Keep the cast focused and simplify
+     any crowded shot. Let an effective scene hold while the action develops.
    - Keep usage low: one compact sheet per round; after fixes re-check only the changed shots.
    Then tell the owner what was found and changed.
 6. **Ask PC or cloud**, then **render** - `make_video.py render` (one MP4 per shot, all CPU cores).
@@ -124,24 +125,34 @@ Work in `videos/<slug>/` (the video folder). The runner is `make_video.py` in th
 
 ## Shot rules (retention)
 
-- **One picture per sentence**; something new every 20-30 s (card, counter, stamp, chart, dialogue, place jump).
+- **Build around story beats.** Vary what the viewer sees and what happens on screen. Choose from a wide
+  establishing shot, a close reaction, an action in progress, a story-specific prop, or a graphic according to
+  what the beat needs. Let an action or reaction carry the scene across narration lines when it reads well.
+- **Keep the cast focused.** Reuse established characters and introduce a new person when their role clarifies
+  the story. A single character or a prop can carry a beat. Use a group when the group itself matters.
+- **Use graphics and cards selectively.** Give them screen time when they clarify a relationship, comparison,
+  or key figure, or provide a meaningful structural pause. When a scene, action, or readable prop already
+  communicates the point, let it carry the explanation.
 - Every shot moves: push-in 5-10% (`zoom=(1.0, 1.07)`), small rotate on desk shots, whip on place jumps, shake on
   stamp hits. Never a frozen frame.
 - **Hook:** start in the middle of the action on a night set, a counter or stamp in the first 5 s, title card after
   the hook (sound logo plays automatically).
-- **Script line flags:** `card: true` -> full-screen typed text card (`shots.card('text', ...)`, gold for the key
-  word); `counter` -> `widgets.counter` (orange + minus + down arrow for losses; ticks + ding / low tone are added
-  automatically). Chapter changes -> chapter card (navy, Alfa Slab, gold rule) - add a `chapter:N` shot.
+- **Script line flags:** `card: true` marks a candidate for a typed text card. Choose it when the words deserve
+  their own frame. Use `widgets.counter` for figures that benefit from a count-up (orange + minus + down arrow
+  for losses; ticks + ding / low tone are added automatically). Chapter changes use a `chapter:N` shot
+  (navy, Alfa Slab, gold rule).
 - **Dialogue moments:** two characters, close-ups or a wide two-shot; the speaker's mouth follows its voice clip
   (`Actor.say(tl, line_id, mouths)` with `mouths = tl.mouths()`).
-- **Midpoint twist:** text card; the music cuts to silence with a low boom (automatic from the `TWIST` beat).
-- **Ch5 "your wallet":** day sets (`day/...`), charts (`widgets.bar_chart`, `line_chart`), counters per American,
-  one practical takeaway on a sticky note or card.
-- **Ending:** return to the opening set (callback); final-question text card held, then `anim.outro` (sound logo) and
+- **Midpoint twist:** stage the reveal in whichever format makes it land. The music cuts to silence with a
+  low boom (automatic from the `TWIST` beat).
+- **Ch5 "your wallet":** use day sets (`day/...`) and show the practical takeaway clearly. A chart, counter,
+  sticky note, or card can help when the takeaway calls for it.
+- **Ending:** return to the opening set for the callback. Hold on the final question through a scene or text card,
+  then `anim.outro` (sound logo) and
   `anim.end_screen` (~18 s). The timeline adds these automatically (`'outro'`, `'endscreen'` markers); the music
   resolves on a final chord and a soft bed plays under the end screen.
-- **Lesson part:** always a red-flags / how-to-spot-it board where the points pop in one by one with the narrator.
-- **Use the story animations** (`anim`) often: a hand slam, a stamp, a chart or a prop every 20-30 s.
+- **Lesson part:** use a step-by-step red-flags board when the viewer needs to see the points build or compare.
+- **Story animations** (`anim`) are available for beats that call for a specific action, such as a hand slam or a stamp.
 - **Captions:** small burned-in captions are added to every shot automatically (`engine/captions.py`; bottom centre,
   current word in gold; skipped on typed text cards). `final` also writes `out/captions.srt` for YouTube CC.
   `CAPTIONS=0` turns them off.
