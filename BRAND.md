@@ -23,6 +23,12 @@ Exception (owner-approved): **real national flags keep their true colours** (e.g
 Rules: gold = money / brand, orange = danger / loss, never swapped; they never touch; orange always with a minus sign
 or down arrow; gains in navy ink with an up arrow (no green); small handwriting on white paper is navy, not gold.
 
+## Real-world logos
+
+- Draw a custom 2D version of each real-world logo used in scenes or thumbnails. Aim for roughly 60% visual resemblance. Keep the recognizable motif and simplify the geometry, proportions, and lettering in Dirty Dollar ink and colours.
+- Place marks where they naturally identify the company, such as hardware, signage, packaging, or a relevant screen. Size them to suit the shot and keep the main action readable.
+- For Nvidia, use a simplified eye motif with stepped lines in white or gold on navy or black. Apply the same treatment to the Jensen episode’s hardware, relevant sets, and thumbnail when the mark helps the viewer identify Nvidia.
+
 ## Characters (locked) - `characters/`
 - Use a turban on a character only when the owner explicitly requests one.
 - **Head:** slightly rectangular, soft top corners, a well-curved rounded chin. **Short neck.**
@@ -80,19 +86,12 @@ or down arrow; gains in navy ink with an up arrow (no green); small handwriting 
   cards + typewriter, counters, stamps, red-flags board, outro + end screen.
 - Every real person a video is about gets a character built from their **real traits** (face cut, hair, facial hair,
   glasses, build, signature outfit and props) in our 2D style, and **the same character appears in the video and on
-  the thumbnail**. Claude draws the thumbnail in code with the channel engine.
+  the thumbnail**. Supply the same approved character traits as reference for thumbnail generation.
 
 ## Thumbnails (locked) - `.claude/skills/thumbnail-prompt/`
-- **Locked style (owner-approved "$20 MILLION GONE" v3):** the channel's own night-print set as a sharp background, a
-  huge emotional main character with shock lines and a glow, the whole story packed around him (crowd, police car +
-  spotlight, newspaper headline, key prop, flying cash, coins, crash arrow), a big Alfa Slab headline (white + one
-  orange/gold accent). Drawn by Claude in code with the engine.
-- Made by the owner in an AI image tool from **detailed prompts written at the end of every video** (after render),
-  2-3 options per video.
-- Every prompt names the locked palette (hex + jobs, no green) and describes **our character style**; real people
-  drawn in our style with their signature traits.
-- Formula: top text band (white + one gold/orange word), one big expressive face, one glowing story object,
-  dark blurred story background, dramatic rim light.
+- **Composition:** tight 16:9 crop, one expressive face, one dominant story prop, a legible Alfa Slab headline, and enough story-specific background detail to establish the setting. Use Paper Billions as a reference for framing, emotional clarity, and the relationship between the face and prop. Use an original Dirty Dollar layout and artwork.
+- **Final production stage:** after the video is rendered, give the owner a detailed, copy-ready image prompt. The owner returns the prompt to the assistant when ready to generate. The approved Ponzi thumbnail is a reference for Dirty Dollar typography and character rendering.
+- The prompt specifies the locked palette and each colour’s job, the approved character’s signature traits, exact headline, framing, prop and hand action, setting, paper texture, lighting, and placement of any relevant redrawn logo. Use gold for the main accent and orange for losses or alerts.
 
 ## Voices (locked) - test in the first short render
 - **Narrator:** ElevenLabs (owner makes it from `voice_script.md`).
