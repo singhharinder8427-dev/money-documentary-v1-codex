@@ -24,6 +24,7 @@ Rules: gold = money / brand, orange = danger / loss, never swapped; they never t
 or down arrow; gains in navy ink with an up arrow (no green); small handwriting on white paper is navy, not gold.
 
 ## Characters (locked) - `characters/`
+- Use a turban on a character only when the owner explicitly requests one.
 - **Head:** slightly rectangular, soft top corners, a well-curved rounded chin. **Short neck.**
 - **Body:** rectangle with small rounded corners: jacket, lapels, shirt V, tie or bow tie, pocket square.
 - **Legs:** trouser legs in the outfit colour + dark rounded shoes. **Arms:** thin ink-line arms, **round ball hands** (no paper hands).
