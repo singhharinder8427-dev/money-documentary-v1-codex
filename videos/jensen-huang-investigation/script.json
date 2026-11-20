@@ -1,0 +1,1210 @@
+{
+  "title": "The Investigation That Reached Nvidia’s CEO",
+  "title_after": "n006",
+  "lines": [
+    {
+      "id": "n001",
+      "beat": "HOOK",
+      "chapter": null,
+      "speaker": "NARRATOR",
+      "text": "The chip investigation began long before Nvidia lost its CEO. In June 2025, U.S. officials visited a cloud company in Singapore.",
+      "card": false,
+      "counter": null,
+      "dramatised": false,
+      "sources": [
+        "S1",
+        "S2",
+        "S11"
+      ],
+      "visual": "inspection",
+      "shot_hint": "Server aisle with an inspector's flashlight arriving on a rack plate"
+    },
+    {
+      "id": "n002",
+      "beat": "HOOK",
+      "chapter": null,
+      "speaker": "NARRATOR",
+      "text": "They were checking how advanced chips were being used. They interviewed its chief executive, Alice Huang.",
+      "card": false,
+      "counter": null,
+      "dramatised": false,
+      "sources": [
+        "S1",
+        "S2",
+        "S11"
+      ],
+      "visual": "inspection",
+      "shot_hint": "Server aisle with an inspector's flashlight arriving on a rack plate"
+    },
+    {
+      "id": "n003",
+      "beat": "HOOK",
+      "chapter": null,
+      "speaker": "NARRATOR",
+      "text": "By then, Washington had already asked Nvidia for sales records.",
+      "card": false,
+      "counter": null,
+      "dramatised": false,
+      "sources": [
+        "S1",
+        "S2",
+        "S3"
+      ],
+      "visual": "rack_check",
+      "shot_hint": "Track the rack from latch to inventory label"
+    },
+    {
+      "id": "n004",
+      "beat": "HOOK",
+      "chapter": null,
+      "speaker": "NARRATOR",
+      "text": "More than a year later, reports about the woman they interviewed put Jensen Huang, Nvidia's founder, in the middle of the story.",
+      "card": false,
+      "counter": null,
+      "dramatised": false,
+      "sources": [
+        "S1",
+        "S2",
+        "S3"
+      ],
+      "visual": "rack_check",
+      "shot_hint": "Track the rack from latch to inventory label"
+    },
+    {
+      "id": "n005",
+      "beat": "HOOK",
+      "chapter": null,
+      "speaker": "NARRATOR",
+      "text": "You could have money tied to Nvidia through a fund and never have bought a share yourself.",
+      "card": false,
+      "counter": null,
+      "dramatised": false,
+      "sources": [
+        "S1",
+        "S13"
+      ],
+      "visual": "screen_glow",
+      "shot_hint": "A monitor wakes up and lights the equipment around it"
+    },
+    {
+      "id": "n006",
+      "beat": "HOOK",
+      "chapter": null,
+      "speaker": "NARRATOR",
+      "text": "So what did investigators know before the headlines? Start with the machine they were trying to trace.",
+      "card": false,
+      "counter": null,
+      "dramatised": false,
+      "sources": [
+        "S1",
+        "S13"
+      ],
+      "visual": "screen_glow",
+      "shot_hint": "A monitor wakes up and lights the equipment around it"
+    },
+    {
+      "id": "n007",
+      "beat": "CH1",
+      "chapter": "The Machine in the Rack",
+      "speaker": "NARRATOR",
+      "text": "A chip like this might be designed by Nvidia and sold inside somebody else's machine.",
+      "card": false,
+      "counter": null,
+      "dramatised": false,
+      "sources": [
+        "S1",
+        "S2",
+        "S4"
+      ],
+      "visual": "server_slide",
+      "shot_hint": "Close on a technician's hands sliding a blade into a rack"
+    },
+    {
+      "id": "n008",
+      "beat": "CH1",
+      "chapter": "The Machine in the Rack",
+      "speaker": "NARRATOR",
+      "text": "By the time an inspector sees it, it may be one component in a server that fills a rack.",
+      "card": false,
+      "counter": null,
+      "dramatised": false,
+      "sources": [
+        "S1",
+        "S2",
+        "S4"
+      ],
+      "visual": "server_slide",
+      "shot_hint": "Close on a technician's hands sliding a blade into a rack"
+    },
+    {
+      "id": "n009",
+      "beat": "CH1",
+      "chapter": "The Machine in the Rack",
+      "speaker": "NARRATOR",
+      "text": "Think of the server as the whole machine and the chips as some of the parts doing the work.",
+      "card": false,
+      "counter": null,
+      "dramatised": false,
+      "sources": [
+        "S2",
+        "S4"
+      ],
+      "visual": "rack_wide",
+      "shot_hint": "Tilt from the blade up to the whole rack and adjoining cabinets"
+    },
+    {
+      "id": "n010",
+      "beat": "CH1",
+      "chapter": "The Machine in the Rack",
+      "speaker": "NARRATOR",
+      "text": "A cloud company puts those machines in a data center and sells customers time on them.",
+      "card": false,
+      "counter": null,
+      "dramatised": false,
+      "sources": [
+        "S2",
+        "S4"
+      ],
+      "visual": "rack_wide",
+      "shot_hint": "Tilt from the blade up to the whole rack and adjoining cabinets"
+    },
+    {
+      "id": "n011",
+      "beat": "CH1",
+      "chapter": "The Machine in the Rack",
+      "speaker": "NARRATOR",
+      "text": "The customer can be somewhere else. Picture booking time in a recording studio.",
+      "card": false,
+      "counter": null,
+      "dramatised": false,
+      "sources": [
+        "S4",
+        "S5"
+      ],
+      "visual": "remote_user",
+      "shot_hint": "Illustrative home laptop sending a job to remote equipment"
+    },
+    {
+      "id": "n012",
+      "beat": "CH1",
+      "chapter": "The Machine in the Rack",
+      "speaker": "NARRATOR",
+      "text": "You can work from your own laptop while the studio's expensive equipment stays where it is.",
+      "card": false,
+      "counter": null,
+      "dramatised": false,
+      "sources": [
+        "S4",
+        "S5"
+      ],
+      "visual": "remote_user",
+      "shot_hint": "Illustrative home laptop sending a job to remote equipment"
+    },
+    {
+      "id": "n013",
+      "beat": "CH1",
+      "chapter": "The Machine in the Rack",
+      "speaker": "NARRATOR",
+      "text": "That gives investigators two questions. Where did the machine go? And who could use it once it was there?",
+      "card": false,
+      "counter": null,
+      "dramatised": false,
+      "sources": [
+        "S4",
+        "S5"
+      ],
+      "visual": "server_console",
+      "shot_hint": "Rack-side terminal distinguishes machine location from access"
+    },
+    {
+      "id": "n014",
+      "beat": "CH1",
+      "chapter": "The Machine in the Rack",
+      "speaker": "NARRATOR",
+      "text": "A paper trail can help answer the first question. The second can take different evidence.",
+      "card": false,
+      "counter": null,
+      "dramatised": false,
+      "sources": [
+        "S4",
+        "S5"
+      ],
+      "visual": "server_console",
+      "shot_hint": "Rack-side terminal distinguishes machine location from access"
+    },
+    {
+      "id": "n015",
+      "beat": "CH1",
+      "chapter": "The Machine in the Rack",
+      "speaker": "NARRATOR",
+      "text": "Nvidia started in computer graphics. Its processors were good at doing many calculations at once.",
+      "card": false,
+      "counter": null,
+      "dramatised": false,
+      "sources": [
+        "S6"
+      ],
+      "visual": "graphics_pc",
+      "shot_hint": "A graphics card moves into an open desktop in an illustrative bench scene"
+    },
+    {
+      "id": "n016",
+      "beat": "CH1",
+      "chapter": "The Machine in the Rack",
+      "speaker": "NARRATOR",
+      "text": "Opening that computing power to software developers helped turn a gaming component into part of the infrastructure behind AI.",
+      "card": false,
+      "counter": null,
+      "dramatised": false,
+      "sources": [
+        "S6"
+      ],
+      "visual": "graphics_pc",
+      "shot_hint": "A graphics card moves into an open desktop in an illustrative bench scene"
+    },
+    {
+      "id": "n017",
+      "beat": "CH1",
+      "chapter": "The Machine in the Rack",
+      "speaker": "NARRATOR",
+      "text": "By 2024, U.S. Commerce officials had flagged possible diversion of sensitive chips. One company they wanted to understand was Megaspeed.",
+      "card": false,
+      "counter": null,
+      "dramatised": false,
+      "sources": [
+        "S1",
+        "S2"
+      ],
+      "visual": "investigation_pin",
+      "shot_hint": "A case file opens in the investigation room"
+    },
+    {
+      "id": "n018",
+      "beat": "CH1",
+      "chapter": "The Machine in the Rack",
+      "speaker": "NARRATOR",
+      "text": "Its business was selling access to computing power. Investigators wanted to know where that power was going.",
+      "card": false,
+      "counter": null,
+      "dramatised": false,
+      "sources": [
+        "S1",
+        "S2"
+      ],
+      "visual": "investigation_pin",
+      "shot_hint": "A case file opens in the investigation room"
+    },
+    {
+      "id": "n019",
+      "beat": "CH2",
+      "chapter": "The Destination Field",
+      "speaker": "NARRATOR",
+      "text": "Singapore started its own inquiry in February 2025. Its police and customs officials were looking at possible false declarations in server purchases.",
+      "card": false,
+      "counter": null,
+      "dramatised": false,
+      "sources": [
+        "S2"
+      ],
+      "visual": "singapore_aisle",
+      "shot_hint": "Warehouse aisle at the start of Singapore's inquiry"
+    },
+    {
+      "id": "n020",
+      "beat": "CH2",
+      "chapter": "The Destination Field",
+      "speaker": "NARRATOR",
+      "text": "They say they opened the case independently.",
+      "card": false,
+      "counter": null,
+      "dramatised": false,
+      "sources": [
+        "S2"
+      ],
+      "visual": "singapore_aisle",
+      "shot_hint": "Warehouse aisle at the start of Singapore's inquiry"
+    },
+    {
+      "id": "n021",
+      "beat": "CH2",
+      "chapter": "The Destination Field",
+      "speaker": "NARRATOR",
+      "text": "Some of those machines had been purchased by companies under investigation. Singapore confirmed the servers passed through the country on their way to Malaysia.",
+      "card": false,
+      "counter": null,
+      "dramatised": false,
+      "sources": [
+        "S2"
+      ],
+      "visual": "handoff",
+      "shot_hint": "A generic shipping case moves through the handoff"
+    },
+    {
+      "id": "n022",
+      "beat": "CH2",
+      "chapter": "The Destination Field",
+      "speaker": "NARRATOR",
+      "text": "That was one leg they could put on the record.",
+      "card": false,
+      "counter": null,
+      "dramatised": false,
+      "sources": [
+        "S2"
+      ],
+      "visual": "handoff",
+      "shot_hint": "A generic shipping case moves through the handoff"
+    },
+    {
+      "id": "n023",
+      "beat": "CH2",
+      "chapter": "The Destination Field",
+      "speaker": "NARRATOR",
+      "text": "The next leg was the hard part. Did the servers stay in Malaysia? Were any moved again?",
+      "card": false,
+      "counter": null,
+      "dramatised": false,
+      "sources": [
+        "S2",
+        "S4"
+      ],
+      "visual": "route",
+      "shot_hint": "A single map-style graphic confirms Singapore to Malaysia and holds on the open destination"
+    },
+    {
+      "id": "n024",
+      "beat": "CH2",
+      "chapter": "The Destination Field",
+      "speaker": "NARRATOR",
+      "text": "And if the servers stayed put, who was using them? A destination on a declaration can only tell you so much.",
+      "card": false,
+      "counter": null,
+      "dramatised": false,
+      "sources": [
+        "S2",
+        "S4"
+      ],
+      "visual": "route",
+      "shot_hint": "A single map-style graphic confirms Singapore to Malaysia and holds on the open destination"
+    },
+    {
+      "id": "n025",
+      "beat": "CH2",
+      "chapter": "The Destination Field",
+      "speaker": "NARRATOR",
+      "text": "In May, U.S. Commerce investigators asked Nvidia for records of direct or indirect sales to Megaspeed. Think about that request.",
+      "card": false,
+      "counter": null,
+      "dramatised": false,
+      "sources": [
+        "S1"
+      ],
+      "visual": "sales_records",
+      "shot_hint": "Top-down view of the May request sliding into a records folder"
+    },
+    {
+      "id": "n026",
+      "beat": "CH2",
+      "chapter": "The Destination Field",
+      "speaker": "NARRATOR",
+      "text": "Nvidia could sell through partners, and investigators wanted the records from both paths.",
+      "card": false,
+      "counter": null,
+      "dramatised": false,
+      "sources": [
+        "S1"
+      ],
+      "visual": "sales_records",
+      "shot_hint": "Top-down view of the May request sliding into a records folder"
+    },
+    {
+      "id": "n027",
+      "beat": "CH2",
+      "chapter": "The Destination Field",
+      "speaker": "NARRATOR",
+      "text": "The agencies say Nvidia put Megaspeed on its no-sell list in June. That was a decision about sales.",
+      "card": false,
+      "counter": null,
+      "dramatised": false,
+      "sources": [
+        "S1"
+      ],
+      "visual": "closed_order",
+      "shot_hint": "An order is paused while nearby warehouse racks remain"
+    },
+    {
+      "id": "n028",
+      "beat": "CH2",
+      "chapter": "The Destination Field",
+      "speaker": "NARRATOR",
+      "text": "The machines investigators wanted to account for could already be out in the field.",
+      "card": false,
+      "counter": null,
+      "dramatised": false,
+      "sources": [
+        "S1"
+      ],
+      "visual": "closed_order",
+      "shot_hint": "An order is paused while nearby warehouse racks remain"
+    },
+    {
+      "id": "n029",
+      "beat": "CH2",
+      "chapter": "The Destination Field",
+      "speaker": "NARRATOR",
+      "text": "On June 24, U.S. officials conducted an on-site end-use check with Alice Huang present.",
+      "card": false,
+      "counter": null,
+      "dramatised": false,
+      "sources": [
+        "S1",
+        "S2"
+      ],
+      "visual": "inspection_return",
+      "shot_hint": "Return to a tightly framed inventory check on the June 24 rack"
+    },
+    {
+      "id": "n030",
+      "beat": "CH2",
+      "chapter": "The Destination Field",
+      "speaker": "NARRATOR",
+      "text": "Singapore police interviewed her that day for their own investigation. The first scene of this story took place on the record.",
+      "card": false,
+      "counter": null,
+      "dramatised": false,
+      "sources": [
+        "S1",
+        "S2"
+      ],
+      "visual": "inspection_return",
+      "shot_hint": "Return to a tightly framed inventory check on the June 24 rack"
+    },
+    {
+      "id": "n031",
+      "beat": "CH2",
+      "chapter": "The Destination Field",
+      "speaker": "NARRATOR",
+      "text": "What the two inquiries found is a different question.",
+      "card": false,
+      "counter": null,
+      "dramatised": false,
+      "sources": [
+        "S1",
+        "S2"
+      ],
+      "visual": "inspection_return",
+      "shot_hint": "Return to a tightly framed inventory check on the June 24 rack"
+    },
+    {
+      "id": "n032",
+      "beat": "CH3",
+      "chapter": "Beyond the Check",
+      "speaker": "NARRATOR",
+      "text": "Singapore's investigation concerned its own laws.",
+      "card": false,
+      "counter": null,
+      "dramatised": false,
+      "sources": [
+        "S1",
+        "S2"
+      ],
+      "visual": "separate_rooms",
+      "shot_hint": "Two folders on separate sides of an investigation desk"
+    },
+    {
+      "id": "n033",
+      "beat": "CH3",
+      "chapter": "Beyond the Check",
+      "speaker": "NARRATOR",
+      "text": "The U.S. Justice Department says it took the lead in the U.S. criminal investigation of Megaspeed after the enforcement action.",
+      "card": false,
+      "counter": null,
+      "dramatised": false,
+      "sources": [
+        "S1",
+        "S2"
+      ],
+      "visual": "separate_rooms",
+      "shot_hint": "Two folders on separate sides of an investigation desk"
+    },
+    {
+      "id": "n034",
+      "beat": "CH3",
+      "chapter": "Beyond the Check",
+      "speaker": "NARRATOR",
+      "text": "Both inquiries touched the same company.",
+      "card": false,
+      "counter": null,
+      "dramatised": false,
+      "sources": [
+        "S1",
+        "S2"
+      ],
+      "visual": "separate_rooms",
+      "shot_hint": "Two folders on separate sides of an investigation desk"
+    },
+    {
+      "id": "n035",
+      "beat": "CH3",
+      "chapter": "Beyond the Check",
+      "speaker": "NARRATOR",
+      "text": "By February 2026, Singapore police and prosecutors found insufficient evidence to establish that Alice Huang had committed the suspected declaration offenses.",
+      "card": false,
+      "counter": null,
+      "dramatised": false,
+      "sources": [
+        "S2"
+      ],
+      "visual": "split_file",
+      "shot_hint": "A close detail of the Singapore finding with the agency/date visible"
+    },
+    {
+      "id": "n036",
+      "beat": "CH3",
+      "chapter": "Beyond the Check",
+      "speaker": "NARRATOR",
+      "text": "Singapore said it investigated her for possible domestic offenses. Its inquiry did not cover espionage.",
+      "card": false,
+      "counter": null,
+      "dramatised": false,
+      "sources": [
+        "S2"
+      ],
+      "visual": "split_file",
+      "shot_hint": "A close detail of the Singapore finding with the agency/date visible"
+    },
+    {
+      "id": "n037",
+      "beat": "CH3",
+      "chapter": "Beyond the Check",
+      "speaker": "NARRATOR",
+      "text": "Singapore police also said she gave inaccurate information to play down her role. They issued a warning and barred her from re-entering.",
+      "card": false,
+      "counter": null,
+      "dramatised": false,
+      "sources": [
+        "S2",
+        "S7"
+      ],
+      "visual": "warning",
+      "shot_hint": "Lift a page to reveal the separate warning and the company's statement"
+    },
+    {
+      "id": "n038",
+      "beat": "CH3",
+      "chapter": "Beyond the Check",
+      "speaker": "NARRATOR",
+      "text": "Megaspeed later said she had left the company in August 2025.",
+      "card": false,
+      "counter": null,
+      "dramatised": false,
+      "sources": [
+        "S2",
+        "S7"
+      ],
+      "visual": "warning",
+      "shot_hint": "Lift a page to reveal the separate warning and the company's statement"
+    },
+    {
+      "id": "n039",
+      "beat": "CH3",
+      "chapter": "Beyond the Check",
+      "speaker": "NARRATOR",
+      "text": "At this point, there was a documented chip inquiry and an unanswered question about where some machines went.",
+      "card": false,
+      "counter": null,
+      "dramatised": false,
+      "sources": [
+        "S1",
+        "S2",
+        "S3"
+      ],
+      "visual": "press_monitor",
+      "shot_hint": "A newsroom monitor shows a dated report summary"
+    },
+    {
+      "id": "n040",
+      "beat": "CH3",
+      "chapter": "Beyond the Check",
+      "speaker": "NARRATOR",
+      "text": "Then, in late October, news reports raised a different question. It was about who had access to Nvidia's CEO.",
+      "card": false,
+      "counter": null,
+      "dramatised": false,
+      "sources": [
+        "S1",
+        "S2",
+        "S3"
+      ],
+      "visual": "press_monitor",
+      "shot_hint": "A newsroom monitor shows a dated report summary"
+    },
+    {
+      "id": "n041",
+      "beat": "TWIST",
+      "chapter": null,
+      "speaker": "NARRATOR",
+      "text": "Reuters reported that U.S. authorities suspected Alice Huang of ties to Chinese intelligence. China denied the allegation.",
+      "card": false,
+      "counter": null,
+      "dramatised": false,
+      "sources": [
+        "S3",
+        "S8",
+        "S9"
+      ],
+      "visual": "board_door",
+      "shot_hint": "Slow move toward a closed boardroom, using sourced text outside any private interaction"
+    },
+    {
+      "id": "n042",
+      "beat": "TWIST",
+      "chapter": null,
+      "speaker": "NARRATOR",
+      "text": "On November 8, Jensen acknowledged being unfaithful in a message to Nvidia employees. He did not name her.",
+      "card": false,
+      "counter": null,
+      "dramatised": false,
+      "sources": [
+        "S3",
+        "S8",
+        "S9"
+      ],
+      "visual": "board_door",
+      "shot_hint": "Slow move toward a closed boardroom, using sourced text outside any private interaction"
+    },
+    {
+      "id": "n043",
+      "beat": "TWIST",
+      "chapter": null,
+      "speaker": "NARRATOR",
+      "text": "Nvidia's board opened an independent investigation that same day.",
+      "card": false,
+      "counter": null,
+      "dramatised": false,
+      "sources": [
+        "S3",
+        "S9"
+      ],
+      "visual": "board_file",
+      "shot_hint": "A page turns to the board's public position, with a separate denial visible"
+    },
+    {
+      "id": "n044",
+      "beat": "TWIST",
+      "chapter": null,
+      "speaker": "NARRATOR",
+      "text": "It said it had no reason at that point to believe company secrets or national security had been compromised.",
+      "card": false,
+      "counter": null,
+      "dramatised": false,
+      "sources": [
+        "S3",
+        "S9"
+      ],
+      "visual": "board_file",
+      "shot_hint": "A page turns to the board's public position, with a separate denial visible"
+    },
+    {
+      "id": "n045",
+      "beat": "TWIST",
+      "chapter": null,
+      "speaker": "NARRATOR",
+      "text": "What information, if any, reached Beijing remains unresolved in the public record.",
+      "card": false,
+      "counter": null,
+      "dramatised": false,
+      "sources": [
+        "S3",
+        "S9"
+      ],
+      "visual": "board_file",
+      "shot_hint": "A page turns to the board's public position, with a separate denial visible"
+    },
+    {
+      "id": "n046",
+      "beat": "TWIST",
+      "chapter": null,
+      "speaker": "NARRATOR",
+      "text": "The focus had widened. The first investigation asked where the hardware went.",
+      "card": false,
+      "counter": null,
+      "dramatised": false,
+      "sources": [
+        "S1",
+        "S9"
+      ],
+      "visual": "board_push",
+      "shot_hint": "A boardroom push-in settles on the file at the head of the table"
+    },
+    {
+      "id": "n047",
+      "beat": "TWIST",
+      "chapter": null,
+      "speaker": "NARRATOR",
+      "text": "Now the board had to ask what its own company knew, and when.",
+      "card": false,
+      "counter": null,
+      "dramatised": false,
+      "sources": [
+        "S1",
+        "S9"
+      ],
+      "visual": "board_push",
+      "shot_hint": "A boardroom push-in settles on the file at the head of the table"
+    },
+    {
+      "id": "n048",
+      "beat": "CH4",
+      "chapter": "The Board Answers",
+      "speaker": "NARRATOR",
+      "text": "Congress had already asked for answers.",
+      "card": false,
+      "counter": null,
+      "dramatised": false,
+      "sources": [
+        "S10"
+      ],
+      "visual": "capitol_letter",
+      "shot_hint": "A House request arrives on an evidence desk"
+    },
+    {
+      "id": "n049",
+      "beat": "CH4",
+      "chapter": "The Board Answers",
+      "speaker": "NARRATOR",
+      "text": "In a letter dated November 4, three House committee chairs asked Jensen to brief them on his interactions with Alice Huang and Nvidia's security procedures.",
+      "card": false,
+      "counter": null,
+      "dramatised": false,
+      "sources": [
+        "S10"
+      ],
+      "visual": "capitol_letter",
+      "shot_hint": "A House request arrives on an evidence desk"
+    },
+    {
+      "id": "n050",
+      "beat": "CH4",
+      "chapter": "The Board Answers",
+      "speaker": "NARRATOR",
+      "text": "On November 11, Nvidia's board accepted Jensen Huang's resignation as chief executive and director. The company announced it the next day.",
+      "card": false,
+      "counter": null,
+      "dramatised": false,
+      "sources": [
+        "S9",
+        "S11"
+      ],
+      "visual": "jensen_exit",
+      "shot_hint": "Single non-speaking, illustrative Jensen portrait with a medium shot and a name tag"
+    },
+    {
+      "id": "n051",
+      "beat": "CH4",
+      "chapter": "The Board Answers",
+      "speaker": "NARRATOR",
+      "text": "Finance chief Colette Kress stepped in as interim CEO.",
+      "card": false,
+      "counter": null,
+      "dramatised": false,
+      "sources": [
+        "S9",
+        "S11"
+      ],
+      "visual": "jensen_exit",
+      "shot_hint": "Single non-speaking, illustrative Jensen portrait with a medium shot and a name tag"
+    },
+    {
+      "id": "n052",
+      "beat": "CH4",
+      "chapter": "The Board Answers",
+      "speaker": "NARRATOR",
+      "text": "Then came the next scheduled event. The earnings call went ahead on November 17.",
+      "card": false,
+      "counter": null,
+      "dramatised": false,
+      "sources": [
+        "S11",
+        "S12",
+        "S14"
+      ],
+      "visual": "call_wide",
+      "shot_hint": "Boardroom camera moves past a vacant chair to a conference speaker"
+    },
+    {
+      "id": "n053",
+      "beat": "CH4",
+      "chapter": "The Board Answers",
+      "speaker": "NARRATOR",
+      "text": "Nvidia had just reported a record quarter, and its board chair told investors the company did not intend to bring Jensen back as CEO.",
+      "card": false,
+      "counter": null,
+      "dramatised": false,
+      "sources": [
+        "S11",
+        "S12",
+        "S14"
+      ],
+      "visual": "call_wide",
+      "shot_hint": "Boardroom camera moves past a vacant chair to a conference speaker"
+    },
+    {
+      "id": "n054",
+      "beat": "CH4",
+      "chapter": "The Board Answers",
+      "speaker": "NARRATOR",
+      "text": "Sales reached a hundred fifteen point eight billion dollars. That covers the quarter that ended October 25, while Jensen was still running the company.",
+      "card": false,
+      "counter": null,
+      "dramatised": false,
+      "sources": [
+        "S12"
+      ],
+      "visual": "earnings_counter",
+      "shot_hint": "An earnings screen shows 115.8 billion dollars in quarterly sales with the period end"
+    },
+    {
+      "id": "n055",
+      "beat": "CH4",
+      "chapter": "The Board Answers",
+      "speaker": "NARRATOR",
+      "text": "The number tells you what Nvidia sold over three months.",
+      "card": false,
+      "counter": null,
+      "dramatised": false,
+      "sources": [
+        "S12"
+      ],
+      "visual": "earnings_counter",
+      "shot_hint": "An earnings screen shows 115.8 billion dollars in quarterly sales with the period end"
+    },
+    {
+      "id": "n056",
+      "beat": "CH4",
+      "chapter": "The Board Answers",
+      "speaker": "NARRATOR",
+      "text": "Nvidia's data center division brought in most of those sales. The demand the company reported could be strong while its board still faced questions.",
+      "card": false,
+      "counter": null,
+      "dramatised": false,
+      "sources": [
+        "S12",
+        "S14"
+      ],
+      "visual": "server_after",
+      "shot_hint": "Slow glide along a lit server aisle as the records questions return"
+    },
+    {
+      "id": "n057",
+      "beat": "CH4",
+      "chapter": "The Board Answers",
+      "speaker": "NARRATOR",
+      "text": "Investors had to make sense of both at once.",
+      "card": false,
+      "counter": null,
+      "dramatised": false,
+      "sources": [
+        "S12",
+        "S14"
+      ],
+      "visual": "server_after",
+      "shot_hint": "Slow glide along a lit server aisle as the records questions return"
+    },
+    {
+      "id": "n058",
+      "beat": "CH4",
+      "chapter": "The Board Answers",
+      "speaker": "NARRATOR",
+      "text": "On November 19, California's attorney general announced an investigative subpoena.",
+      "card": false,
+      "counter": null,
+      "dramatised": false,
+      "sources": [
+        "S15"
+      ],
+      "visual": "subpoena",
+      "shot_hint": "A dated subpoena summary moves onto the desk"
+    },
+    {
+      "id": "n059",
+      "beat": "CH4",
+      "chapter": "The Board Answers",
+      "speaker": "NARRATOR",
+      "text": "His office is asking whether advanced chips or confidential information reached China and whether Nvidia misled investors about that risk.",
+      "card": false,
+      "counter": null,
+      "dramatised": false,
+      "sources": [
+        "S15"
+      ],
+      "visual": "subpoena",
+      "shot_hint": "A dated subpoena summary moves onto the desk"
+    },
+    {
+      "id": "n060",
+      "beat": "CH4",
+      "chapter": "The Board Answers",
+      "speaker": "NARRATOR",
+      "text": "House Democrats sought records about Nvidia's communications with Commerce. Congressional committees also scheduled transcribed interviews for December.",
+      "card": false,
+      "counter": null,
+      "dramatised": false,
+      "sources": [
+        "S16",
+        "S17"
+      ],
+      "visual": "congress_next",
+      "shot_hint": "Interview schedule appears on a calendar in the investigation room"
+    },
+    {
+      "id": "n061",
+      "beat": "CH4",
+      "chapter": "The Board Answers",
+      "speaker": "NARRATOR",
+      "text": "As of November 20, those interviews are still ahead. The investigations have questions that the earnings report could never answer.",
+      "card": false,
+      "counter": null,
+      "dramatised": false,
+      "sources": [
+        "S16",
+        "S17"
+      ],
+      "visual": "congress_next",
+      "shot_hint": "Interview schedule appears on a calendar in the investigation room"
+    },
+    {
+      "id": "n062",
+      "beat": "CH5",
+      "chapter": "Whose Risk Is It?",
+      "speaker": "NARRATOR",
+      "text": "Here's where it reaches an ordinary investor. You can own Nvidia indirectly through an index fund.",
+      "card": false,
+      "counter": null,
+      "dramatised": false,
+      "sources": [
+        "S13"
+      ],
+      "visual": "wallet_room",
+      "shot_hint": "A saver opens the fund statement at home"
+    },
+    {
+      "id": "n063",
+      "beat": "CH5",
+      "chapter": "Whose Risk Is It?",
+      "speaker": "NARRATOR",
+      "text": "Open the fund's holdings page and find the line that says Nvidia.",
+      "card": false,
+      "counter": null,
+      "dramatised": false,
+      "sources": [
+        "S13"
+      ],
+      "visual": "wallet_room",
+      "shot_hint": "A saver opens the fund statement at home"
+    },
+    {
+      "id": "n064",
+      "beat": "CH5",
+      "chapter": "Whose Risk Is It?",
+      "speaker": "NARRATOR",
+      "text": "On November 18, Nvidia made up five point seven eight percent of State Street's S and P five hundred fund, ticker S P Y.",
+      "card": false,
+      "counter": null,
+      "dramatised": false,
+      "sources": [
+        "S13"
+      ],
+      "visual": "wallet_statement",
+      "shot_hint": "Push into one holdings line and show the dated 578-dollar example"
+    },
+    {
+      "id": "n065",
+      "beat": "CH5",
+      "chapter": "Whose Risk Is It?",
+      "speaker": "NARRATOR",
+      "text": "In a ten thousand dollar holding in that particular fund, that's about five hundred seventy-eight dollars of Nvidia exposure at that snapshot.",
+      "card": false,
+      "counter": null,
+      "dramatised": false,
+      "sources": [
+        "S13"
+      ],
+      "visual": "wallet_statement",
+      "shot_hint": "Push into one holdings line and show the dated 578-dollar example"
+    },
+    {
+      "id": "n066",
+      "beat": "CH5",
+      "chapter": "Whose Risk Is It?",
+      "speaker": "NARRATOR",
+      "text": "That weight is a snapshot. It can change with the market and the fund's holdings.",
+      "card": false,
+      "counter": null,
+      "dramatised": false,
+      "sources": [
+        "S13"
+      ],
+      "visual": "wallet_close",
+      "shot_hint": "Close the statement and return to the saver and laptop"
+    },
+    {
+      "id": "n067",
+      "beat": "CH5",
+      "chapter": "Whose Risk Is It?",
+      "speaker": "NARRATOR",
+      "text": "If you own a fund, its own holdings page can show you how much one company represents.",
+      "card": false,
+      "counter": null,
+      "dramatised": false,
+      "sources": [
+        "S13"
+      ],
+      "visual": "wallet_close",
+      "shot_hint": "Close the statement and return to the saver and laptop"
+    },
+    {
+      "id": "n068",
+      "beat": "CH5",
+      "chapter": "Whose Risk Is It?",
+      "speaker": "NARRATOR",
+      "text": "A big sales quarter answers one question. A subpoena raises others.",
+      "card": false,
+      "counter": null,
+      "dramatised": false,
+      "sources": [
+        "S12",
+        "S13",
+        "S15"
+      ],
+      "visual": "wallet_hold",
+      "shot_hint": "Hold on the saver reviewing the holdings without another full-screen graphic"
+    },
+    {
+      "id": "n069",
+      "beat": "CH5",
+      "chapter": "Whose Risk Is It?",
+      "speaker": "NARRATOR",
+      "text": "The fund statement shows why both can matter to a person who never set out to invest in a single chip company.",
+      "card": false,
+      "counter": null,
+      "dramatised": false,
+      "sources": [
+        "S12",
+        "S13",
+        "S15"
+      ],
+      "visual": "wallet_hold",
+      "shot_hint": "Hold on the saver reviewing the holdings without another full-screen graphic"
+    },
+    {
+      "id": "n070",
+      "beat": "END",
+      "chapter": null,
+      "speaker": "NARRATOR",
+      "text": "Go back to the rack in Singapore.",
+      "card": false,
+      "counter": null,
+      "dramatised": false,
+      "sources": [
+        "S1",
+        "S2"
+      ],
+      "visual": "return_aisle",
+      "shot_hint": "Reverse the opening travel through the server aisle"
+    },
+    {
+      "id": "n071",
+      "beat": "END",
+      "chapter": null,
+      "speaker": "NARRATOR",
+      "text": "In 2025, there was a machine to inspect, a set of records to request, and a destination to verify.",
+      "card": false,
+      "counter": null,
+      "dramatised": false,
+      "sources": [
+        "S1",
+        "S2"
+      ],
+      "visual": "return_aisle",
+      "shot_hint": "Reverse the opening travel through the server aisle"
+    },
+    {
+      "id": "n072",
+      "beat": "END",
+      "chapter": null,
+      "speaker": "NARRATOR",
+      "text": "A year later, those simple questions had reached Nvidia's board and public officials.",
+      "card": false,
+      "counter": null,
+      "dramatised": false,
+      "sources": [
+        "S1",
+        "S2",
+        "S9",
+        "S15"
+      ],
+      "visual": "return_form",
+      "shot_hint": "A folder stops beside the checked Singapore-to-Malaysia leg"
+    },
+    {
+      "id": "n073",
+      "beat": "END",
+      "chapter": null,
+      "speaker": "NARRATOR",
+      "text": "The records tracked those servers as far as Malaysia.",
+      "card": false,
+      "counter": null,
+      "dramatised": false,
+      "sources": [
+        "S2"
+      ],
+      "visual": "return_form",
+      "shot_hint": "A folder stops beside the checked Singapore-to-Malaysia leg"
+    },
+    {
+      "id": "n074",
+      "beat": "END",
+      "chapter": null,
+      "speaker": "NARRATOR",
+      "text": "If you were following the chips, which lead would you check first?",
+      "card": false,
+      "counter": null,
+      "dramatised": false,
+      "sources": [
+        "S2"
+      ],
+      "visual": "closing_rack",
+      "shot_hint": "Hold on the rack for the comment question and the episode-two tease"
+    },
+    {
+      "id": "n075",
+      "beat": "END",
+      "chapter": null,
+      "speaker": "NARRATOR",
+      "text": "Where the servers went next, or who could use them remotely?",
+      "card": false,
+      "counter": null,
+      "dramatised": false,
+      "sources": [
+        "S2"
+      ],
+      "visual": "closing_rack",
+      "shot_hint": "Hold on the rack for the comment question and the episode-two tease"
+    },
+    {
+      "id": "n076",
+      "beat": "END",
+      "chapter": null,
+      "speaker": "NARRATOR",
+      "text": "Tell us in the comments. Next episode, we pick up the chip trail in Malaysia.",
+      "card": false,
+      "counter": null,
+      "dramatised": false,
+      "sources": [
+        "S2"
+      ],
+      "visual": "closing_rack",
+      "shot_hint": "Hold on the rack for the comment question and the episode-two tease"
+    }
+  ]
+}
