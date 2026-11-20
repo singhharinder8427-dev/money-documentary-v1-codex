@@ -30,13 +30,13 @@ Read this first, then `BRAND.md`, then the skills in `.claude/skills/`. Everythi
 9. **Vary the visuals around the story.** Keep the cast focused, use cards and graphics when they add clarity,
    and let scenes carry the narration where they can. Vary the action, framing, and composition according to
    the beat. Check that consecutive shots feel different even when they share a cast or location.
+10. **Draw recognizable 2D company marks.** Aim for roughly 60% resemblance and use the Dirty Dollar palette. Place the marks where they help identify the subject in a scene or thumbnail. See the real-world logo guidance in `BRAND.md`.
 
 ## Pipeline (skills)
 1. `documentary-script` - researched, sourced script (Template A), `script.json`, voice script, sources.
 2. `documentary-animator` - the engine (`engine/`), runner `make_video.py` (`voices`, `stills`, `render`, `audio`,
    `final`, `check`), per-video `videos/<slug>/shots.py`. Read its `SKILL.md` and `FIXES.md` (owner feedback 1-26).
-3. `thumbnail-prompt` - **Claude draws the thumbnail in code** in the LOCKED style ("$20 MILLION GONE" v3:
-   sharp night-print set, huge emotional character, whole story packed in, big Alfa Slab headline).
+3. `thumbnail-prompt` - after the final render, deliver a detailed, copy-ready prompt. Use Paper Billions as a reference for tight framing, a strong expression, and one dominant story prop. Use Dirty Dollar’s cast, palette, print look, typography, and 2D logo treatment. The owner returns the prompt to the assistant for image generation.
 4. Publishing checklist + `videos/<slug>/youtube.md` (titles, description with chapters + sources, tags).
 
 ## Locked look (details in BRAND.md)
